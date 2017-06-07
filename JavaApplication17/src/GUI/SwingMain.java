@@ -1,4 +1,4 @@
-package projeto_swing;
+package GUI;
 
 public class SwingMain {
 
