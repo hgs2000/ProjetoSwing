@@ -1,0 +1,11 @@
+Sequencia de telas:
+  Login:
+    >Tela admin:
+      Superusuario;
+      Logout;
+    >Tela gerente:
+      Add/rmv filme/sala/vendedor/sessão;
+      Logout;
+    >Tela vendedor:
+      Venda, add/rmv cliente;
+      Logout;
