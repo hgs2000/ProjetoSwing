@@ -1,8 +1,8 @@
-package projeto_swing;
+package GUI;
 
 import java.awt.Toolkit;
-import java.util.Arrays;
 import javax.swing.JOptionPane;
+import Objetos.Funcionario;
 
 public class Login extends javax.swing.JFrame {
 
@@ -33,6 +33,11 @@ public class Login extends javax.swing.JFrame {
 
         inputNome.setToolTipText("Nome do usuário");
         inputNome.setNextFocusableComponent(inputSenha);
+        inputNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inputNomeActionPerformed(evt);
+            }
+        });
 
         inputSenha.setNextFocusableComponent(botaoLogin);
         inputSenha.addActionListener(new java.awt.event.ActionListener() {
@@ -126,6 +131,10 @@ public class Login extends javax.swing.JFrame {
         }
         return;
     }//GEN-LAST:event_botaoSairActionPerformed
+
+    private void inputNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputNomeActionPerformed
 
     /**
      * @param args the command line arguments
