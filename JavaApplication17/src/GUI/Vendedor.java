@@ -29,46 +29,22 @@ public class Vendedor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btVenda = new javax.swing.JButton();
-        btAddCliente = new javax.swing.JButton();
-        btRmvCliente = new javax.swing.JButton();
         btLoggout = new javax.swing.JButton();
+        jTabbedPane5 = new javax.swing.JTabbedPane();
+        jTabbedPane6 = new javax.swing.JTabbedPane();
+        jTabbedPane7 = new javax.swing.JTabbedPane();
+        jTabbedPane8 = new javax.swing.JTabbedPane();
+
+        btLoggout.setText("Logout");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
 
-        btVenda.setText("Venda");
+        jTabbedPane5.addTab("Venda", jTabbedPane6);
+        jTabbedPane5.addTab("Adicionar Cliente", jTabbedPane7);
+        jTabbedPane5.addTab("Remover Cliente", jTabbedPane8);
 
-        btAddCliente.setText("Adicionar cliente");
-
-        btRmvCliente.setText("Remover cliente");
-
-        btLoggout.setText("Logout");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(btVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btAddCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btRmvCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addComponent(btLoggout, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btAddCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btRmvCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btLoggout, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(438, Short.MAX_VALUE))
-        );
+        getContentPane().add(jTabbedPane5, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -107,9 +83,10 @@ public class Vendedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btAddCliente;
     private javax.swing.JButton btLoggout;
-    private javax.swing.JButton btRmvCliente;
-    private javax.swing.JButton btVenda;
+    private javax.swing.JTabbedPane jTabbedPane5;
+    private javax.swing.JTabbedPane jTabbedPane6;
+    private javax.swing.JTabbedPane jTabbedPane7;
+    private javax.swing.JTabbedPane jTabbedPane8;
     // End of variables declaration//GEN-END:variables
 }
