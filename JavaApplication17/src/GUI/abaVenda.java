@@ -27,25 +27,25 @@ public class abaVenda extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        slFilme = new javax.swing.JComboBox<>();
+        selFilme = new javax.swing.JComboBox<>();
         lbFilme = new javax.swing.JLabel();
         lbSessao = new javax.swing.JLabel();
-        slSessao = new javax.swing.JComboBox<>();
+        selSessao = new javax.swing.JComboBox<>();
         lbCpfCliente = new javax.swing.JLabel();
-        tfCpfCliente = new javax.swing.JTextField();
+        codCPFCliVenda = new javax.swing.JTextField();
         btSlFilmeCancelar = new javax.swing.JButton();
         btOkVenda = new javax.swing.JButton();
         texto = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        selQuantIngresso = new javax.swing.JComboBox<>();
 
-        setMinimumSize(null);
         setPreferredSize(new java.awt.Dimension(720, 430));
 
-        slFilme.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        slFilme.setToolTipText("Seleção do filme, que o cliente deseja.");
-        slFilme.addActionListener(new java.awt.event.ActionListener() {
+        selFilme.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selFilme.setToolTipText("Seleção do filme, que o cliente deseja.");
+        selFilme.setNextFocusableComponent(selSessao);
+        selFilme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                slFilmeActionPerformed(evt);
+                selFilmeActionPerformed(evt);
             }
         });
 
@@ -53,20 +53,25 @@ public class abaVenda extends javax.swing.JPanel {
 
         lbSessao.setText("Sessão");
 
-        slSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        slSessao.setToolTipText("Seleção da sessão que o cliente deseja.");
+        selSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selSessao.setToolTipText("Seleção da sessão que o cliente deseja.");
+        selSessao.setNextFocusableComponent(selQuantIngresso);
 
-        lbCpfCliente.setText("Cpf do Cliente(opcional):");
+        lbCpfCliente.setText("CPF do Cliente (opcional):");
 
-        tfCpfCliente.setToolTipText("Cpf do cliente cadastrado.");
+        codCPFCliVenda.setToolTipText("Cpf do cliente cadastrado.");
+        codCPFCliVenda.setNextFocusableComponent(btOkVenda);
 
         btSlFilmeCancelar.setText("Cancelar");
+        btSlFilmeCancelar.setNextFocusableComponent(selFilme);
 
         btOkVenda.setText("Confirmar");
+        btOkVenda.setNextFocusableComponent(btSlFilmeCancelar);
 
         texto.setText("Quantidade de ingressos:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selQuantIngresso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selQuantIngresso.setNextFocusableComponent(codCPFCliVenda);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -81,15 +86,15 @@ public class abaVenda extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfCpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(codCPFCliVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(texto)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(lbCpfCliente)
                         .addComponent(lbSessao)
                         .addComponent(lbFilme)
-                        .addComponent(slSessao, 0, 374, Short.MAX_VALUE)
-                        .addComponent(slFilme, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(selSessao, 0, 374, Short.MAX_VALUE)
+                        .addComponent(selFilme, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(selQuantIngresso, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(305, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -103,40 +108,40 @@ public class abaVenda extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(lbFilme)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(slFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(selFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lbSessao)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(slSessao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(selSessao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(texto)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(selQuantIngresso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(lbCpfCliente)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tfCpfCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                        .addComponent(codCPFCliVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                         .addComponent(btSlFilmeCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void slFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_slFilmeActionPerformed
+    private void selFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selFilmeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_slFilmeActionPerformed
+    }//GEN-LAST:event_selFilmeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btOkVenda;
     private javax.swing.JButton btSlFilmeCancelar;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JTextField codCPFCliVenda;
     private javax.swing.JLabel lbCpfCliente;
     private javax.swing.JLabel lbFilme;
     private javax.swing.JLabel lbSessao;
-    private javax.swing.JComboBox<String> slFilme;
-    private javax.swing.JComboBox<String> slSessao;
+    private javax.swing.JComboBox<String> selFilme;
+    private javax.swing.JComboBox<String> selQuantIngresso;
+    private javax.swing.JComboBox<String> selSessao;
     private javax.swing.JLabel texto;
-    private javax.swing.JTextField tfCpfCliente;
     // End of variables declaration//GEN-END:variables
 }
