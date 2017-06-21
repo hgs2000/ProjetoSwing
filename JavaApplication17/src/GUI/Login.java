@@ -3,9 +3,17 @@ package GUI;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import Objetos.Funcionario;
+import Objetos.Gerente;
+import Objetos.Vendedor;
+import java.util.ArrayList;
 
 public class Login extends javax.swing.JFrame {
-
+    
+    //Este array é temporario pois sera usado Banco de Dados para salvar os dados futuramente.
+    ArrayList<Vendedor> BD = new ArrayList<>();
+    Gerente gerente;
+    
+    
     public Login() {
         initComponents();
     }
@@ -111,15 +119,22 @@ public class Login extends javax.swing.JFrame {
 
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
         Funcionario f = new Funcionario(inputNome.getText(), inputSenha.getPassword());
+        boolean eVazio = false;
         if (inputNome.getText().isEmpty()) {
             inputNome.grabFocus();
+            eVazio = true;
             return;
         }
         if (inputSenha.getPassword() == null) {
             inputSenha.grabFocus();
+            eVazio = true;
             return;
         }
-        System.out.println("");
+        if(!eVazio){
+            
+        }
+        
+        
     }//GEN-LAST:event_botaoLoginActionPerformed
 
     private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
@@ -162,6 +177,20 @@ public class Login extends javax.swing.JFrame {
             new Login().setVisible(true);
         });
     }
+    
+    //-------------------------------------------logic methods--------------------------------------------------------
+    
+    
+    
+    //----------------------------------------------------------------------------------------------------------------
+    
+    
+    
+    
+    
+    
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoLogin;
