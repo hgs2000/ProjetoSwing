@@ -54,6 +54,11 @@ public class AddGerente extends javax.swing.JFrame {
         btConfAddCliente.setBorder(null);
 
         btCanAddGeren.setText("Cancelar");
+        btCanAddGeren.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCanAddGerenActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,6 +113,11 @@ public class AddGerente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btCanAddGerenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCanAddGerenActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btCanAddGerenActionPerformed
 
     /**
      * @param args the command line arguments

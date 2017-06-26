@@ -120,6 +120,7 @@ public class PainelGerente extends javax.swing.JFrame {
         jTabbedPane1.setToolTipText("Painel utilizado pelo gerente para adicionar um novo filme/sessão/sala/funcionário");
 
         newFilmeNome.setToolTipText("Digite o nome do filme ser disponibilizado. Deve ser diferente dos já cadastrados.");
+        newFilmeNome.setNextFocusableComponent(newFilmeSinopse);
         newFilmeNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newFilmeNomeActionPerformed(evt);
@@ -131,7 +132,9 @@ public class PainelGerente extends javax.swing.JFrame {
         newFilmeSinopse.setColumns(20);
         newFilmeSinopse.setRows(5);
         newFilmeSinopse.setToolTipText("Digite uma sinopse para o filme.");
+        newFilmeSinopse.setNextFocusableComponent(newFilmeGenAcao);
         jScrollPane1.setViewportView(newFilmeSinopse);
+        newFilmeSinopse.getAccessibleContext().setAccessibleName("");
 
         jLabel4.setText("Sinopse:");
 
@@ -140,21 +143,26 @@ public class PainelGerente extends javax.swing.JFrame {
 
         newFilmeGenAcao.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenAcao.setText("Ação");
+        newFilmeGenAcao.setNextFocusableComponent(newFilmeGenFant);
 
         newFilmeGenRoman.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenRoman.setText("Romance");
+        newFilmeGenRoman.setNextFocusableComponent(newFilmeGenAnim);
 
         newFilmeGenTerror.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenTerror.setText("Terror");
+        newFilmeGenTerror.setNextFocusableComponent(newFilmeGenAvent);
 
         newFilmeGenComed.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenComed.setText("Comédia");
 
         newFilmeGenFant.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenFant.setText("Fantasia");
+        newFilmeGenFant.setNextFocusableComponent(newFilmeGenHist);
 
         newFilmeGenAnim.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenAnim.setText("Animação");
+        newFilmeGenAnim.setNextFocusableComponent(newFilmeGenMusi);
 
         newFilmeGenAvent.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenAvent.setText("Aventura");
@@ -164,9 +172,11 @@ public class PainelGerente extends javax.swing.JFrame {
 
         newFilmeGenHist.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenHist.setText("Histórico");
+        newFilmeGenHist.setNextFocusableComponent(newFilmeGenRoman);
 
         newFilmeGenMusi.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenMusi.setText("Musical");
+        newFilmeGenMusi.setNextFocusableComponent(newFilmeGenTerror);
 
         newFilmeGenFicCi.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenFicCi.setText("Ficção Científica");

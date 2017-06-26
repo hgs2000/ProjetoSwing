@@ -156,6 +156,9 @@
                     <Component class="javax.swing.JTextField" name="newFilmeNome">
                       <Properties>
                         <Property name="toolTipText" type="java.lang.String" value="Digite o nome do filme ser disponibilizado. Deve ser diferente dos j&#xe1; cadastrados."/>
+                        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                          <ComponentRef name="newFilmeSinopse"/>
+                        </Property>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newFilmeNomeActionPerformed"/>
@@ -178,7 +181,13 @@
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
                             <Property name="toolTipText" type="java.lang.String" value="Digite uma sinopse para o filme."/>
+                            <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                              <ComponentRef name="newFilmeGenAcao"/>
+                            </Property>
                           </Properties>
+                          <AccessibilityProperties>
+                            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value=""/>
+                          </AccessibilityProperties>
                         </Component>
                       </SubComponents>
                     </Container>
@@ -269,6 +278,9 @@
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="A&#xe7;&#xe3;o"/>
+                            <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                              <ComponentRef name="newFilmeGenFant"/>
+                            </Property>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JCheckBox" name="newFilmeGenRoman">
@@ -277,6 +289,9 @@
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Romance"/>
+                            <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                              <ComponentRef name="newFilmeGenAnim"/>
+                            </Property>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JCheckBox" name="newFilmeGenTerror">
@@ -285,6 +300,9 @@
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Terror"/>
+                            <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                              <ComponentRef name="newFilmeGenAvent"/>
+                            </Property>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JCheckBox" name="newFilmeGenComed">
@@ -301,6 +319,9 @@
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Fantasia"/>
+                            <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                              <ComponentRef name="newFilmeGenHist"/>
+                            </Property>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JCheckBox" name="newFilmeGenAnim">
@@ -309,6 +330,9 @@
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Anima&#xe7;&#xe3;o"/>
+                            <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                              <ComponentRef name="newFilmeGenMusi"/>
+                            </Property>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JCheckBox" name="newFilmeGenAvent">
@@ -333,6 +357,9 @@
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Hist&#xf3;rico"/>
+                            <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                              <ComponentRef name="newFilmeGenRoman"/>
+                            </Property>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JCheckBox" name="newFilmeGenMusi">
@@ -341,6 +368,9 @@
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="Musical"/>
+                            <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                              <ComponentRef name="newFilmeGenTerror"/>
+                            </Property>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JCheckBox" name="newFilmeGenFicCi">
