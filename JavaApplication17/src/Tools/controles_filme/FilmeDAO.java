@@ -22,6 +22,7 @@ import java.util.ArrayList;
  */
 public class FilmeDAO {
 
+    //Inicializador do DAO
     private static void start() throws IOException {
         arquivoFilmes = new File("./arquivo.xml");
         xs = new XStream();
@@ -52,5 +53,9 @@ public class FilmeDAO {
         } catch (IOException ex) {
         }
         return listaFilmes;
+    }
+
+    public static void main(String[] args) {
+        
     }
 }
