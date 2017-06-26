@@ -10,6 +10,15 @@ public class Filme {
     private JTextField filmeNome;
     private JTextArea filmeSinopse;
     private ArrayList<JCheckBox> filmeGeneros;
+    private int filmeAno;
+
+    public int getFilmeAno() {
+        return filmeAno;
+    }
+
+    public void setFilmeAno(int filmeAno) {
+        this.filmeAno = filmeAno;
+    }
 
     public JTextField getFilmeNome() {
         return filmeNome;
@@ -35,10 +44,11 @@ public class Filme {
         this.filmeGeneros = filmeGeneros;
     }
 
-    public Filme(JTextField filmeNome, JTextArea filmeSinopse, ArrayList<JCheckBox> filmeGeneros) {
+    public Filme(JTextField filmeNome, JTextArea filmeSinopse, ArrayList<JCheckBox> filmeGeneros, int filmeAno) {
         this.filmeNome = filmeNome;
         this.filmeSinopse = filmeSinopse;
         this.filmeGeneros = filmeGeneros;
+        this.filmeAno = filmeAno;
     }
 
 }

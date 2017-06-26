@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 
 import java.awt.Toolkit;
@@ -10,10 +5,6 @@ import java.util.ArrayList;
 import Objetos.Filme;
 import static Tools.controles_filme.FilmeDAO.carregadorDeFilmes;
 
-/**
- *
- * @author informatica
- */
 public class PainelGerente extends javax.swing.JFrame {
 
     private ArrayList<Filme> listaFilmes;
@@ -759,7 +750,6 @@ public class PainelGerente extends javax.swing.JFrame {
         }
         if (newFilmeSinopse.getText().isEmpty()) {
             newFilmeSinopse.requestFocus();
-            return;
         }
 
     }//GEN-LAST:event_newFilmeBtnSalvarActionPerformed
@@ -769,10 +759,8 @@ public class PainelGerente extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PainelGerente().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new PainelGerente().setVisible(true);
         });
     }
 
