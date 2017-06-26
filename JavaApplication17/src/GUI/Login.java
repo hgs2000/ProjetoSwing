@@ -5,15 +5,15 @@ import javax.swing.JOptionPane;
 import Objetos.Funcionario;
 import Objetos.Gerente;
 import Objetos.Vendedor;
+import Tools.Msgs;
 import java.util.ArrayList;
 
 public class Login extends javax.swing.JFrame {
-    
+
     //Este array é temporario pois sera usado Banco de Dados para salvar os dados futuramente.
-    ArrayList<Vendedor> BD = new ArrayList<>();
-    Gerente gerente;
-    
-    
+    static ArrayList<Vendedor> BD = new ArrayList<>();
+    static Gerente gerente;
+
     public Login() {
         initComponents();
     }
@@ -130,11 +130,11 @@ public class Login extends javax.swing.JFrame {
             eVazio = true;
             return;
         }
-        if(!eVazio){
-            
+        if (!eVazio) {
+
         }
-        
-        
+
+
     }//GEN-LAST:event_botaoLoginActionPerformed
 
     private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
@@ -160,6 +160,15 @@ public class Login extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+
+        if (gerente == null) {
+            if (Msgs.gerenteMsg()) {
+                AddGerente.main(args);
+            } else {
+                System.exit(0);
+            }
+        }
+        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -177,20 +186,9 @@ public class Login extends javax.swing.JFrame {
             new Login().setVisible(true);
         });
     }
-    
+
     //-------------------------------------------logic methods--------------------------------------------------------
-    
-    
-    
     //----------------------------------------------------------------------------------------------------------------
-    
-    
-    
-    
-    
-    
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoLogin;
