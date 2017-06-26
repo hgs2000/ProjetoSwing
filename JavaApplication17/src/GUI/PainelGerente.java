@@ -4,6 +4,7 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 import Objetos.Filme;
 import static Tools.controles_filme.FilmeDAO.carregadorDeFilmes;
+import javax.swing.JCheckBox;
 
 public class PainelGerente extends javax.swing.JFrame {
 
@@ -11,7 +12,7 @@ public class PainelGerente extends javax.swing.JFrame {
 
     public PainelGerente() {
         initComponents();
-        listaFilmes = carregadorDeFilmes();
+        //listaFilmes = carregadorDeFilmes();
     }
 
     /**
@@ -751,7 +752,30 @@ public class PainelGerente extends javax.swing.JFrame {
         if (newFilmeSinopse.getText().isEmpty()) {
             newFilmeSinopse.requestFocus();
         }
-
+        ArrayList<JCheckBox> boxes = new ArrayList<JCheckBox>() {
+            {
+                add(newFilmeGenAcao);
+                add(newFilmeGenAnim);
+                add(newFilmeGenAvent);
+                add(newFilmeGenComed);
+                add(newFilmeGenDrama);
+                add(newFilmeGenFant);
+                add(newFilmeGenFicCi);
+                add(newFilmeGenGuerra);
+                add(newFilmeGenHist);
+                add(newFilmeGenMusi);
+                add(newFilmeGenRoman);
+                add(newFilmeGenTerror);
+            }
+        };
+        ArrayList<JCheckBox> toFilmes;
+        toFilmes = new ArrayList<>();
+        for (JCheckBox boxe : boxes) {
+            if (boxe.isSelected()) {
+                toFilmes.add(boxe);
+            }
+        }
+        listaFilmes.add(new Filme(newFilmeNome, newFilmeSinopse, toFilmes, NORMAL))
     }//GEN-LAST:event_newFilmeBtnSalvarActionPerformed
 
     /**
