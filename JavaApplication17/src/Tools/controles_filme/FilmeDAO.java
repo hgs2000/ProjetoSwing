@@ -24,7 +24,7 @@ public class FilmeDAO {
 
     private static void start() throws IOException {
         arquivoFilmes = new File("./arquivo.xml");
-        xs = new XStream();
+//        xs = new XStream();
         if (!arquivoFilmes.exists()) {
             arquivoFilmes.createNewFile();
         }

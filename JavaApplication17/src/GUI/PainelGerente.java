@@ -20,7 +20,7 @@ public class PainelGerente extends javax.swing.JFrame {
 
     public PainelGerente() {
         initComponents();
-        listaFilmes = carregadorDeFilmes(ArrayList.class);
+        //listaFilmes = carregadorDeFilmes(ArrayList.class);
     }
 
     /**
@@ -66,14 +66,14 @@ public class PainelGerente extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         inputPrecoAddSessao = new javax.swing.JTextField();
-        slMinInicioAddSessao = new javax.swing.JComboBox<>();
+        slMinInicioAddSessao = new javax.swing.JComboBox<String>();
         texto1 = new javax.swing.JLabel();
         test5 = new javax.swing.JLabel();
-        slFilmeAddSessao = new javax.swing.JComboBox<>();
+        slFilmeAddSessao = new javax.swing.JComboBox<String>();
         test4 = new javax.swing.JLabel();
-        slSalaAddSessao = new javax.swing.JComboBox<>();
+        slSalaAddSessao = new javax.swing.JComboBox<String>();
         texto2 = new javax.swing.JLabel();
-        slHoraInicioAddSessao = new javax.swing.JComboBox<>();
+        slHoraInicioAddSessao = new javax.swing.JComboBox<String>();
         jLabel3 = new javax.swing.JLabel();
         btConfAddSessao = new javax.swing.JButton();
         btCanAddSessao = new javax.swing.JButton();
@@ -81,7 +81,7 @@ public class PainelGerente extends javax.swing.JFrame {
         textoCPF = new javax.swing.JLabel();
         inputCpfAddVendedor = new javax.swing.JTextField();
         jungleJingle = new javax.swing.JLabel();
-        slTurnoAddVend = new javax.swing.JComboBox<>();
+        slTurnoAddVend = new javax.swing.JComboBox<String>();
         textonumeroaqui = new javax.swing.JLabel();
         inputEmailAddVendedor = new javax.swing.JTextField();
         btConAddVende = new javax.swing.JButton();
@@ -90,7 +90,7 @@ public class PainelGerente extends javax.swing.JFrame {
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jButton6 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jTextField4 = new javax.swing.JTextField();
@@ -99,9 +99,9 @@ public class PainelGerente extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         text4 = new javax.swing.JLabel();
-        slSalaRmvSessao = new javax.swing.JComboBox<>();
+        slSalaRmvSessao = new javax.swing.JComboBox<String>();
         textou7 = new javax.swing.JLabel();
-        slInicioRmvSessao = new javax.swing.JComboBox<>();
+        slInicioRmvSessao = new javax.swing.JComboBox<String>();
         btCanRmvSessao = new javax.swing.JButton();
         btConfRmvSessao = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
@@ -119,19 +119,21 @@ public class PainelGerente extends javax.swing.JFrame {
         jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTabbedPane1.setToolTipText("Painel utilizado pelo gerente para adicionar um novo filme/sessão/sala/funcionário");
 
+        newFilmeNome.setToolTipText("Digite o nome do filme ser disponibilizado. Deve ser diferente dos já cadastrados.");
         newFilmeNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newFilmeNomeActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Título do Filme");
+        jLabel2.setText("Título do Filme:");
 
         newFilmeSinopse.setColumns(20);
         newFilmeSinopse.setRows(5);
+        newFilmeSinopse.setToolTipText("Digite uma sinopse para o filme.");
         jScrollPane1.setViewportView(newFilmeSinopse);
 
-        jLabel4.setText("Sinopse");
+        jLabel4.setText("Sinopse:");
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -224,16 +226,21 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        jLabel5.setText("Gênero");
+        jLabel5.setText("Gênero:");
 
-        newFilmeBtnSalvar.setText("Salvar filme");
+        newFilmeBtnSalvar.setText("Salvar Filme");
         newFilmeBtnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newFilmeBtnSalvarActionPerformed(evt);
             }
         });
 
-        newFilmeBtnClear.setText("Limpar campos");
+        newFilmeBtnClear.setText("Limpar Campos");
+        newFilmeBtnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newFilmeBtnClearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -283,19 +290,27 @@ public class PainelGerente extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Filme", jPanel4);
 
-        jLabel7.setText("Nome da sala:");
+        jLabel7.setText("Nome da Sala:");
 
+        jTextField2.setToolTipText("Digite o nome da nova sala a ser cadastrada.");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
 
-        jLabel8.setText("Código da sala:");
+        jLabel8.setText("Código da Sala:");
+
+        jTextField3.setToolTipText("Digite o código da nova sala a ser cadastrada.");
 
         jButton2.setText("Salvar");
 
-        jButton3.setText("Limpar campos");
+        jButton3.setText("Limpar Campos");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -337,31 +352,31 @@ public class PainelGerente extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Sala", jPanel3);
 
-        inputPrecoAddSessao.setToolTipText("Digite o preço da sessão.");
+        inputPrecoAddSessao.setToolTipText("Digite o preço unitário da sessão.");
         inputPrecoAddSessao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputPrecoAddSessaoActionPerformed(evt);
             }
         });
 
-        slMinInicioAddSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slMinInicioAddSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slMinInicioAddSessao.setToolTipText("Selecione os minutos de início do filme.");
 
         texto1.setText("Filme:");
 
         test5.setText("Preço:");
 
-        slFilmeAddSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slFilmeAddSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slFilmeAddSessao.setToolTipText("Selecione o filme ");
 
         test4.setText("Horário de início:");
 
-        slSalaAddSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slSalaAddSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slSalaAddSessao.setToolTipText("Selecione a Sala");
 
         texto2.setText("Sala:");
 
-        slHoraInicioAddSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slHoraInicioAddSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slHoraInicioAddSessao.setToolTipText("Selecione a hora de início do filme.");
 
         jLabel3.setText(":");
@@ -443,7 +458,7 @@ public class PainelGerente extends javax.swing.JFrame {
 
         jungleJingle.setText("Turno:");
 
-        slTurnoAddVend.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slTurnoAddVend.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slTurnoAddVend.setToolTipText("Selecione o turno do funcionário.");
 
         textonumeroaqui.setText("Email");
@@ -452,7 +467,12 @@ public class PainelGerente extends javax.swing.JFrame {
 
         btConAddVende.setText("Salvar");
 
-        btCanAddVende.setText("Limpar campos");
+        btCanAddVende.setText("Limpar Campos");
+        btCanAddVende.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCanAddVendeActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -510,9 +530,9 @@ public class PainelGerente extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Adicionar", jPanel1);
 
-        jLabel6.setText("Escolha o filme:");
+        jLabel6.setText("Escolha o Filme:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton6.setText("Confirmar");
 
@@ -542,7 +562,9 @@ public class PainelGerente extends javax.swing.JFrame {
 
         jTabbedPane3.addTab("Filme", jPanel7);
 
-        jLabel9.setText("Código da sala");
+        jTextField4.setToolTipText("Digite o código da sala a ser removida.");
+
+        jLabel9.setText("Código da Sala:");
 
         jButton7.setText("Remover");
 
@@ -574,15 +596,20 @@ public class PainelGerente extends javax.swing.JFrame {
 
         text4.setText("Sala:");
 
-        slSalaRmvSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slSalaRmvSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slSalaRmvSessao.setToolTipText("Selecione a sala a ser removida.");
 
-        textou7.setText("Horário de inicio:");
+        textou7.setText("Horário de Inicio:");
 
-        slInicioRmvSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slInicioRmvSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slInicioRmvSessao.setToolTipText("Selecione a hora de início da sessão a ser removida.");
 
-        btCanRmvSessao.setText("Reiniciar seleção");
+        btCanRmvSessao.setText("Reiniciar Seleção");
+        btCanRmvSessao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCanRmvSessaoActionPerformed(evt);
+            }
+        });
 
         btConfRmvSessao.setText("Confirmar");
 
@@ -649,7 +676,12 @@ public class PainelGerente extends javax.swing.JFrame {
 
         inputCpfRmvVendedor.setToolTipText("Digite o CPF do funcionário a ser removido.");
 
-        btConRmvVende.setText("Confirmar remoção");
+        btConRmvVende.setText("Confirmar Remoção");
+        btConRmvVende.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConRmvVendeActionPerformed(evt);
+            }
+        });
 
         btCanRmvVende.setText("Cancelar");
 
@@ -697,7 +729,7 @@ public class PainelGerente extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Remover", jPanel2);
 
-        tituloPainelGerente.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
+        tituloPainelGerente.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         tituloPainelGerente.setText("Painel do Gerente");
 
         btnLogout.setText("Logout");
@@ -714,9 +746,11 @@ public class PainelGerente extends javax.swing.JFrame {
             .addComponent(jTabbedPane1)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tituloPainelGerente)
-                    .addComponent(btnLogout))
+                .addComponent(tituloPainelGerente)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(309, 309, 309)
+                .addComponent(btnLogout)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -726,9 +760,9 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addComponent(tituloPainelGerente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogout)
-                .addContainerGap())
+                .addGap(16, 16, 16))
         );
 
         pack();
@@ -759,20 +793,37 @@ public class PainelGerente extends javax.swing.JFrame {
         }
         if (newFilmeSinopse.getText().isEmpty()) {
             newFilmeSinopse.requestFocus();
-            return;
         }
 
     }//GEN-LAST:event_newFilmeBtnSalvarActionPerformed
+
+    private void newFilmeBtnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newFilmeBtnClearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newFilmeBtnClearActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void btCanAddVendeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCanAddVendeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btCanAddVendeActionPerformed
+
+    private void btCanRmvSessaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCanRmvSessaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btCanRmvSessaoActionPerformed
+
+    private void btConRmvVendeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConRmvVendeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btConRmvVendeActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PainelGerente().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new PainelGerente().setVisible(true);
         });
     }
 

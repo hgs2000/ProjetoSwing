@@ -30,10 +30,12 @@
           <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="tituloPainelGerente" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnLogout" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="tituloPainelGerente" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="309" max="-2" attributes="0"/>
+              <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -45,9 +47,9 @@
               <Component id="tituloPainelGerente" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jTabbedPane1" max="32767" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -152,13 +154,16 @@
                   </Layout>
                   <SubComponents>
                     <Component class="javax.swing.JTextField" name="newFilmeNome">
+                      <Properties>
+                        <Property name="toolTipText" type="java.lang.String" value="Digite o nome do filme ser disponibilizado. Deve ser diferente dos j&#xe1; cadastrados."/>
+                      </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newFilmeNomeActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel2">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="T&#xed;tulo do Filme"/>
+                        <Property name="text" type="java.lang.String" value="T&#xed;tulo do Filme:"/>
                       </Properties>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -172,13 +177,14 @@
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
+                            <Property name="toolTipText" type="java.lang.String" value="Digite uma sinopse para o filme."/>
                           </Properties>
                         </Component>
                       </SubComponents>
                     </Container>
                     <Component class="javax.swing.JLabel" name="jLabel4">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Sinopse"/>
+                        <Property name="text" type="java.lang.String" value="Sinopse:"/>
                       </Properties>
                     </Component>
                     <Container class="javax.swing.JPanel" name="jPanel11">
@@ -357,12 +363,12 @@
                     </Container>
                     <Component class="javax.swing.JLabel" name="jLabel5">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="G&#xea;nero"/>
+                        <Property name="text" type="java.lang.String" value="G&#xea;nero:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="newFilmeBtnSalvar">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Salvar filme"/>
+                        <Property name="text" type="java.lang.String" value="Salvar Filme"/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newFilmeBtnSalvarActionPerformed"/>
@@ -370,8 +376,11 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="newFilmeBtnClear">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Limpar campos"/>
+                        <Property name="text" type="java.lang.String" value="Limpar Campos"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newFilmeBtnClearActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -433,20 +442,26 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabel7">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Nome da sala:"/>
+                        <Property name="text" type="java.lang.String" value="Nome da Sala:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="jTextField2">
+                      <Properties>
+                        <Property name="toolTipText" type="java.lang.String" value="Digite o nome da nova sala a ser cadastrada."/>
+                      </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel8">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="C&#xf3;digo da sala:"/>
+                        <Property name="text" type="java.lang.String" value="C&#xf3;digo da Sala:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="jTextField3">
+                      <Properties>
+                        <Property name="toolTipText" type="java.lang.String" value="Digite o c&#xf3;digo da nova sala a ser cadastrada."/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton2">
                       <Properties>
@@ -455,8 +470,11 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton3">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Limpar campos"/>
+                        <Property name="text" type="java.lang.String" value="Limpar Campos"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -554,7 +572,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JTextField" name="inputPrecoAddSessao">
                       <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Digite o pre&#xe7;o da sess&#xe3;o."/>
+                        <Property name="toolTipText" type="java.lang.String" value="Digite o pre&#xe7;o unit&#xe1;rio da sess&#xe3;o."/>
                       </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputPrecoAddSessaoActionPerformed"/>
@@ -766,8 +784,11 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="btCanAddVende">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Limpar campos"/>
+                        <Property name="text" type="java.lang.String" value="Limpar Campos"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCanAddVendeActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -841,7 +862,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabel6">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Escolha o filme:"/>
+                        <Property name="text" type="java.lang.String" value="Escolha o Filme:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="jComboBox1">
@@ -905,10 +926,13 @@
                   </Layout>
                   <SubComponents>
                     <Component class="javax.swing.JTextField" name="jTextField4">
+                      <Properties>
+                        <Property name="toolTipText" type="java.lang.String" value="Digite o c&#xf3;digo da sala a ser removida."/>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jLabel9">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="C&#xf3;digo da sala"/>
+                        <Property name="text" type="java.lang.String" value="C&#xf3;digo da Sala:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="jButton7">
@@ -1023,7 +1047,7 @@
                         </Component>
                         <Component class="javax.swing.JLabel" name="textou7">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Hor&#xe1;rio de inicio:"/>
+                            <Property name="text" type="java.lang.String" value="Hor&#xe1;rio de Inicio:"/>
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JComboBox" name="slInicioRmvSessao">
@@ -1044,8 +1068,11 @@
                         </Component>
                         <Component class="javax.swing.JButton" name="btCanRmvSessao">
                           <Properties>
-                            <Property name="text" type="java.lang.String" value="Reiniciar sele&#xe7;&#xe3;o"/>
+                            <Property name="text" type="java.lang.String" value="Reiniciar Sele&#xe7;&#xe3;o"/>
                           </Properties>
+                          <Events>
+                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCanRmvSessaoActionPerformed"/>
+                          </Events>
                         </Component>
                         <Component class="javax.swing.JButton" name="btConfRmvSessao">
                           <Properties>
@@ -1113,8 +1140,11 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="btConRmvVende">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Confirmar remo&#xe7;&#xe3;o"/>
+                        <Property name="text" type="java.lang.String" value="Confirmar Remo&#xe7;&#xe3;o"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btConRmvVendeActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="btCanRmvVende">
                       <Properties>
@@ -1132,7 +1162,7 @@
     <Component class="javax.swing.JLabel" name="tituloPainelGerente">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Cantarell" size="24" style="1"/>
+          <Font name="Arial Black" size="24" style="1"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Painel do Gerente"/>
       </Properties>
