@@ -38,10 +38,9 @@ public class FilmeDAO {
     /**
      * Utilização: carregar filmes do arquivo/banco de dados.
      *
-     * @param c
      * @return lista de filmes salva
      */
-    public static ArrayList<Filme> carregadorDeFilmes(Class c) {
+    public static ArrayList<Filme> carregadorDeFilmes() {
         InputStream is;
         Reader rd;
         ArrayList<Filme> listaFilmes = null;
@@ -55,7 +54,4 @@ public class FilmeDAO {
         return listaFilmes;
     }
 
-    public static void main(String[] args) {
-        
-    }
 }

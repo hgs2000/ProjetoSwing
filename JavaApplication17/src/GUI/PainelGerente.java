@@ -20,7 +20,7 @@ public class PainelGerente extends javax.swing.JFrame {
 
     public PainelGerente() {
         initComponents();
-        listaFilmes = carregadorDeFilmes(ArrayList.class);
+        listaFilmes = carregadorDeFilmes();
     }
 
     /**
@@ -32,9 +32,9 @@ public class PainelGerente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
+        tabsGerente = new javax.swing.JTabbedPane();
+        gerentePanelAdd = new javax.swing.JPanel();
+        adicionarTabs = new javax.swing.JTabbedPane();
         jPanel4 = new javax.swing.JPanel();
         newFilmeNome = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -66,14 +66,14 @@ public class PainelGerente extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         inputPrecoAddSessao = new javax.swing.JTextField();
-        slMinInicioAddSessao = new javax.swing.JComboBox<>();
+        slMinInicioAddSessao = new javax.swing.JComboBox<String>();
         texto1 = new javax.swing.JLabel();
         test5 = new javax.swing.JLabel();
-        slFilmeAddSessao = new javax.swing.JComboBox<>();
+        slFilmeAddSessao = new javax.swing.JComboBox<String>();
         test4 = new javax.swing.JLabel();
-        slSalaAddSessao = new javax.swing.JComboBox<>();
+        slSalaAddSessao = new javax.swing.JComboBox<String>();
         texto2 = new javax.swing.JLabel();
-        slHoraInicioAddSessao = new javax.swing.JComboBox<>();
+        slHoraInicioAddSessao = new javax.swing.JComboBox<String>();
         jLabel3 = new javax.swing.JLabel();
         btConfAddSessao = new javax.swing.JButton();
         btCanAddSessao = new javax.swing.JButton();
@@ -81,16 +81,16 @@ public class PainelGerente extends javax.swing.JFrame {
         textoCPF = new javax.swing.JLabel();
         inputCpfAddVendedor = new javax.swing.JTextField();
         jungleJingle = new javax.swing.JLabel();
-        slTurnoAddVend = new javax.swing.JComboBox<>();
+        slTurnoAddVend = new javax.swing.JComboBox<String>();
         textonumeroaqui = new javax.swing.JLabel();
         inputEmailAddVendedor = new javax.swing.JTextField();
         btConAddVende = new javax.swing.JButton();
         btCanAddVende = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
+        gerentePanelRem = new javax.swing.JPanel();
+        removerTabs = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jButton6 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jTextField4 = new javax.swing.JTextField();
@@ -99,9 +99,9 @@ public class PainelGerente extends javax.swing.JFrame {
         jPanel9 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
         text4 = new javax.swing.JLabel();
-        slSalaRmvSessao = new javax.swing.JComboBox<>();
+        slSalaRmvSessao = new javax.swing.JComboBox<String>();
         textou7 = new javax.swing.JLabel();
-        slInicioRmvSessao = new javax.swing.JComboBox<>();
+        slInicioRmvSessao = new javax.swing.JComboBox<String>();
         btCanRmvSessao = new javax.swing.JButton();
         btConfRmvSessao = new javax.swing.JButton();
         jPanel10 = new javax.swing.JPanel();
@@ -116,8 +116,8 @@ public class PainelGerente extends javax.swing.JFrame {
         setUndecorated(true);
         setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
 
-        jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
-        jTabbedPane1.setToolTipText("Painel utilizado pelo gerente para adicionar um novo filme/sessão/sala/funcionário");
+        tabsGerente.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
+        tabsGerente.setToolTipText("Painel utilizado pelo gerente para adicionar um novo filme/sessão/sala/funcionário");
 
         newFilmeNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,7 +281,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane2.addTab("Filme", jPanel4);
+        adicionarTabs.addTab("Filme", jPanel4);
 
         jLabel7.setText("Nome da sala:");
 
@@ -335,7 +335,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addContainerGap(210, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Sala", jPanel3);
+        adicionarTabs.addTab("Sala", jPanel3);
 
         inputPrecoAddSessao.setToolTipText("Digite o preço da sessão.");
         inputPrecoAddSessao.addActionListener(new java.awt.event.ActionListener() {
@@ -344,24 +344,24 @@ public class PainelGerente extends javax.swing.JFrame {
             }
         });
 
-        slMinInicioAddSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slMinInicioAddSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slMinInicioAddSessao.setToolTipText("Selecione os minutos de início do filme.");
 
         texto1.setText("Filme:");
 
         test5.setText("Preço:");
 
-        slFilmeAddSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slFilmeAddSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slFilmeAddSessao.setToolTipText("Selecione o filme ");
 
         test4.setText("Horário de início:");
 
-        slSalaAddSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slSalaAddSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slSalaAddSessao.setToolTipText("Selecione a Sala");
 
         texto2.setText("Sala:");
 
-        slHoraInicioAddSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slHoraInicioAddSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slHoraInicioAddSessao.setToolTipText("Selecione a hora de início do filme.");
 
         jLabel3.setText(":");
@@ -435,7 +435,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addContainerGap(186, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Sessão", jPanel5);
+        adicionarTabs.addTab("Sessão", jPanel5);
 
         textoCPF.setText("CPF:");
 
@@ -443,7 +443,7 @@ public class PainelGerente extends javax.swing.JFrame {
 
         jungleJingle.setText("Turno:");
 
-        slTurnoAddVend.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slTurnoAddVend.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slTurnoAddVend.setToolTipText("Selecione o turno do funcionário.");
 
         textonumeroaqui.setText("Email");
@@ -495,24 +495,24 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addContainerGap(157, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Vendedor", jPanel6);
+        adicionarTabs.addTab("Vendedor", jPanel6);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+        javax.swing.GroupLayout gerentePanelAddLayout = new javax.swing.GroupLayout(gerentePanelAdd);
+        gerentePanelAdd.setLayout(gerentePanelAddLayout);
+        gerentePanelAddLayout.setHorizontalGroup(
+            gerentePanelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(adicionarTabs, javax.swing.GroupLayout.Alignment.TRAILING)
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+        gerentePanelAddLayout.setVerticalGroup(
+            gerentePanelAddLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(adicionarTabs, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
-        jTabbedPane1.addTab("Adicionar", jPanel1);
+        tabsGerente.addTab("Adicionar", gerentePanelAdd);
 
         jLabel6.setText("Escolha o filme:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton6.setText("Confirmar");
 
@@ -540,7 +540,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addContainerGap(235, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("Filme", jPanel7);
+        removerTabs.addTab("Filme", jPanel7);
 
         jLabel9.setText("Código da sala");
 
@@ -570,16 +570,16 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addContainerGap(309, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("Sala", jPanel8);
+        removerTabs.addTab("Sala", jPanel8);
 
         text4.setText("Sala:");
 
-        slSalaRmvSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slSalaRmvSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slSalaRmvSessao.setToolTipText("Selecione a sala a ser removida.");
 
         textou7.setText("Horário de inicio:");
 
-        slInicioRmvSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slInicioRmvSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slInicioRmvSessao.setToolTipText("Selecione a hora de início da sessão a ser removida.");
 
         btCanRmvSessao.setText("Reiniciar seleção");
@@ -643,7 +643,7 @@ public class PainelGerente extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        jTabbedPane3.addTab("Sessão", jPanel9);
+        removerTabs.addTab("Sessão", jPanel9);
 
         texto3.setText("CPF:");
 
@@ -682,20 +682,20 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addContainerGap(221, Short.MAX_VALUE))
         );
 
-        jTabbedPane3.addTab("Vendedor", jPanel10);
+        removerTabs.addTab("Vendedor", jPanel10);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+        javax.swing.GroupLayout gerentePanelRemLayout = new javax.swing.GroupLayout(gerentePanelRem);
+        gerentePanelRem.setLayout(gerentePanelRemLayout);
+        gerentePanelRemLayout.setHorizontalGroup(
+            gerentePanelRemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(removerTabs, javax.swing.GroupLayout.Alignment.TRAILING)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+        gerentePanelRemLayout.setVerticalGroup(
+            gerentePanelRemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(removerTabs, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
-        jTabbedPane1.addTab("Remover", jPanel2);
+        tabsGerente.addTab("Remover", gerentePanelRem);
 
         tituloPainelGerente.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
         tituloPainelGerente.setText("Painel do Gerente");
@@ -711,7 +711,7 @@ public class PainelGerente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(tabsGerente)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -725,7 +725,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(tituloPainelGerente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1)
+                .addComponent(tabsGerente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogout)
                 .addContainerGap())
@@ -777,6 +777,7 @@ public class PainelGerente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane adicionarTabs;
     private javax.swing.JButton btCanAddSessao;
     private javax.swing.JButton btCanAddVende;
     private javax.swing.JButton btCanRmvSessao;
@@ -786,6 +787,8 @@ public class PainelGerente extends javax.swing.JFrame {
     private javax.swing.JButton btConfAddSessao;
     private javax.swing.JButton btConfRmvSessao;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JPanel gerentePanelAdd;
+    private javax.swing.JPanel gerentePanelRem;
     private javax.swing.JTextField inputCpfAddVendedor;
     private javax.swing.JTextField inputCpfRmvVendedor;
     private javax.swing.JTextField inputEmailAddVendedor;
@@ -803,11 +806,9 @@ public class PainelGerente extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
@@ -816,9 +817,6 @@ public class PainelGerente extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -839,6 +837,7 @@ public class PainelGerente extends javax.swing.JFrame {
     private javax.swing.JCheckBox newFilmeGenTerror;
     private javax.swing.JTextField newFilmeNome;
     private javax.swing.JTextArea newFilmeSinopse;
+    private javax.swing.JTabbedPane removerTabs;
     private javax.swing.JComboBox<String> slFilmeAddSessao;
     private javax.swing.JComboBox<String> slHoraInicioAddSessao;
     private javax.swing.JComboBox<String> slInicioRmvSessao;
@@ -846,6 +845,7 @@ public class PainelGerente extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> slSalaAddSessao;
     private javax.swing.JComboBox<String> slSalaRmvSessao;
     private javax.swing.JComboBox<String> slTurnoAddVend;
+    private javax.swing.JTabbedPane tabsGerente;
     private javax.swing.JLabel test4;
     private javax.swing.JLabel test5;
     private javax.swing.JLabel text4;
