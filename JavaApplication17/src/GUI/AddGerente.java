@@ -128,6 +128,7 @@ public class AddGerente extends javax.swing.JFrame {
         } else {
             Login.gerente = new Gerente(addGerenteLogin.getText(), safe);
             canLogin = true;
+            java.awt.EventQueue.invokeLater(new AddGerente()::dispose);
         }
 
     }//GEN-LAST:event_btConfAddClienteActionPerformed
@@ -171,16 +172,7 @@ public class AddGerente extends javax.swing.JFrame {
             }
         });
 
-        
-        tr.start();
     }
-    final static Thread tr = new Thread() {
-        public void run() {
-            while(!canLogin){
-                
-            }
-        }
-    };
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
