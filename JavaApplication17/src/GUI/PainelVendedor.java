@@ -6,6 +6,13 @@
 package GUI;
 
 import java.awt.Toolkit;
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFormattedTextField;
+import javax.swing.text.MaskFormatter;
+import javax.swing.text.NumberFormatter;
 
 /**
  *
@@ -32,13 +39,13 @@ public class PainelVendedor extends javax.swing.JFrame {
         tabRmCli = new javax.swing.JTabbedPane();
         tabMkCli = new javax.swing.JPanel();
         texto1 = new javax.swing.JLabel();
-        inputNomeCli = new javax.swing.JTextField();
+        newCliNome = new javax.swing.JTextField();
         text2 = new javax.swing.JLabel();
-        inputCpfCli = new javax.swing.JTextField();
-        text3 = new javax.swing.JLabel();
-        inputIdadeCli = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        newCliCPF = validaNums(1);
+        newCliIdadeLabel = new javax.swing.JLabel();
+        newCliIdade = validaNums(2);
+        newCliSexoLabel = new javax.swing.JLabel();
+        newCliSexo = new javax.swing.JComboBox<>();
         textInutil = new javax.swing.JLabel();
         inputEndereco = new javax.swing.JTextField();
         btConf23 = new javax.swing.JButton();
@@ -59,7 +66,7 @@ public class PainelVendedor extends javax.swing.JFrame {
         codCPFCliVenda = new javax.swing.JTextField();
         btOkVenda = new javax.swing.JButton();
         btSlFilmeCancelar = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -68,19 +75,36 @@ public class PainelVendedor extends javax.swing.JFrame {
 
         texto1.setText("Nome:");
 
-        text2.setText("CPF(Somente digitos):");
-
-        text3.setText("Idade:");
-
-        inputIdadeCli.addActionListener(new java.awt.event.ActionListener() {
+        newCliNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inputIdadeCliActionPerformed(evt);
+                newCliNomeActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Sexo:");
+        text2.setText("CPF (somente digitos):");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        newCliCPF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newCliCPFActionPerformed(evt);
+            }
+        });
+        newCliCPF.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                newCliCPFPropertyChange(evt);
+            }
+        });
+
+        newCliIdadeLabel.setText("Idade:");
+
+        newCliIdade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newCliIdadeActionPerformed(evt);
+            }
+        });
+
+        newCliSexoLabel.setText("Sexo:");
+
+        newCliSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino" }));
 
         textInutil.setText("Endereço:");
 
@@ -97,19 +121,19 @@ public class PainelVendedor extends javax.swing.JFrame {
                 .addGroup(tabMkCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(inputEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
                     .addComponent(textInutil)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1)
-                    .addComponent(inputIdadeCli)
-                    .addComponent(text3)
-                    .addComponent(inputCpfCli)
+                    .addComponent(newCliSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newCliSexoLabel)
+                    .addComponent(newCliIdade)
+                    .addComponent(newCliIdadeLabel)
+                    .addComponent(newCliCPF)
                     .addComponent(text2)
-                    .addComponent(inputNomeCli)
+                    .addComponent(newCliNome)
                     .addComponent(texto1))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(193, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabMkCliLayout.createSequentialGroup()
-                .addContainerGap(230, Short.MAX_VALUE)
+                .addGap(38, 38, 38)
                 .addComponent(btConf23, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btCancelar456, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -124,19 +148,19 @@ public class PainelVendedor extends javax.swing.JFrame {
                         .addGap(28, 28, 28)
                         .addComponent(texto1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(inputNomeCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(newCliNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(text2)
-                        .addGap(18, 18, 18)
-                        .addComponent(inputCpfCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(text3)
-                        .addGap(18, 18, 18)
-                        .addComponent(inputIdadeCli, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(newCliCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(newCliIdadeLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(newCliIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(newCliSexoLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(newCliSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(textInutil)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -148,7 +172,7 @@ public class PainelVendedor extends javax.swing.JFrame {
 
         tabRmCli.addTab("Adicionar Cliente", tabMkCli);
 
-        jLabel2.setText("Selecione UM(1) cliente:");
+        jLabel2.setText("Selecione UM (1) cliente:");
 
         jComboBox2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
@@ -268,7 +292,12 @@ public class PainelVendedor extends javax.swing.JFrame {
 
         tabRmCli.addTab("Venda", tabVenda);
 
-        jButton3.setText("Logout");
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         jLabel3.setText("Você está logado como: *******");
 
@@ -281,7 +310,7 @@ public class PainelVendedor extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(5, 5, 5)
-                .addComponent(jButton3)
+                .addComponent(btnLogout)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -290,7 +319,7 @@ public class PainelVendedor extends javax.swing.JFrame {
                 .addComponent(tabRmCli, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
+                    .addComponent(btnLogout)
                     .addComponent(jLabel3))
                 .addContainerGap())
         );
@@ -302,19 +331,66 @@ public class PainelVendedor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_selFilmeActionPerformed
 
-    private void inputIdadeCliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputIdadeCliActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_inputIdadeCliActionPerformed
+    private void newCliIdadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCliIdadeActionPerformed
+
+    }//GEN-LAST:event_newCliIdadeActionPerformed
+
+    private void newCliNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCliNomeActionPerformed
+
+    }//GEN-LAST:event_newCliNomeActionPerformed
+
+    private void newCliCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCliCPFActionPerformed
+
+    }//GEN-LAST:event_newCliCPFActionPerformed
+
+    private void newCliCPFPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_newCliCPFPropertyChange
+    }//GEN-LAST:event_newCliCPFPropertyChange
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
+    /**
+     * Método utilizado para transformar o JTextField num JFormattedTextField
+     * afim de aceitar somente a entrada descrita.
+     *
+     * @param subOp
+     * @return JTextField formatado
+     */
+    private JFormattedTextField validaNums(int subOp) {
+        switch (subOp) {
+            case 1: {
+                MaskFormatter formatoCPF = null;
+                try {
+                    formatoCPF = new MaskFormatter("###.###.###-##");
+                } catch (ParseException ex) {
+                    Logger.getLogger(PainelVendedor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JFormattedTextField field = new JFormattedTextField(formatoCPF);
+                return field;
+            }
+            case 2: {
+                MaskFormatter formatoCPF = null;
+                try {
+                    formatoCPF = new MaskFormatter("###");
+                } catch (ParseException ex) {
+                    Logger.getLogger(PainelVendedor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                JFormattedTextField field = new JFormattedTextField(formatoCPF);
+                return field;
+            }
+            default:
+                return new JFormattedTextField();
+        }
+    }
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new PainelVendedor().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new PainelVendedor().setVisible(true);
         });
     }
 
@@ -323,23 +399,24 @@ public class PainelVendedor extends javax.swing.JFrame {
     private javax.swing.JButton btConf23;
     private javax.swing.JButton btOkVenda;
     private javax.swing.JButton btSlFilmeCancelar;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JTextField codCPFCliVenda;
-    private javax.swing.JTextField inputCpfCli;
     private javax.swing.JTextField inputEndereco;
-    private javax.swing.JTextField inputIdadeCli;
-    private javax.swing.JTextField inputNomeCli;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lbCpfCliente;
     private javax.swing.JLabel lbFilme;
     private javax.swing.JLabel lbSessao;
+    private javax.swing.JTextField newCliCPF;
+    private javax.swing.JTextField newCliIdade;
+    private javax.swing.JLabel newCliIdadeLabel;
+    private javax.swing.JTextField newCliNome;
+    private javax.swing.JComboBox<String> newCliSexo;
+    private javax.swing.JLabel newCliSexoLabel;
     private javax.swing.JComboBox<String> selFilme;
     private javax.swing.JComboBox<String> selQuantIngresso;
     private javax.swing.JComboBox<String> selSessao;
@@ -347,7 +424,6 @@ public class PainelVendedor extends javax.swing.JFrame {
     private javax.swing.JTabbedPane tabRmCli;
     private javax.swing.JPanel tabVenda;
     private javax.swing.JLabel text2;
-    private javax.swing.JLabel text3;
     private javax.swing.JLabel textInutil;
     private javax.swing.JLabel texto;
     private javax.swing.JLabel texto1;

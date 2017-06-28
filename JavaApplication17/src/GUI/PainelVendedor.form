@@ -32,7 +32,7 @@
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
-              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+              <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -43,7 +43,7 @@
               <Component id="tabRmCli" min="-2" pref="481" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnLogout" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -73,21 +73,21 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="inputEndereco" alignment="0" pref="292" max="32767" attributes="0"/>
                           <Component id="textInutil" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="inputIdadeCli" alignment="0" max="32767" attributes="0"/>
-                          <Component id="text3" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="inputCpfCli" alignment="0" max="32767" attributes="0"/>
+                          <Component id="newCliSexo" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="newCliSexoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="newCliIdade" alignment="0" max="32767" attributes="0"/>
+                          <Component id="newCliIdadeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="newCliCPF" alignment="0" max="32767" attributes="0"/>
                           <Component id="text2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="inputNomeCli" alignment="0" max="32767" attributes="0"/>
+                          <Component id="newCliNome" alignment="0" max="32767" attributes="0"/>
                           <Component id="texto1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="193" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="230" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="btConf23" min="-2" pref="137" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="btCancelar456" min="-2" pref="117" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -105,19 +105,19 @@
                               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                               <Component id="texto1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="inputNomeCli" min="-2" max="-2" attributes="0"/>
+                              <Component id="newCliNome" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="text2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="inputCpfCli" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="text3" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="inputIdadeCli" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
+                              <Component id="newCliCPF" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="newCliIdadeLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="newCliIdade" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="newCliSexoLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="newCliSexo" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="textInutil" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -137,38 +137,49 @@
                 <Property name="text" type="java.lang.String" value="Nome:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="inputNomeCli">
+            <Component class="javax.swing.JTextField" name="newCliNome">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newCliNomeActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="text2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="CPF(Somente digitos):"/>
+                <Property name="text" type="java.lang.String" value="CPF (somente digitos):"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="inputCpfCli">
+            <Component class="javax.swing.JTextField" name="newCliCPF">
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newCliCPFActionPerformed"/>
+                <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="newCliCPFPropertyChange"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="validaNums(1)"/>
+              </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="text3">
+            <Component class="javax.swing.JLabel" name="newCliIdadeLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Idade:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="inputIdadeCli">
+            <Component class="javax.swing.JTextField" name="newCliIdade">
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputIdadeCliActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newCliIdadeActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="validaNums(2)"/>
+              </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel1">
+            <Component class="javax.swing.JLabel" name="newCliSexoLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sexo:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox1">
+            <Component class="javax.swing.JComboBox" name="newCliSexo">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
+                  <StringArray count="2">
+                    <StringItem index="0" value="Masculino"/>
+                    <StringItem index="1" value="Feminino"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -244,7 +255,7 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Selecione UM(1) cliente:"/>
+                <Property name="text" type="java.lang.String" value="Selecione UM (1) cliente:"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="jComboBox2">
@@ -436,10 +447,13 @@
         </Container>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="btnLogout">
       <Properties>
         <Property name="text" type="java.lang.String" value="Logout"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
