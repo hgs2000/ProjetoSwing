@@ -13,6 +13,7 @@ public class Login extends javax.swing.JFrame {
     //Este array é temporario pois sera usado Banco de Dados para salvar os dados futuramente.
     static ArrayList<Vendedor> BD = new ArrayList<>();
     static Gerente gerente;
+    static Vendedor loggedUser;
 
     public Login() {
         initComponents();
@@ -130,7 +131,24 @@ public class Login extends javax.swing.JFrame {
             eVazio = true;
             return;
         }
+        String[] temp = null;
         if (!eVazio) {
+
+            String senha = "";
+            char[] safe = inputSenha.getPassword();
+            if (gerente.validLogin(inputNome.getText(), safe)) {
+
+                PainelGerente.main(temp);
+                this.dispose();
+            } else {
+                for (Vendedor vend : BD) {
+                    if (vend.validLogin(inputNome.getText(), safe)) {
+                        loggedUser = vend;
+                        PainelVendedor.main(temp);
+                        this.dispose();
+                    }
+                }
+            }
 
         }
 
@@ -163,8 +181,7 @@ public class Login extends javax.swing.JFrame {
         if (gerente == null) {
             if (Msgs.gerenteMsg()) {
                 AddGerente.main(args);
-                while(!AddGerente.canLogin){
-                    System.out.println("l");
+                while (!AddGerente.canLogin) {
                 }
             } else {
                 System.exit(0);
@@ -186,7 +203,7 @@ public class Login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> {
             new Login().setVisible(true);
         });
-        
+
     }
 
     //-------------------------------------------logic methods--------------------------------------------------------

@@ -128,7 +128,7 @@ public class AddGerente extends javax.swing.JFrame {
         } else {
             Login.gerente = new Gerente(addGerenteLogin.getText(), safe);
             canLogin = true;
-            java.awt.EventQueue.invokeLater(new AddGerente()::dispose);
+            this.dispose();
         }
 
     }//GEN-LAST:event_btConfAddClienteActionPerformed
