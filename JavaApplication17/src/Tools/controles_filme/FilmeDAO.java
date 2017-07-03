@@ -22,9 +22,10 @@ import java.util.ArrayList;
  */
 public class FilmeDAO {
 
+    //Inicializador do DAO
     private static void start() throws IOException {
         arquivoFilmes = new File("./arquivo.xml");
-        xs = new XStream();
+//        xs = new XStream();
         if (!arquivoFilmes.exists()) {
             arquivoFilmes.createNewFile();
         }
@@ -37,10 +38,9 @@ public class FilmeDAO {
     /**
      * Utilização: carregar filmes do arquivo/banco de dados.
      *
-     * @param c
      * @return lista de filmes salva
      */
-    public static ArrayList<Filme> carregadorDeFilmes(Class c) {
+    public static ArrayList<Filme> carregadorDeFilmes() {
         InputStream is;
         Reader rd;
         ArrayList<Filme> listaFilmes = null;
@@ -53,4 +53,5 @@ public class FilmeDAO {
         }
         return listaFilmes;
     }
+
 }

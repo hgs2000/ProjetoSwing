@@ -48,6 +48,7 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        inputSenha.setToolTipText("Senha do usuário");
         inputSenha.setNextFocusableComponent(botaoLogin);
         inputSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,11 +56,11 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        labelName.setText("Nome");
+        labelName.setText("Nome:");
         labelName.setToolTipText("");
         labelName.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        labelSenha.setText("Senha");
+        labelSenha.setText("Senha:");
 
         botaoLogin.setText("Login");
         botaoLogin.addActionListener(new java.awt.event.ActionListener() {
