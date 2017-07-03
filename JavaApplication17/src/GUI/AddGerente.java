@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import Objetos.Gerente;
+
 /**
  *
  * @author informatica
@@ -31,9 +33,9 @@ public class AddGerente extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         addGerenteLogin = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        addGerenteSenha = new javax.swing.JTextField();
         btConfAddCliente = new javax.swing.JButton();
         btCanAddGeren = new javax.swing.JButton();
+        addGerenteSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,7 +53,12 @@ public class AddGerente extends javax.swing.JFrame {
 
         btConfAddCliente.setText("Confirmar");
         btConfAddCliente.setToolTipText("");
-        btConfAddCliente.setBorder(null);
+        btConfAddCliente.setBorder(new javax.swing.border.MatteBorder(null));
+        btConfAddCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConfAddClienteActionPerformed(evt);
+            }
+        });
 
         btCanAddGeren.setText("Cancelar");
         btCanAddGeren.addActionListener(new java.awt.event.ActionListener() {
@@ -97,11 +104,13 @@ public class AddGerente extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addGerenteLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addComponent(btCanAddGeren))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(addGerenteSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
                         .addComponent(btCanAddGeren))
@@ -113,6 +122,29 @@ public class AddGerente extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+ static boolean canLogin = false;
+    private void btConfAddClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfAddClienteActionPerformed
+        String senha = "";
+        char[] safe = addGerenteSenha.getPassword();
+        for (int i = 0; i < safe.length; i++) {
+            char carac = safe[i];
+            senha += carac;
+        }
+
+        if ((addGerenteLogin.getText().isEmpty()) || (senha.isEmpty())) {
+            addGerenteLogin.requestFocus();
+        } else {
+            Login.gerente = new Gerente(addGerenteLogin.getText(), safe);
+            canLogin = true;
+            this.dispose();
+        }
+
+    }//GEN-LAST:event_btConfAddClienteActionPerformed
+
+    private void btCanAddGerenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCanAddGerenActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btCanAddGerenActionPerformed
 
     private void btCanAddGerenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCanAddGerenActionPerformed
         // TODO add your handling code here:
@@ -152,11 +184,13 @@ public class AddGerente extends javax.swing.JFrame {
                 new AddGerente().setVisible(true);
             }
         });
+
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addGerenteLogin;
-    private javax.swing.JTextField addGerenteSenha;
+    private javax.swing.JPasswordField addGerenteSenha;
     private javax.swing.JButton btCanAddGeren;
     private javax.swing.JButton btConfAddCliente;
     private javax.swing.JLabel jLabel1;
