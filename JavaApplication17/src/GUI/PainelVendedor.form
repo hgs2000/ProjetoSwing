@@ -85,6 +85,7 @@
                       <EmptySpace pref="193" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
+
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="btConf23" min="-2" pref="137" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
@@ -96,6 +97,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
+
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
@@ -125,7 +127,7 @@
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="btConf23" max="32767" attributes="0"/>
                           </Group>
-                      </Group>
+                    </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -137,6 +139,7 @@
                 <Property name="text" type="java.lang.String" value="Nome:"/>
               </Properties>
             </Component>
+
             <Component class="javax.swing.JTextField" name="newCliNome">
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newCliNomeActionPerformed"/>
@@ -193,6 +196,9 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="inputEndereco">
+              <Properties>
+                <Property name="toolTipText" type="java.lang.String" value="Digite o endere&#xe7;o do cliente a ser cadastrado."/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btConf23">
               <Properties>
@@ -220,14 +226,14 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <Component id="jComboBox2" min="-2" pref="435" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="jButton2" min="-2" pref="110" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -242,10 +248,10 @@
                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="jComboBox2" min="-2" pref="39" max="-2" attributes="0"/>
-                      <EmptySpace pref="280" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jButton1" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton2" alignment="1" min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace pref="337" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton2" alignment="3" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -284,6 +290,12 @@
             <Component class="javax.swing.JButton" name="jButton1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[79, 23]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[79, 23]"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -312,16 +324,16 @@
                               <Component id="selFilme" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <Component id="selQuantIngresso" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="btOkVenda" min="-2" pref="138" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="btSlFilmeCancelar" min="-2" pref="106" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="codCPFCliVenda" alignment="0" min="-2" pref="374" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="codCPFCliVenda" alignment="0" min="-2" pref="374" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="70" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btOkVenda" min="-2" pref="79" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="btSlFilmeCancelar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -344,12 +356,12 @@
                       <Component id="lbCpfCliente" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="codCPFCliVenda" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btSlFilmeCancelar" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
-                          <Component id="btOkVenda" alignment="3" min="-2" pref="73" max="-2" attributes="0"/>
+                          <Component id="btSlFilmeCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btOkVenda" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -432,9 +444,6 @@
             </Component>
             <Component class="javax.swing.JButton" name="btOkVenda">
               <Properties>
-                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="Cantarell" size="24" style="0"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Confirmar"/>
               </Properties>
             </Component>
@@ -452,6 +461,7 @@
         <Property name="text" type="java.lang.String" value="Logout"/>
       </Properties>
       <Events>
+
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
       </Events>
     </Component>

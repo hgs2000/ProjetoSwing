@@ -33,6 +33,7 @@ public class VendaEnd extends javax.swing.JPanel {
         textoTroco.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         textoTroco.setText("Troco: ****,**");
 
+        btFinalizar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btFinalizar.setText("Finalizar Compra");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -40,11 +41,14 @@ public class VendaEnd extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textoTroco))
-                .addContainerGap(444, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(textoTroco))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(234, 234, 234)
+                        .addComponent(btFinalizar, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(248, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

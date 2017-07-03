@@ -34,45 +34,65 @@ public class VendaPgmt extends javax.swing.JPanel {
 
         setPreferredSize(new java.awt.Dimension(720, 430));
 
-        lbValorCompra.setFont(new java.awt.Font("Cantarell", 0, 36)); // NOI18N
         lbValorCompra.setText("Valor Total: ****.**");
         lbValorCompra.setToolTipText("Valor total da venda");
 
-        text2.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
-        text2.setText("Valor recebido:");
+        text2.setText("Valor Recebido:");
 
         lbCampoRecebido.setToolTipText("Digite aqui o valor recebido.");
+        lbCampoRecebido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lbCampoRecebidoActionPerformed(evt);
+            }
+        });
 
+        btMatarHenrique.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         btMatarHenrique.setText("Confirmar");
+        btMatarHenrique.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btMatarHenriqueActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btMatarHenrique, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(text2)
-                        .addComponent(lbValorCompra, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
-                        .addComponent(lbCampoRecebido)))
-                .addContainerGap(324, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbValorCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(text2)
+                            .addComponent(lbCampoRecebido, javax.swing.GroupLayout.PREFERRED_SIZE, 365, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(263, 263, 263)
+                        .addComponent(btMatarHenrique, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(286, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(lbValorCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lbValorCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(text2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lbCampoRecebido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addGap(18, 18, 18)
                 .addComponent(btMatarHenrique, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(245, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void lbCampoRecebidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbCampoRecebidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_lbCampoRecebidoActionPerformed
+
+    private void btMatarHenriqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMatarHenriqueActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btMatarHenriqueActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

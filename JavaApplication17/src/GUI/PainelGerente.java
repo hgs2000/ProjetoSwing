@@ -62,14 +62,14 @@ public class PainelGerente extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         painelAddSessao = new javax.swing.JPanel();
         inputPrecoAddSessao = new javax.swing.JTextField();
-        slMinInicioAddSessao = new javax.swing.JComboBox<>();
+        slMinInicioAddSessao = new javax.swing.JComboBox<String>();
         texto1 = new javax.swing.JLabel();
         test5 = new javax.swing.JLabel();
-        slFilmeAddSessao = new javax.swing.JComboBox<>();
+        slFilmeAddSessao = new javax.swing.JComboBox<String>();
         test4 = new javax.swing.JLabel();
-        slSalaAddSessao = new javax.swing.JComboBox<>();
+        slSalaAddSessao = new javax.swing.JComboBox<String>();
         texto2 = new javax.swing.JLabel();
-        slHoraInicioAddSessao = new javax.swing.JComboBox<>();
+        slHoraInicioAddSessao = new javax.swing.JComboBox<String>();
         jLabel3 = new javax.swing.JLabel();
         btConfAddSessao = new javax.swing.JButton();
         btCanAddSessao = new javax.swing.JButton();
@@ -77,7 +77,7 @@ public class PainelGerente extends javax.swing.JFrame {
         textoCPF = new javax.swing.JLabel();
         inputCpfAddVendedor = new javax.swing.JTextField();
         jungleJingle = new javax.swing.JLabel();
-        slTurnoAddVend = new javax.swing.JComboBox<>();
+        slTurnoAddVend = new javax.swing.JComboBox<String>();
         textonumeroaqui = new javax.swing.JLabel();
         inputEmailAddVendedor = new javax.swing.JTextField();
         btConAddVende = new javax.swing.JButton();
@@ -90,7 +90,7 @@ public class PainelGerente extends javax.swing.JFrame {
         removerTabs = new javax.swing.JTabbedPane();
         painelRmvFilme = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBox1 = new javax.swing.JComboBox<String>();
         jButton6 = new javax.swing.JButton();
         painelRmvSala = new javax.swing.JPanel();
         jTextField4 = new javax.swing.JTextField();
@@ -98,9 +98,9 @@ public class PainelGerente extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         painelRmvSessao = new javax.swing.JPanel();
         text4 = new javax.swing.JLabel();
-        slSalaRmvSessao = new javax.swing.JComboBox<>();
+        slSalaRmvSessao = new javax.swing.JComboBox<String>();
         textou7 = new javax.swing.JLabel();
-        slInicioRmvSessao = new javax.swing.JComboBox<>();
+        slInicioRmvSessao = new javax.swing.JComboBox<String>();
         btCanRmvSessao = new javax.swing.JButton();
         btConfRmvSessao = new javax.swing.JButton();
         painelRmvVendedor = new javax.swing.JPanel();
@@ -118,17 +118,22 @@ public class PainelGerente extends javax.swing.JFrame {
         tabsGerente.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         tabsGerente.setToolTipText("Painel utilizado pelo gerente para adicionar um novo filme/sessão/sala/funcionário");
 
+        newFilmeNome.setToolTipText("Digite o nome do filme ser disponibilizado. Deve ser diferente dos já cadastrados.");
+        newFilmeNome.setNextFocusableComponent(newFilmeSinopse);
         newFilmeNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newFilmeNomeActionPerformed(evt);
             }
         });
 
-        newFilmeNomeLabel.setText("Título do Filme");
 
+        newFilmeNomeLabel.setText("Título do Filme");
         newFilmeSinopse.setColumns(20);
         newFilmeSinopse.setRows(5);
+        newFilmeSinopse.setToolTipText("Digite uma sinopse para o filme.");
+        newFilmeSinopse.setNextFocusableComponent(newFilmeGenAcao);
         jScrollPane1.setViewportView(newFilmeSinopse);
+        newFilmeSinopse.getAccessibleContext().setAccessibleName("");
 
         newFilmeSinposeLabel.setText("Sinopse");
 
@@ -137,21 +142,26 @@ public class PainelGerente extends javax.swing.JFrame {
 
         newFilmeGenAcao.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenAcao.setText("Ação");
+        newFilmeGenAcao.setNextFocusableComponent(newFilmeGenFant);
 
         newFilmeGenRoman.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenRoman.setText("Romance");
+        newFilmeGenRoman.setNextFocusableComponent(newFilmeGenAnim);
 
         newFilmeGenTerror.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenTerror.setText("Terror");
+        newFilmeGenTerror.setNextFocusableComponent(newFilmeGenAvent);
 
         newFilmeGenComed.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenComed.setText("Comédia");
 
         newFilmeGenFant.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenFant.setText("Fantasia");
+        newFilmeGenFant.setNextFocusableComponent(newFilmeGenHist);
 
         newFilmeGenAnim.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenAnim.setText("Animação");
+        newFilmeGenAnim.setNextFocusableComponent(newFilmeGenMusi);
 
         newFilmeGenAvent.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenAvent.setText("Aventura");
@@ -161,9 +171,11 @@ public class PainelGerente extends javax.swing.JFrame {
 
         newFilmeGenHist.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenHist.setText("Histórico");
+        newFilmeGenHist.setNextFocusableComponent(newFilmeGenRoman);
 
         newFilmeGenMusi.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenMusi.setText("Musical");
+        newFilmeGenMusi.setNextFocusableComponent(newFilmeGenTerror);
 
         newFilmeGenFicCi.setBackground(new java.awt.Color(255, 255, 255));
         newFilmeGenFicCi.setText("Ficção Científica");
@@ -224,15 +236,19 @@ public class PainelGerente extends javax.swing.JFrame {
         );
 
         newFilmeGenLabel.setText("Gênero");
-
-        newFilmeBtnSalvar.setText("Salvar filme");
+        newFilmeBtnSalvar.setText("Salvar Filme");
         newFilmeBtnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newFilmeBtnSalvarActionPerformed(evt);
             }
         });
 
-        newFilmeBtnClear.setText("Limpar campos");
+        newFilmeBtnClear.setText("Limpar Campos");
+        newFilmeBtnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newFilmeBtnClearActionPerformed(evt);
+            }
+        });
 
         newFilmeAnoLabel.setText("Ano do Filme");
 
@@ -312,19 +328,27 @@ public class PainelGerente extends javax.swing.JFrame {
 
         adicionarTabs.addTab("Filme", panelAddFilme);
 
-        jLabel7.setText("Nome da sala:");
+        jLabel7.setText("Nome da Sala:");
 
+        jTextField2.setToolTipText("Digite o nome da nova sala a ser cadastrada.");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
 
-        jLabel8.setText("Código da sala:");
+        jLabel8.setText("Código da Sala:");
+
+        jTextField3.setToolTipText("Digite o código da nova sala a ser cadastrada.");
 
         jButton2.setText("Salvar");
 
-        jButton3.setText("Limpar campos");
+        jButton3.setText("Limpar Campos");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelAddSalaLayout = new javax.swing.GroupLayout(painelAddSala);
         painelAddSala.setLayout(painelAddSalaLayout);
@@ -366,31 +390,31 @@ public class PainelGerente extends javax.swing.JFrame {
 
         adicionarTabs.addTab("Sala", painelAddSala);
 
-        inputPrecoAddSessao.setToolTipText("Digite o preço da sessão.");
+        inputPrecoAddSessao.setToolTipText("Digite o preço unitário da sessão.");
         inputPrecoAddSessao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inputPrecoAddSessaoActionPerformed(evt);
             }
         });
 
-        slMinInicioAddSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slMinInicioAddSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slMinInicioAddSessao.setToolTipText("Selecione os minutos de início do filme.");
 
         texto1.setText("Filme:");
 
         test5.setText("Preço:");
 
-        slFilmeAddSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slFilmeAddSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slFilmeAddSessao.setToolTipText("Selecione o filme ");
 
         test4.setText("Horário de início:");
 
-        slSalaAddSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slSalaAddSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slSalaAddSessao.setToolTipText("Selecione a Sala");
 
         texto2.setText("Sala:");
 
-        slHoraInicioAddSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slHoraInicioAddSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slHoraInicioAddSessao.setToolTipText("Selecione a hora de início do filme.");
 
         jLabel3.setText(":");
@@ -472,7 +496,7 @@ public class PainelGerente extends javax.swing.JFrame {
 
         jungleJingle.setText("Turno:");
 
-        slTurnoAddVend.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slTurnoAddVend.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slTurnoAddVend.setToolTipText("Selecione o turno do funcionário.");
 
         textonumeroaqui.setText("Email");
@@ -481,7 +505,12 @@ public class PainelGerente extends javax.swing.JFrame {
 
         btConAddVende.setText("Salvar");
 
-        btCanAddVende.setText("Limpar campos");
+        btCanAddVende.setText("Limpar Campos");
+        btCanAddVende.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCanAddVendeActionPerformed(evt);
+            }
+        });
 
         newVendLoginLabel.setText("Login");
 
@@ -555,9 +584,9 @@ public class PainelGerente extends javax.swing.JFrame {
 
         tabsGerente.addTab("Adicionar", gerentePanelAdd);
 
-        jLabel6.setText("Escolha o filme:");
+        jLabel6.setText("Escolha o Filme:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton6.setText("Confirmar");
 
@@ -587,7 +616,9 @@ public class PainelGerente extends javax.swing.JFrame {
 
         removerTabs.addTab("Filme", painelRmvFilme);
 
-        jLabel9.setText("Código da sala");
+        jTextField4.setToolTipText("Digite o código da sala a ser removida.");
+
+        jLabel9.setText("Código da Sala:");
 
         jButton7.setText("Remover");
 
@@ -619,15 +650,20 @@ public class PainelGerente extends javax.swing.JFrame {
 
         text4.setText("Sala:");
 
-        slSalaRmvSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slSalaRmvSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slSalaRmvSessao.setToolTipText("Selecione a sala a ser removida.");
 
-        textou7.setText("Horário de inicio:");
+        textou7.setText("Horário de Inicio:");
 
-        slInicioRmvSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slInicioRmvSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slInicioRmvSessao.setToolTipText("Selecione a hora de início da sessão a ser removida.");
 
-        btCanRmvSessao.setText("Reiniciar seleção");
+        btCanRmvSessao.setText("Reiniciar Seleção");
+        btCanRmvSessao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCanRmvSessaoActionPerformed(evt);
+            }
+        });
 
         btConfRmvSessao.setText("Confirmar");
 
@@ -673,7 +709,12 @@ public class PainelGerente extends javax.swing.JFrame {
 
         inputCpfRmvVendedor.setToolTipText("Digite o CPF do funcionário a ser removido.");
 
-        btConRmvVende.setText("Confirmar remoção");
+        btConRmvVende.setText("Confirmar Remoção");
+        btConRmvVende.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btConRmvVendeActionPerformed(evt);
+            }
+        });
 
         btCanRmvVende.setText("Cancelar");
 
@@ -721,7 +762,7 @@ public class PainelGerente extends javax.swing.JFrame {
 
         tabsGerente.addTab("Remover", gerentePanelRem);
 
-        tituloPainelGerente.setFont(new java.awt.Font("Cantarell", 1, 24)); // NOI18N
+        tituloPainelGerente.setFont(new java.awt.Font("Arial Black", 1, 24)); // NOI18N
         tituloPainelGerente.setText("Painel do Gerente");
 
         btnLogout.setText("Logout");
@@ -740,9 +781,10 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(tituloPainelGerente)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLogout)
+            .addComponent(btnLogout)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

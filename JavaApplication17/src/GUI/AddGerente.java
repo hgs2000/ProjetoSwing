@@ -37,49 +37,57 @@ public class AddGerente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tituloDentro.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
+        tituloDentro.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         tituloDentro.setText("Cadastro de Gerente");
         tituloDentro.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         jLabel1.setText("Login:");
 
+        addGerenteLogin.setToolTipText("Digite o login do gerente a ser utilizado. Este Login NÃO poderá ser editado.");
+
         jLabel2.setText("Senha:");
 
-        btConfAddCliente.setFont(new java.awt.Font("Cantarell", 0, 48)); // NOI18N
-        btConfAddCliente.setForeground(new java.awt.Color(23, 70, 50));
+        addGerenteSenha.setToolTipText("Digite a senha do gerente a ser utilizado. Esta senha NÃO poderá ser alterada.");
+
         btConfAddCliente.setText("Confirmar");
         btConfAddCliente.setToolTipText("");
-        btConfAddCliente.setBorder(new javax.swing.border.MatteBorder(null));
+        btConfAddCliente.setBorder(null);
 
         btCanAddGeren.setText("Cancelar");
+        btCanAddGeren.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btCanAddGerenActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE))
-                    .addComponent(tituloDentro))
-                .addGap(504, 504, 504))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(addGerenteLogin)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(addGerenteSenha)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btConfAddCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btCanAddGeren))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap(197, Short.MAX_VALUE)
+                        .addComponent(tituloDentro)
+                        .addGap(0, 248, Short.MAX_VALUE)))
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(addGerenteLogin)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(addGerenteSenha))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btConfAddCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(btCanAddGeren)
-                .addContainerGap())
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,16 +103,21 @@ public class AddGerente extends javax.swing.JFrame {
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(addGerenteSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-                        .addComponent(btConfAddCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 211, Short.MAX_VALUE)
+                        .addComponent(btCanAddGeren))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btCanAddGeren)))
+                        .addComponent(btConfAddCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btCanAddGerenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCanAddGerenActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_btCanAddGerenActionPerformed
 
     /**
      * @param args the command line arguments
