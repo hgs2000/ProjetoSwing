@@ -14,11 +14,7 @@ public class Login extends javax.swing.JFrame {
     static ArrayList<Vendedor> BD = new ArrayList<>();
     static Gerente gerente;
     static Vendedor loggedUser;
-    
-    
-    
-    
-    
+
     public Login() {
         initComponents();
     }
@@ -119,14 +115,18 @@ public class Login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void inputSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputSenhaActionPerformed
-        Funcionario f = new Funcionario(inputNome.getText(), inputSenha.getPassword());
+
+    }//GEN-LAST:event_inputSenhaActionPerformed
+
+    private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
         boolean eVazio = false;
         if (inputNome.getText().isEmpty()) {
             inputNome.grabFocus();
             eVazio = true;
             return;
         }
-        if (inputSenha.getPassword() == null) {
+        char[] temp2 = inputSenha.getPassword();
+        if (temp2.length == 0) {
             inputSenha.grabFocus();
             eVazio = true;
             return;
@@ -136,26 +136,20 @@ public class Login extends javax.swing.JFrame {
 
             String senha = "";
             char[] safe = inputSenha.getPassword();
-            if (gerente.validLogin(inputNome.getText(), safe)) {
-
-                PainelGerente.main(temp);
+            if (Login.gerente.validLogin(inputNome.getText(), safe)) {
+                PainelGerente guiG = new PainelGerente(); 
                 this.dispose();
             } else {
                 for (Vendedor vend : BD) {
                     if (vend.validLogin(inputNome.getText(), safe)) {
                         loggedUser = vend;
-                        PainelVendedor.main(temp);
+                        PainelVendedor guiV = new PainelVendedor();
                         this.dispose();
                     }
                 }
             }
 
         }
-
-
-    }//GEN-LAST:event_inputSenhaActionPerformed
-
-    private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
 
     }//GEN-LAST:event_botaoLoginActionPerformed
 
@@ -177,32 +171,24 @@ public class Login extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        
-        
+
         if (gerente == null) {
             if (Msgs.gerenteMsg()) {
                 AddGerente.main(args);
                 while (!AddGerente.canLogin) {
-                    
-                    
-                    
-                    
-                    
+                    System.out.println();
+
                 }
             } else {
                 System.exit(0);
             }
         }
-        
-        
-        
-        
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-        
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
