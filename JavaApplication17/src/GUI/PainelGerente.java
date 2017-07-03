@@ -3,11 +3,20 @@ package GUI;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import Objetos.Filme;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JCheckBox;
+import javax.swing.JFormattedTextField;
+import javax.swing.JTextField;
+import javax.swing.text.DateFormatter;
+import javax.swing.text.DefaultFormatterFactory;
+import javax.swing.text.MaskFormatter;
 
 public class PainelGerente extends javax.swing.JFrame {
 
-    private ArrayList<Filme> listaFilmes;
+    private final ArrayList<Filme> listaFilmes;
 
     public PainelGerente() {
         initComponents();
@@ -47,8 +56,7 @@ public class PainelGerente extends javax.swing.JFrame {
         newFilmeGenFicCi = new javax.swing.JCheckBox();
         newFilmeGenGuerra = new javax.swing.JCheckBox();
         newFilmeGenLabel = new javax.swing.JLabel();
-        newFilmeBtnSalvar = new javax.swing.JButton();
-        newFilmeBtnClear = new javax.swing.JButton();
+        newFilmeBtnSave = new javax.swing.JButton();
         newFilmeAnoLabel = new javax.swing.JLabel();
         newFilmeAno = new javax.swing.JSlider(1900, 2017,2000);
         newFilmeAnoCurrentLabel = new javax.swing.JLabel();
@@ -58,30 +66,26 @@ public class PainelGerente extends javax.swing.JFrame {
         jTextField2 = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        newSalaBtnSave = new javax.swing.JButton();
         painelAddSessao = new javax.swing.JPanel();
         inputPrecoAddSessao = new javax.swing.JTextField();
-        slMinInicioAddSessao = new javax.swing.JComboBox<String>();
         texto1 = new javax.swing.JLabel();
         test5 = new javax.swing.JLabel();
         slFilmeAddSessao = new javax.swing.JComboBox<String>();
         test4 = new javax.swing.JLabel();
         slSalaAddSessao = new javax.swing.JComboBox<String>();
         texto2 = new javax.swing.JLabel();
-        slHoraInicioAddSessao = new javax.swing.JComboBox<String>();
-        jLabel3 = new javax.swing.JLabel();
-        btConfAddSessao = new javax.swing.JButton();
-        btCanAddSessao = new javax.swing.JButton();
+        newSessaoBtnSave = new javax.swing.JButton();
+        newSessaoBtnClear = new javax.swing.JButton();
+        jTextField1 = formataTextField(1);
         painelAddVendedor = new javax.swing.JPanel();
         textoCPF = new javax.swing.JLabel();
-        inputCpfAddVendedor = new javax.swing.JTextField();
+        inputCpfAddVendedor = formataTextField(1);
         jungleJingle = new javax.swing.JLabel();
         slTurnoAddVend = new javax.swing.JComboBox<String>();
         textonumeroaqui = new javax.swing.JLabel();
         inputEmailAddVendedor = new javax.swing.JTextField();
-        btConAddVende = new javax.swing.JButton();
-        btCanAddVende = new javax.swing.JButton();
+        newVendBtnSave = new javax.swing.JButton();
         newVendLoginLabel = new javax.swing.JLabel();
         newVendLogin = new javax.swing.JTextField();
         newVendSenhaLabel = new javax.swing.JLabel();
@@ -91,23 +95,22 @@ public class PainelGerente extends javax.swing.JFrame {
         painelRmvFilme = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<String>();
-        jButton6 = new javax.swing.JButton();
+        rmvFilmeBtnYes = new javax.swing.JButton();
         painelRmvSala = new javax.swing.JPanel();
         jTextField4 = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
+        rmvSalaBtnYes = new javax.swing.JButton();
         painelRmvSessao = new javax.swing.JPanel();
-        text4 = new javax.swing.JLabel();
-        slSalaRmvSessao = new javax.swing.JComboBox<String>();
-        textou7 = new javax.swing.JLabel();
+        rmvSessaoSalaLabel = new javax.swing.JLabel();
+        rmvSessaoSala = new javax.swing.JComboBox<String>();
+        rmvSessaoHoraLabel = new javax.swing.JLabel();
         slInicioRmvSessao = new javax.swing.JComboBox<String>();
-        btCanRmvSessao = new javax.swing.JButton();
-        btConfRmvSessao = new javax.swing.JButton();
+        rmvSessaoBtnClear = new javax.swing.JButton();
+        rmvSessaoBtnYes = new javax.swing.JButton();
         painelRmvVendedor = new javax.swing.JPanel();
-        texto3 = new javax.swing.JLabel();
-        inputCpfRmvVendedor = new javax.swing.JTextField();
-        btConRmvVende = new javax.swing.JButton();
-        btCanRmvVende = new javax.swing.JButton();
+        rmvVendedorCPFLabel = new javax.swing.JLabel();
+        rmvVendedorCPF = new javax.swing.JTextField();
+        rmvVendBtnClear = new javax.swing.JButton();
         tituloPainelGerente = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
 
@@ -126,8 +129,8 @@ public class PainelGerente extends javax.swing.JFrame {
             }
         });
 
+        newFilmeNomeLabel.setText("Título do Filme:");
 
-        newFilmeNomeLabel.setText("Título do Filme");
         newFilmeSinopse.setColumns(20);
         newFilmeSinopse.setRows(5);
         newFilmeSinopse.setToolTipText("Digite uma sinopse para o filme.");
@@ -135,7 +138,7 @@ public class PainelGerente extends javax.swing.JFrame {
         jScrollPane1.setViewportView(newFilmeSinopse);
         newFilmeSinopse.getAccessibleContext().setAccessibleName("");
 
-        newFilmeSinposeLabel.setText("Sinopse");
+        newFilmeSinposeLabel.setText("Sinopse:");
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
         jPanel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -235,18 +238,12 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        newFilmeGenLabel.setText("Gênero");
-        newFilmeBtnSalvar.setText("Salvar Filme");
-        newFilmeBtnSalvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newFilmeBtnSalvarActionPerformed(evt);
-            }
-        });
+        newFilmeGenLabel.setText("Gênero:");
 
-        newFilmeBtnClear.setText("Limpar Campos");
-        newFilmeBtnClear.addActionListener(new java.awt.event.ActionListener() {
+        newFilmeBtnSave.setText("Salvar Filme");
+        newFilmeBtnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newFilmeBtnClearActionPerformed(evt);
+                newFilmeBtnSaveActionPerformed(evt);
             }
         });
 
@@ -280,9 +277,7 @@ public class PainelGerente extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(panelAddFilmeLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(newFilmeBtnSalvar)
-                        .addGap(71, 71, 71)
-                        .addComponent(newFilmeBtnClear)
+                        .addComponent(newFilmeBtnSave)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(panelAddFilmeLayout.createSequentialGroup()
                         .addComponent(newFilmeAnoLabel)
@@ -320,9 +315,7 @@ public class PainelGerente extends javax.swing.JFrame {
                     .addComponent(newFilmeAnoCurrentLabel)
                     .addComponent(newFilmeAnoCurrent))
                 .addGap(41, 41, 41)
-                .addGroup(panelAddFilmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(newFilmeBtnClear)
-                    .addComponent(newFilmeBtnSalvar))
+                .addComponent(newFilmeBtnSave)
                 .addContainerGap())
         );
 
@@ -341,14 +334,7 @@ public class PainelGerente extends javax.swing.JFrame {
 
         jTextField3.setToolTipText("Digite o código da nova sala a ser cadastrada.");
 
-        jButton2.setText("Salvar");
-
-        jButton3.setText("Limpar Campos");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
+        newSalaBtnSave.setText("Salvar");
 
         javax.swing.GroupLayout painelAddSalaLayout = new javax.swing.GroupLayout(painelAddSala);
         painelAddSala.setLayout(painelAddSalaLayout);
@@ -362,10 +348,7 @@ public class PainelGerente extends javax.swing.JFrame {
                     .addGroup(painelAddSalaLayout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addGroup(painelAddSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(painelAddSalaLayout.createSequentialGroup()
-                                .addComponent(jButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3))
+                            .addComponent(newSalaBtnSave, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(156, Short.MAX_VALUE))
@@ -373,7 +356,7 @@ public class PainelGerente extends javax.swing.JFrame {
         painelAddSalaLayout.setVerticalGroup(
             painelAddSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAddSalaLayout.createSequentialGroup()
-                .addContainerGap(131, Short.MAX_VALUE)
+                .addContainerGap(130, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -382,10 +365,8 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(painelAddSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap(210, Short.MAX_VALUE))
+                .addComponent(newSalaBtnSave)
+                .addContainerGap(209, Short.MAX_VALUE))
         );
 
         adicionarTabs.addTab("Sala", painelAddSala);
@@ -396,9 +377,6 @@ public class PainelGerente extends javax.swing.JFrame {
                 inputPrecoAddSessaoActionPerformed(evt);
             }
         });
-
-        slMinInicioAddSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        slMinInicioAddSessao.setToolTipText("Selecione os minutos de início do filme.");
 
         texto1.setText("Filme:");
 
@@ -414,21 +392,16 @@ public class PainelGerente extends javax.swing.JFrame {
 
         texto2.setText("Sala:");
 
-        slHoraInicioAddSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        slHoraInicioAddSessao.setToolTipText("Selecione a hora de início do filme.");
+        newSessaoBtnSave.setText("Salvar");
 
-        jLabel3.setText(":");
-
-        btConfAddSessao.setText("Salvar");
-
-        btCanAddSessao.setText("Limpar Campos");
+        newSessaoBtnClear.setText("Limpar Campos");
 
         javax.swing.GroupLayout painelAddSessaoLayout = new javax.swing.GroupLayout(painelAddSessao);
         painelAddSessao.setLayout(painelAddSessaoLayout);
         painelAddSessaoLayout.setHorizontalGroup(
             painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAddSessaoLayout.createSequentialGroup()
-                .addContainerGap(187, Short.MAX_VALUE)
+                .addContainerGap(190, Short.MAX_VALUE)
                 .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelAddSessaoLayout.createSequentialGroup()
                         .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -439,30 +412,25 @@ public class PainelGerente extends javax.swing.JFrame {
                             .addComponent(slFilmeAddSessao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(slSalaAddSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(painelAddSessaoLayout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addComponent(slHoraInicioAddSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(slMinInicioAddSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(painelAddSessaoLayout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(test4))
-                    .addGroup(painelAddSessaoLayout.createSequentialGroup()
                         .addComponent(test5)
                         .addGap(18, 18, 18)
                         .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(painelAddSessaoLayout.createSequentialGroup()
-                                .addComponent(btConfAddSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(newSessaoBtnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btCanAddSessao))
-                            .addComponent(inputPrecoAddSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(187, Short.MAX_VALUE))
+                                .addComponent(newSessaoBtnClear))
+                            .addComponent(inputPrecoAddSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(painelAddSessaoLayout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(test4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jTextField1))))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
         painelAddSessaoLayout.setVerticalGroup(
             painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAddSessaoLayout.createSequentialGroup()
-                .addContainerGap(84, Short.MAX_VALUE)
+                .addContainerGap(86, Short.MAX_VALUE)
                 .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(texto1)
                     .addComponent(slFilmeAddSessao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -473,19 +441,16 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addComponent(test4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(slHoraInicioAddSessao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(slMinInicioAddSessao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inputPrecoAddSessao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(test5))
                 .addGap(18, 18, 18)
                 .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btConfAddSessao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btCanAddSessao))
-                .addContainerGap(186, Short.MAX_VALUE))
+                    .addComponent(newSessaoBtnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(newSessaoBtnClear))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
 
         adicionarTabs.addTab("Sessão", painelAddSessao);
@@ -503,14 +468,7 @@ public class PainelGerente extends javax.swing.JFrame {
 
         inputEmailAddVendedor.setToolTipText("Digite o e-mail do funcionário a ser cadatrado.");
 
-        btConAddVende.setText("Salvar");
-
-        btCanAddVende.setText("Limpar Campos");
-        btCanAddVende.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCanAddVendeActionPerformed(evt);
-            }
-        });
+        newVendBtnSave.setText("Salvar");
 
         newVendLoginLabel.setText("Login");
 
@@ -531,10 +489,7 @@ public class PainelGerente extends javax.swing.JFrame {
                     .addComponent(slTurnoAddVend, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(textonumeroaqui)
                     .addComponent(inputEmailAddVendedor, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
-                    .addGroup(painelAddVendedorLayout.createSequentialGroup()
-                        .addComponent(btConAddVende, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btCanAddVende))
+                    .addComponent(newVendBtnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(newVendLogin)
                     .addComponent(newVendSenha))
                 .addContainerGap(212, Short.MAX_VALUE))
@@ -542,7 +497,7 @@ public class PainelGerente extends javax.swing.JFrame {
         painelAddVendedorLayout.setVerticalGroup(
             painelAddVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAddVendedorLayout.createSequentialGroup()
-                .addContainerGap(86, Short.MAX_VALUE)
+                .addContainerGap(82, Short.MAX_VALUE)
                 .addComponent(textoCPF)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(inputCpfAddVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -563,9 +518,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(newVendSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(painelAddVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btCanAddVende)
-                    .addComponent(btConAddVende))
+                .addComponent(newVendBtnSave)
                 .addGap(89, 89, 89))
         );
 
@@ -588,7 +541,7 @@ public class PainelGerente extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton6.setText("Confirmar");
+        rmvFilmeBtnYes.setText("Confirmar");
 
         javax.swing.GroupLayout painelRmvFilmeLayout = new javax.swing.GroupLayout(painelRmvFilme);
         painelRmvFilme.setLayout(painelRmvFilmeLayout);
@@ -599,7 +552,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addGroup(painelRmvFilmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(jButton6))
+                    .addComponent(rmvFilmeBtnYes))
                 .addContainerGap(158, Short.MAX_VALUE))
         );
         painelRmvFilmeLayout.setVerticalGroup(
@@ -610,7 +563,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton6)
+                .addComponent(rmvFilmeBtnYes)
                 .addContainerGap(235, Short.MAX_VALUE))
         );
 
@@ -620,7 +573,7 @@ public class PainelGerente extends javax.swing.JFrame {
 
         jLabel9.setText("Código da Sala:");
 
-        jButton7.setText("Remover");
+        rmvSalaBtnYes.setText("Confirmar");
 
         javax.swing.GroupLayout painelRmvSalaLayout = new javax.swing.GroupLayout(painelRmvSala);
         painelRmvSala.setLayout(painelRmvSalaLayout);
@@ -631,7 +584,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addGroup(painelRmvSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 425, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
-                    .addComponent(jButton7))
+                    .addComponent(rmvSalaBtnYes))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         painelRmvSalaLayout.setVerticalGroup(
@@ -642,30 +595,24 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton7)
+                .addComponent(rmvSalaBtnYes)
                 .addContainerGap(309, Short.MAX_VALUE))
         );
 
         removerTabs.addTab("Sala", painelRmvSala);
 
-        text4.setText("Sala:");
+        rmvSessaoSalaLabel.setText("Sala:");
 
-        slSalaRmvSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        slSalaRmvSessao.setToolTipText("Selecione a sala a ser removida.");
+        rmvSessaoSala.setToolTipText("Selecione a sala a ser removida.");
 
-        textou7.setText("Horário de Inicio:");
+        rmvSessaoHoraLabel.setText("Horário de inicio:");
 
         slInicioRmvSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slInicioRmvSessao.setToolTipText("Selecione a hora de início da sessão a ser removida.");
 
-        btCanRmvSessao.setText("Reiniciar Seleção");
-        btCanRmvSessao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCanRmvSessaoActionPerformed(evt);
-            }
-        });
+        rmvSessaoBtnClear.setText("Reiniciar seleção");
 
-        btConfRmvSessao.setText("Confirmar");
+        rmvSessaoBtnYes.setText("Confirmar");
 
         javax.swing.GroupLayout painelRmvSessaoLayout = new javax.swing.GroupLayout(painelRmvSessao);
         painelRmvSessao.setLayout(painelRmvSessaoLayout);
@@ -675,76 +622,66 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addGap(223, 223, 223)
                 .addGroup(painelRmvSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelRmvSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(text4)
-                        .addComponent(slSalaRmvSessao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(textou7)
+                        .addComponent(rmvSessaoSalaLabel)
+                        .addComponent(rmvSessaoSala, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(rmvSessaoHoraLabel)
                         .addComponent(slInicioRmvSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(painelRmvSessaoLayout.createSequentialGroup()
-                        .addComponent(btConfRmvSessao, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rmvSessaoBtnYes, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btCanRmvSessao)))
-                .addContainerGap(224, Short.MAX_VALUE))
+                        .addComponent(rmvSessaoBtnClear)))
+                .addContainerGap(239, Short.MAX_VALUE))
         );
         painelRmvSessaoLayout.setVerticalGroup(
             painelRmvSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelRmvSessaoLayout.createSequentialGroup()
                 .addGap(144, 144, 144)
-                .addComponent(text4)
+                .addComponent(rmvSessaoSalaLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(slSalaRmvSessao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rmvSessaoSala, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(textou7)
+                .addComponent(rmvSessaoHoraLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(slInicioRmvSessao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
                 .addGroup(painelRmvSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btCanRmvSessao)
-                    .addComponent(btConfRmvSessao))
-                .addContainerGap(145, Short.MAX_VALUE))
+                    .addComponent(rmvSessaoBtnClear)
+                    .addComponent(rmvSessaoBtnYes))
+                .addContainerGap(146, Short.MAX_VALUE))
         );
 
         removerTabs.addTab("Sessão", painelRmvSessao);
 
-        texto3.setText("CPF:");
+        rmvVendedorCPFLabel.setText("CPF:");
 
-        inputCpfRmvVendedor.setToolTipText("Digite o CPF do funcionário a ser removido.");
+        rmvVendedorCPF.setToolTipText("Digite o CPF do funcionário a ser removido.");
 
-        btConRmvVende.setText("Confirmar Remoção");
-        btConRmvVende.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btConRmvVendeActionPerformed(evt);
-            }
-        });
-
-        btCanRmvVende.setText("Cancelar");
+        rmvVendBtnClear.setText("Cancelar");
 
         javax.swing.GroupLayout painelRmvVendedorLayout = new javax.swing.GroupLayout(painelRmvVendedor);
         painelRmvVendedor.setLayout(painelRmvVendedorLayout);
         painelRmvVendedorLayout.setHorizontalGroup(
             painelRmvVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelRmvVendedorLayout.createSequentialGroup()
-                .addContainerGap(219, Short.MAX_VALUE)
+                .addContainerGap(223, Short.MAX_VALUE)
                 .addGroup(painelRmvVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(texto3)
-                    .addComponent(inputCpfRmvVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rmvVendedorCPFLabel)
+                    .addComponent(rmvVendedorCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(painelRmvVendedorLayout.createSequentialGroup()
-                        .addComponent(btConRmvVende, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31)
-                        .addComponent(btCanRmvVende)))
-                .addContainerGap(220, Short.MAX_VALUE))
+                        .addGap(179, 179, 179)
+                        .addComponent(rmvVendBtnClear)))
+                .addContainerGap(224, Short.MAX_VALUE))
         );
         painelRmvVendedorLayout.setVerticalGroup(
             painelRmvVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelRmvVendedorLayout.createSequentialGroup()
-                .addContainerGap(142, Short.MAX_VALUE)
-                .addComponent(texto3)
+                .addContainerGap(143, Short.MAX_VALUE)
+                .addComponent(rmvVendedorCPFLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputCpfRmvVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(rmvVendedorCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
-                .addGroup(painelRmvVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btCanRmvVende, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btConRmvVende))
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addComponent(rmvVendBtnClear)
+                .addContainerGap(222, Short.MAX_VALUE))
         );
 
         removerTabs.addTab("Vendedor", painelRmvVendedor);
@@ -779,12 +716,9 @@ public class PainelGerente extends javax.swing.JFrame {
             .addComponent(tabsGerente)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tituloPainelGerente)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnLogout)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tituloPainelGerente)
+                    .addComponent(btnLogout))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -818,7 +752,7 @@ public class PainelGerente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void newFilmeBtnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newFilmeBtnSalvarActionPerformed
+    private void newFilmeBtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newFilmeBtnSaveActionPerformed
         //Validação dos campos informados
 
         if (newFilmeNome.getText().isEmpty()) {
@@ -852,7 +786,7 @@ public class PainelGerente extends javax.swing.JFrame {
             }
         }
         listaFilmes.add(new Filme(newFilmeNome, newFilmeSinopse, toFilmes, newFilmeAno.getValue()));
-    }//GEN-LAST:event_newFilmeBtnSalvarActionPerformed
+    }//GEN-LAST:event_newFilmeBtnSaveActionPerformed
 
     private void newFilmeAnoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_newFilmeAnoStateChanged
         newFilmeAnoCurrent.setText("" + newFilmeAno.getValue());
@@ -870,33 +804,20 @@ public class PainelGerente extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane adicionarTabs;
-    private javax.swing.JButton btCanAddSessao;
-    private javax.swing.JButton btCanAddVende;
-    private javax.swing.JButton btCanRmvSessao;
-    private javax.swing.JButton btCanRmvVende;
-    private javax.swing.JButton btConAddVende;
-    private javax.swing.JButton btConRmvVende;
-    private javax.swing.JButton btConfAddSessao;
-    private javax.swing.JButton btConfRmvSessao;
     private javax.swing.JButton btnLogout;
     private javax.swing.JPanel gerentePanelAdd;
     private javax.swing.JPanel gerentePanelRem;
     private javax.swing.JTextField inputCpfAddVendedor;
-    private javax.swing.JTextField inputCpfRmvVendedor;
     private javax.swing.JTextField inputEmailAddVendedor;
     private javax.swing.JTextField inputPrecoAddSessao;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
@@ -905,8 +826,7 @@ public class PainelGerente extends javax.swing.JFrame {
     private javax.swing.JLabel newFilmeAnoCurrent;
     private javax.swing.JLabel newFilmeAnoCurrentLabel;
     private javax.swing.JLabel newFilmeAnoLabel;
-    private javax.swing.JButton newFilmeBtnClear;
-    private javax.swing.JButton newFilmeBtnSalvar;
+    private javax.swing.JButton newFilmeBtnSave;
     private javax.swing.JCheckBox newFilmeGenAcao;
     private javax.swing.JCheckBox newFilmeGenAnim;
     private javax.swing.JCheckBox newFilmeGenAvent;
@@ -924,6 +844,10 @@ public class PainelGerente extends javax.swing.JFrame {
     private javax.swing.JLabel newFilmeNomeLabel;
     private javax.swing.JTextArea newFilmeSinopse;
     private javax.swing.JLabel newFilmeSinposeLabel;
+    private javax.swing.JButton newSalaBtnSave;
+    private javax.swing.JButton newSessaoBtnClear;
+    private javax.swing.JButton newSessaoBtnSave;
+    private javax.swing.JButton newVendBtnSave;
     private javax.swing.JTextField newVendLogin;
     private javax.swing.JLabel newVendLoginLabel;
     private javax.swing.JPasswordField newVendSenha;
@@ -937,23 +861,42 @@ public class PainelGerente extends javax.swing.JFrame {
     private javax.swing.JPanel painelRmvVendedor;
     private javax.swing.JPanel panelAddFilme;
     private javax.swing.JTabbedPane removerTabs;
+    private javax.swing.JButton rmvFilmeBtnYes;
+    private javax.swing.JButton rmvSalaBtnYes;
+    private javax.swing.JButton rmvSessaoBtnClear;
+    private javax.swing.JButton rmvSessaoBtnYes;
+    private javax.swing.JLabel rmvSessaoHoraLabel;
+    private javax.swing.JComboBox<String> rmvSessaoSala;
+    private javax.swing.JLabel rmvSessaoSalaLabel;
+    private javax.swing.JButton rmvVendBtnClear;
+    private javax.swing.JTextField rmvVendedorCPF;
+    private javax.swing.JLabel rmvVendedorCPFLabel;
     private javax.swing.JComboBox<String> slFilmeAddSessao;
-    private javax.swing.JComboBox<String> slHoraInicioAddSessao;
     private javax.swing.JComboBox<String> slInicioRmvSessao;
-    private javax.swing.JComboBox<String> slMinInicioAddSessao;
     private javax.swing.JComboBox<String> slSalaAddSessao;
-    private javax.swing.JComboBox<String> slSalaRmvSessao;
     private javax.swing.JComboBox<String> slTurnoAddVend;
     private javax.swing.JTabbedPane tabsGerente;
     private javax.swing.JLabel test4;
     private javax.swing.JLabel test5;
-    private javax.swing.JLabel text4;
     private javax.swing.JLabel texto1;
     private javax.swing.JLabel texto2;
-    private javax.swing.JLabel texto3;
     private javax.swing.JLabel textoCPF;
     private javax.swing.JLabel textonumeroaqui;
-    private javax.swing.JLabel textou7;
     private javax.swing.JLabel tituloPainelGerente;
     // End of variables declaration//GEN-END:variables
+
+    private JTextField formataTextField(int i) {
+        JFormattedTextField field = null;
+        if (i == 1) {
+            field = new JFormattedTextField();
+            field.setFormatterFactory(new DefaultFormatterFactory(new DateFormatter(new SimpleDateFormat("H'h' mm'm'"))));
+        } else {
+            try {
+                field = new JFormattedTextField(new MaskFormatter("###.###.###-##"));
+            } catch (ParseException ex) {
+                Logger.getLogger(PainelGerente.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return field;
+    }
 }

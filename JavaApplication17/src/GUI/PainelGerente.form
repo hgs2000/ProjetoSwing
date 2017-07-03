@@ -30,12 +30,10 @@
           <Component id="tabsGerente" alignment="0" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="tituloPainelGerente" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="tituloPainelGerente" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnLogout" alignment="0" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -117,9 +115,7 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                      <Component id="newFilmeBtnSalvar" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
-                                      <Component id="newFilmeBtnClear" min="-2" max="-2" attributes="0"/>
+                                      <Component id="newFilmeBtnSave" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
@@ -164,10 +160,7 @@
                                   <Component id="newFilmeAnoCurrent" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="newFilmeBtnClear" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="newFilmeBtnSalvar" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="newFilmeBtnSave" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -417,20 +410,12 @@
                         <Property name="text" type="java.lang.String" value="G&#xea;nero:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="newFilmeBtnSalvar">
+                    <Component class="javax.swing.JButton" name="newFilmeBtnSave">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Salvar Filme"/>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newFilmeBtnSalvarActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="newFilmeBtnClear">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Limpar Campos"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newFilmeBtnClearActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newFilmeBtnSaveActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="newFilmeAnoLabel">
@@ -478,11 +463,7 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Group type="102" alignment="1" attributes="0">
-                                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="newSalaBtnSave" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jTextField2" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jTextField3" alignment="0" min="-2" pref="382" max="-2" attributes="0"/>
                                       </Group>
@@ -495,7 +476,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="131" max="32767" attributes="0"/>
+                              <EmptySpace pref="130" max="32767" attributes="0"/>
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jTextField2" min="-2" max="-2" attributes="0"/>
@@ -504,11 +485,8 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jTextField3" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="210" max="32767" attributes="0"/>
+                              <Component id="newSalaBtnSave" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="209" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -537,18 +515,10 @@
                         <Property name="toolTipText" type="java.lang.String" value="Digite o c&#xf3;digo da nova sala a ser cadastrada."/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton2">
+                    <Component class="javax.swing.JButton" name="newSalaBtnSave">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Salvar"/>
                       </Properties>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="jButton3">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Limpar Campos"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
-                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -565,7 +535,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace pref="187" max="32767" attributes="0"/>
+                              <EmptySpace pref="190" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -579,38 +549,33 @@
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="95" max="-2" attributes="0"/>
-                                      <Component id="slHoraInicioAddSessao" min="-2" pref="87" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="slMinInicioAddSessao" min="-2" pref="80" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
-                                      <Component id="test4" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
                                       <Component id="test5" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Group type="102" attributes="0">
-                                              <Component id="btConfAddSessao" min="-2" pref="110" max="-2" attributes="0"/>
+                                              <Component id="newSessaoBtnSave" min="-2" pref="110" max="-2" attributes="0"/>
                                               <EmptySpace max="32767" attributes="0"/>
-                                              <Component id="btCanAddSessao" min="-2" max="-2" attributes="0"/>
+                                              <Component id="newSessaoBtnClear" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Component id="inputPrecoAddSessao" min="-2" pref="272" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="test4" max="32767" attributes="0"/>
+                                          <Component id="jTextField1" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
-                              <EmptySpace pref="187" max="32767" attributes="0"/>
+                              <EmptySpace pref="190" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="84" max="32767" attributes="0"/>
+                              <EmptySpace pref="86" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="texto1" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="slFilmeAddSessao" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -623,22 +588,18 @@
                               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               <Component id="test4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="slHoraInicioAddSessao" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="slMinInicioAddSessao" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                              <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="inputPrecoAddSessao" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="test5" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btConfAddSessao" max="32767" attributes="0"/>
-                                  <Component id="btCanAddSessao" min="-2" max="-2" attributes="0"/>
+                                  <Component id="newSessaoBtnSave" max="32767" attributes="0"/>
+                                  <Component id="newSessaoBtnClear" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="186" max="32767" attributes="0"/>
+                              <EmptySpace pref="187" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -651,22 +612,6 @@
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inputPrecoAddSessaoActionPerformed"/>
                       </Events>
-                    </Component>
-                    <Component class="javax.swing.JComboBox" name="slMinInicioAddSessao">
-                      <Properties>
-                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
-                          </StringArray>
-                        </Property>
-                        <Property name="toolTipText" type="java.lang.String" value="Selecione os minutos de in&#xed;cio do filme."/>
-                      </Properties>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="texto1">
                       <Properties>
@@ -720,36 +665,20 @@
                         <Property name="text" type="java.lang.String" value="Sala:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="slHoraInicioAddSessao">
-                      <Properties>
-                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
-                          </StringArray>
-                        </Property>
-                        <Property name="toolTipText" type="java.lang.String" value="Selecione a hora de in&#xed;cio do filme."/>
-                      </Properties>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                      </AuxValues>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="jLabel3">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value=":"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="btConfAddSessao">
+                    <Component class="javax.swing.JButton" name="newSessaoBtnSave">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Salvar"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btCanAddSessao">
+                    <Component class="javax.swing.JButton" name="newSessaoBtnClear">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Limpar Campos"/>
                       </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="jTextField1">
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="formataTextField(1)"/>
+                      </AuxValues>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -776,11 +705,7 @@
                                   <Component id="slTurnoAddVend" alignment="0" max="32767" attributes="0"/>
                                   <Component id="textonumeroaqui" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="inputEmailAddVendedor" alignment="0" pref="284" max="32767" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="btConAddVende" min="-2" pref="103" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                      <Component id="btCanAddVende" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="newVendBtnSave" min="-2" pref="103" max="-2" attributes="0"/>
                                   <Component id="newVendLogin" alignment="0" max="32767" attributes="0"/>
                                   <Component id="newVendSenha" alignment="0" max="32767" attributes="0"/>
                               </Group>
@@ -791,7 +716,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="86" max="32767" attributes="0"/>
+                              <EmptySpace pref="82" max="32767" attributes="0"/>
                               <Component id="textoCPF" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="inputCpfAddVendedor" min="-2" max="-2" attributes="0"/>
@@ -812,10 +737,7 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="newVendSenha" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btCanAddVende" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btConAddVende" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="newVendBtnSave" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="89" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -831,6 +753,9 @@
                       <Properties>
                         <Property name="toolTipText" type="java.lang.String" value="Digite o CPF do funcion&#xe1;rio a aser cadastrado."/>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="formataTextField(1)"/>
+                      </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="jungleJingle">
                       <Properties>
@@ -863,18 +788,10 @@
                         <Property name="toolTipText" type="java.lang.String" value="Digite o e-mail do funcion&#xe1;rio a ser cadatrado."/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btConAddVende">
+                    <Component class="javax.swing.JButton" name="newVendBtnSave">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Salvar"/>
                       </Properties>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="btCanAddVende">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Limpar Campos"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btCanAddVendeActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="newVendLoginLabel">
                       <Properties>
@@ -939,7 +856,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jComboBox1" alignment="0" min="-2" pref="391" max="-2" attributes="0"/>
                                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rmvFilmeBtnYes" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="158" max="32767" attributes="0"/>
                           </Group>
@@ -953,7 +870,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jComboBox1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jButton6" min="-2" max="-2" attributes="0"/>
+                              <Component id="rmvFilmeBtnYes" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="235" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -980,7 +897,7 @@
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton6">
+                    <Component class="javax.swing.JButton" name="rmvFilmeBtnYes">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Confirmar"/>
                       </Properties>
@@ -1004,7 +921,7 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jTextField4" min="-2" pref="425" max="-2" attributes="0"/>
                                   <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rmvSalaBtnYes" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -1018,7 +935,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jTextField4" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jButton7" min="-2" max="-2" attributes="0"/>
+                              <Component id="rmvSalaBtnYes" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="309" max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -1035,9 +952,9 @@
                         <Property name="text" type="java.lang.String" value="C&#xf3;digo da Sala:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="jButton7">
+                    <Component class="javax.swing.JButton" name="rmvSalaBtnYes">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Remover"/>
+                        <Property name="text" type="java.lang.String" value="Confirmar"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -1058,18 +975,18 @@
                               <EmptySpace min="-2" pref="223" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="text4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="slSalaRmvSessao" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="textou7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rmvSessaoSalaLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rmvSessaoSala" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="rmvSessaoHoraLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                       <Component id="slInicioRmvSessao" alignment="0" min="-2" pref="195" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="btConfRmvSessao" min="-2" pref="111" max="-2" attributes="0"/>
+                                      <Component id="rmvSessaoBtnYes" min="-2" pref="111" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="btCanRmvSessao" min="-2" max="-2" attributes="0"/>
+                                      <Component id="rmvSessaoBtnClear" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="224" max="32767" attributes="0"/>
+                              <EmptySpace pref="239" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1077,38 +994,33 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
-                              <Component id="text4" min="-2" max="-2" attributes="0"/>
+                              <Component id="rmvSessaoSalaLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="slSalaRmvSessao" min="-2" max="-2" attributes="0"/>
+                              <Component id="rmvSessaoSala" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="textou7" min="-2" max="-2" attributes="0"/>
+                              <Component id="rmvSessaoHoraLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="slInicioRmvSessao" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="btCanRmvSessao" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btConfRmvSessao" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rmvSessaoBtnClear" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rmvSessaoBtnYes" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="145" max="32767" attributes="0"/>
+                              <EmptySpace pref="146" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="text4">
+                    <Component class="javax.swing.JLabel" name="rmvSessaoSalaLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Sala:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JComboBox" name="slSalaRmvSessao">
+                    <Component class="javax.swing.JComboBox" name="rmvSessaoSala">
                       <Properties>
                         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
-                          </StringArray>
+                          <StringArray count="0"/>
                         </Property>
                         <Property name="toolTipText" type="java.lang.String" value="Selecione a sala a ser removida."/>
                       </Properties>
@@ -1116,7 +1028,7 @@
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="textou7">
+                    <Component class="javax.swing.JLabel" name="rmvSessaoHoraLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Hor&#xe1;rio de inicio:"/>
                       </Properties>
@@ -1137,12 +1049,12 @@
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btCanRmvSessao">
+                    <Component class="javax.swing.JButton" name="rmvSessaoBtnClear">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Reiniciar sele&#xe7;&#xe3;o"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btConfRmvSessao">
+                    <Component class="javax.swing.JButton" name="rmvSessaoBtnYes">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Confirmar"/>
                       </Properties>
@@ -1162,57 +1074,45 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace pref="219" max="32767" attributes="0"/>
+                              <EmptySpace pref="223" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="texto3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="inputCpfRmvVendedor" min="-2" pref="260" max="-2" attributes="0"/>
+                                  <Component id="rmvVendedorCPFLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rmvVendedorCPF" min="-2" pref="260" max="-2" attributes="0"/>
                                   <Group type="102" attributes="0">
-                                      <Component id="btConRmvVende" min="-2" pref="148" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                      <Component id="btCanRmvVende" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
+                                      <Component id="rmvVendBtnClear" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="220" max="32767" attributes="0"/>
+                              <EmptySpace pref="224" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="142" max="32767" attributes="0"/>
-                              <Component id="texto3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="143" max="32767" attributes="0"/>
+                              <Component id="rmvVendedorCPFLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="inputCpfRmvVendedor" min="-2" max="-2" attributes="0"/>
+                              <Component id="rmvVendedorCPF" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="btCanRmvVende" max="32767" attributes="0"/>
-                                  <Component id="btConRmvVende" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="221" max="32767" attributes="0"/>
+                              <Component id="rmvVendBtnClear" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="222" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="texto3">
+                    <Component class="javax.swing.JLabel" name="rmvVendedorCPFLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="CPF:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="inputCpfRmvVendedor">
+                    <Component class="javax.swing.JTextField" name="rmvVendedorCPF">
                       <Properties>
                         <Property name="toolTipText" type="java.lang.String" value="Digite o CPF do funcion&#xe1;rio a ser removido."/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="btConRmvVende">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Confirmar Remo&#xe7;&#xe3;o"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btConRmvVendeActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="btCanRmvVende">
+                    <Component class="javax.swing.JButton" name="rmvVendBtnClear">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Cancelar"/>
                       </Properties>
