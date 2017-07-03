@@ -8,9 +8,14 @@ package Tools;
 import javax.swing.JOptionPane;
 
 public class Msgs {
-    public static void gerenteMsg(){
-        if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(null, "titulo","o texto", JOptionPane.YES_NO_OPTION)){
-            
+    public static boolean gerenteMsg(){
+        if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(null, "Não a nenhum gerente cadatrado\n"
+                +                                                        "É nesesario cadastrar um gerente para continuar\n"
+                +                                                        "Deseja cadastrar um cliente agora?", "Atenção" , 
+                JOptionPane.YES_NO_OPTION)){
+            return(true);
+        }else{
+            return(false);
         }
     }
     
