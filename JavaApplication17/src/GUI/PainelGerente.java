@@ -71,9 +71,9 @@ public class PainelGerente extends javax.swing.JFrame {
         inputPrecoAddSessao = new javax.swing.JTextField();
         texto1 = new javax.swing.JLabel();
         test5 = new javax.swing.JLabel();
-        slFilmeAddSessao = new javax.swing.JComboBox<String>();
+        slFilmeAddSessao = new javax.swing.JComboBox<>();
         test4 = new javax.swing.JLabel();
-        slSalaAddSessao = new javax.swing.JComboBox<String>();
+        slSalaAddSessao = new javax.swing.JComboBox<>();
         texto2 = new javax.swing.JLabel();
         newSessaoBtnSave = new javax.swing.JButton();
         newSessaoBtnClear = new javax.swing.JButton();
@@ -82,7 +82,7 @@ public class PainelGerente extends javax.swing.JFrame {
         textoCPF = new javax.swing.JLabel();
         inputCpfAddVendedor = formataTextField(1);
         jungleJingle = new javax.swing.JLabel();
-        slTurnoAddVend = new javax.swing.JComboBox<String>();
+        slTurnoAddVend = new javax.swing.JComboBox<>();
         textonumeroaqui = new javax.swing.JLabel();
         inputEmailAddVendedor = new javax.swing.JTextField();
         newVendBtnSave = new javax.swing.JButton();
@@ -94,7 +94,7 @@ public class PainelGerente extends javax.swing.JFrame {
         removerTabs = new javax.swing.JTabbedPane();
         painelRmvFilme = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<String>();
+        jComboBox1 = new javax.swing.JComboBox<>();
         rmvFilmeBtnYes = new javax.swing.JButton();
         painelRmvSala = new javax.swing.JPanel();
         jTextField4 = new javax.swing.JTextField();
@@ -102,9 +102,9 @@ public class PainelGerente extends javax.swing.JFrame {
         rmvSalaBtnYes = new javax.swing.JButton();
         painelRmvSessao = new javax.swing.JPanel();
         rmvSessaoSalaLabel = new javax.swing.JLabel();
-        rmvSessaoSala = new javax.swing.JComboBox<String>();
+        rmvSessaoSala = new javax.swing.JComboBox<>();
         rmvSessaoHoraLabel = new javax.swing.JLabel();
-        slInicioRmvSessao = new javax.swing.JComboBox<String>();
+        slInicioRmvSessao = new javax.swing.JComboBox<>();
         rmvSessaoBtnClear = new javax.swing.JButton();
         rmvSessaoBtnYes = new javax.swing.JButton();
         painelRmvVendedor = new javax.swing.JPanel();
@@ -382,12 +382,12 @@ public class PainelGerente extends javax.swing.JFrame {
 
         test5.setText("Preço:");
 
-        slFilmeAddSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slFilmeAddSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slFilmeAddSessao.setToolTipText("Selecione o filme ");
 
         test4.setText("Horário de início:");
 
-        slSalaAddSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slSalaAddSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slSalaAddSessao.setToolTipText("Selecione a Sala");
 
         texto2.setText("Sala:");
@@ -461,7 +461,7 @@ public class PainelGerente extends javax.swing.JFrame {
 
         jungleJingle.setText("Turno:");
 
-        slTurnoAddVend.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slTurnoAddVend.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slTurnoAddVend.setToolTipText("Selecione o turno do funcionário.");
 
         textonumeroaqui.setText("Email");
@@ -539,7 +539,7 @@ public class PainelGerente extends javax.swing.JFrame {
 
         jLabel6.setText("Escolha o Filme:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         rmvFilmeBtnYes.setText("Confirmar");
 
@@ -607,7 +607,7 @@ public class PainelGerente extends javax.swing.JFrame {
 
         rmvSessaoHoraLabel.setText("Horário de inicio:");
 
-        slInicioRmvSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        slInicioRmvSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         slInicioRmvSessao.setToolTipText("Selecione a hora de início da sessão a ser removida.");
 
         rmvSessaoBtnClear.setText("Reiniciar seleção");
