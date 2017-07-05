@@ -700,7 +700,7 @@
                                   <Component id="newVendSenhaLabel" min="-2" max="-2" attributes="0"/>
                                   <Component id="newVendLoginLabel" min="-2" max="-2" attributes="0"/>
                                   <Component id="textoCPF" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="inputCpfAddVendedor" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="addVendCPF" alignment="0" max="32767" attributes="0"/>
                                   <Component id="jungleJingle" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="slTurnoAddVend" alignment="0" max="32767" attributes="0"/>
                                   <Component id="textonumeroaqui" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -719,7 +719,7 @@
                               <EmptySpace pref="82" max="32767" attributes="0"/>
                               <Component id="textoCPF" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="inputCpfAddVendedor" min="-2" max="-2" attributes="0"/>
+                              <Component id="addVendCPF" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jungleJingle" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
@@ -749,7 +749,7 @@
                         <Property name="text" type="java.lang.String" value="CPF:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="inputCpfAddVendedor">
+                    <Component class="javax.swing.JTextField" name="addVendCPF">
                       <Properties>
                         <Property name="toolTipText" type="java.lang.String" value="Digite o CPF do funcion&#xe1;rio a aser cadastrado."/>
                       </Properties>

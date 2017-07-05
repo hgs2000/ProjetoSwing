@@ -81,7 +81,7 @@ public class PainelGerente extends javax.swing.JFrame {
         jTextField1 = formataTextField(1);
         painelAddVendedor = new javax.swing.JPanel();
         textoCPF = new javax.swing.JLabel();
-        inputCpfAddVendedor = formataTextField(1);
+        addVendCPF = formataTextField(1);
         jungleJingle = new javax.swing.JLabel();
         slTurnoAddVend = new javax.swing.JComboBox<>();
         textonumeroaqui = new javax.swing.JLabel();
@@ -458,7 +458,7 @@ public class PainelGerente extends javax.swing.JFrame {
 
         textoCPF.setText("CPF:");
 
-        inputCpfAddVendedor.setToolTipText("Digite o CPF do funcionário a aser cadastrado.");
+        addVendCPF.setToolTipText("Digite o CPF do funcionário a aser cadastrado.");
 
         jungleJingle.setText("Turno:");
 
@@ -485,7 +485,7 @@ public class PainelGerente extends javax.swing.JFrame {
                     .addComponent(newVendSenhaLabel)
                     .addComponent(newVendLoginLabel)
                     .addComponent(textoCPF)
-                    .addComponent(inputCpfAddVendedor)
+                    .addComponent(addVendCPF)
                     .addComponent(jungleJingle)
                     .addComponent(slTurnoAddVend, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(textonumeroaqui)
@@ -501,7 +501,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addContainerGap(82, Short.MAX_VALUE)
                 .addComponent(textoCPF)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inputCpfAddVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(addVendCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jungleJingle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -804,11 +804,11 @@ public class PainelGerente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField addVendCPF;
     private javax.swing.JTabbedPane adicionarTabs;
     private javax.swing.JButton btnLogout;
     private javax.swing.JPanel gerentePanelAdd;
     private javax.swing.JPanel gerentePanelRem;
-    private javax.swing.JTextField inputCpfAddVendedor;
     private javax.swing.JTextField inputEmailAddVendedor;
     private javax.swing.JTextField inputPrecoAddSessao;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -889,14 +889,16 @@ public class PainelGerente extends javax.swing.JFrame {
     private JTextField formataTextField(int i) {
         JFormattedTextField field = null;
         if (i == 1) {
-            field = new JFormattedTextField();
-            field.setFormatterFactory(new DefaultFormatterFactory(new DateFormatter(new SimpleDateFormat("H'h' mm'm'"))));
-        } else {
             try {
-                field = new JFormattedTextField(new MaskFormatter("###.###.###-##"));
+                MaskFormatter formatter = new MaskFormatter("###.###.###-##");
+                formatter.setValueContainsLiteralCharacters(false);
+                field = new JFormattedTextField(formatter);
+                formatter.install(field);
             } catch (ParseException ex) {
-                Logger.getLogger(PainelGerente.class.getName()).log(Level.SEVERE, null, ex);
             }
+
+        } else {
+
         }
         return field;
     }

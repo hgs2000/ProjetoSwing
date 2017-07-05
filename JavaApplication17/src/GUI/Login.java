@@ -170,7 +170,6 @@ public class Login extends javax.swing.JFrame {
                 AddGerente.main(args);
                 while (!AddGerente.canLogin) {
                     System.out.print("");
-
                 }
             } else {
                 System.exit(0);
