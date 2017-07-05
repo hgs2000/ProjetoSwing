@@ -2,7 +2,6 @@ package GUI;
 
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
-import Objetos.Funcionario;
 import Objetos.Gerente;
 import Objetos.Vendedor;
 import Tools.Msgs;
@@ -124,21 +123,16 @@ public class Login extends javax.swing.JFrame {
         if (inputNome.getText().isEmpty()) {
             inputNome.grabFocus();
             eVazio = true;
-            return;
         }
         char[] temp2 = inputSenha.getPassword();
         if (temp2.length == 0) {
             inputSenha.grabFocus();
             eVazio = true;
-            return;
         }
-        String[] temp = null;
         if (!eVazio) {
-
-            String senha = "";
             char[] safe = inputSenha.getPassword();
             if (Login.gerente.validLogin(inputNome.getText(), safe)) {
-                PainelGerente guiG = new PainelGerente(); 
+                PainelGerente guiG = new PainelGerente();
                 this.dispose();
             } else {
                 for (Vendedor vend : BD) {

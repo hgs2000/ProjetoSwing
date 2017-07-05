@@ -22,6 +22,9 @@ public class PainelGerente extends javax.swing.JFrame {
         initComponents();
         listaFilmes = new ArrayList<>();
         //listaFilmes = carregadorDeFilmes();
+        java.awt.EventQueue.invokeLater(() -> {
+            new PainelGerente().setVisible(true);
+        });
     }
 
     /**
