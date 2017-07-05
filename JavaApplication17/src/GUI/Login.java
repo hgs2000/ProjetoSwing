@@ -12,7 +12,6 @@ public class Login extends javax.swing.JFrame {
     //Este array é temporario pois sera usado Banco de Dados para salvar os dados futuramente.
     static ArrayList<Vendedor> BD = new ArrayList<>();
     static Gerente gerente;
-    static Vendedor loggedUser;
 
     public Login() {
         initComponents();
@@ -137,7 +136,6 @@ public class Login extends javax.swing.JFrame {
             } else {
                 for (Vendedor vend : BD) {
                     if (vend.validLogin(inputNome.getText(), safe)) {
-                        loggedUser = vend;
                         PainelVendedor guiV = new PainelVendedor();
                         this.dispose();
                     }
@@ -171,7 +169,7 @@ public class Login extends javax.swing.JFrame {
             if (Msgs.gerenteMsg()) {
                 AddGerente.main(args);
                 while (!AddGerente.canLogin) {
-                    System.out.println();
+                    System.out.print("");
 
                 }
             } else {
