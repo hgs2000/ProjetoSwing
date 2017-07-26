@@ -1,5 +1,6 @@
 package GUI;
 
+import Objetos.Cliente;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import Objetos.Gerente;
@@ -12,6 +13,7 @@ public class Login extends javax.swing.JFrame {
     //Este array é temporario pois sera usado Banco de Dados para salvar os dados futuramente.
     static ArrayList<Vendedor> BD = new ArrayList<>();
     static Gerente gerente;
+    static ArrayList<Cliente> BD2 = new ArrayList<>();
 
     public Login() {
         initComponents();

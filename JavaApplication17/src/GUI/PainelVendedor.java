@@ -5,14 +5,14 @@
  */
 package GUI;
 
+import Objetos.Cliente;
+import Objetos.JNumberTextField;
 import java.awt.Toolkit;
-import java.text.NumberFormat;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFormattedTextField;
 import javax.swing.text.MaskFormatter;
-import javax.swing.text.NumberFormatter;
 
 /**
  *
@@ -38,30 +38,30 @@ public class PainelVendedor extends javax.swing.JFrame {
 
         tabRmCli = new javax.swing.JTabbedPane();
         tabMkCli = new javax.swing.JPanel();
-        texto1 = new javax.swing.JLabel();
-        newCliNome = new javax.swing.JTextField();
-        text2 = new javax.swing.JLabel();
-        newCliCPF = validaNums(1);
-        newCliIdadeLabel = new javax.swing.JLabel();
-        newCliIdade = validaNums(2);
-        newCliSexoLabel = new javax.swing.JLabel();
-        newCliSexo = new javax.swing.JComboBox<>();
-        textInutil = new javax.swing.JLabel();
-        inputEndereco = new javax.swing.JTextField();
-        btConf23 = new javax.swing.JButton();
-        btCancelar456 = new javax.swing.JButton();
+        newClienteNomeLabel = new javax.swing.JLabel();
+        newClienteNome = new javax.swing.JTextField();
+        newClienteCPFLabel = new javax.swing.JLabel();
+        newClienteCPF = validaNums(1);
+        newClienteIdadeLabel = new javax.swing.JLabel();
+        newClienteIdade = new JNumberTextField(3);
+        newClienteSexoLabel = new javax.swing.JLabel();
+        newClienteSexo = new javax.swing.JComboBox<>();
+        newClienteEnderecoLabel = new javax.swing.JLabel();
+        newClienteEndereco = new javax.swing.JTextField();
+        newClienteBtnOK = new javax.swing.JButton();
+        newClienteBtnCancel = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<String>();
+        jComboBox2 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         tabVenda = new javax.swing.JPanel();
         lbFilme = new javax.swing.JLabel();
-        selFilme = new javax.swing.JComboBox<String>();
+        selFilme = new javax.swing.JComboBox<>();
         lbSessao = new javax.swing.JLabel();
-        selSessao = new javax.swing.JComboBox<String>();
+        selSessao = new javax.swing.JComboBox<>();
         texto = new javax.swing.JLabel();
-        selQuantIngresso = new javax.swing.JComboBox<String>();
+        selQuantIngresso = new javax.swing.JComboBox<>();
         lbCpfCliente = new javax.swing.JLabel();
         codCPFCliVenda = new javax.swing.JTextField();
         btOkVenda = new javax.swing.JButton();
@@ -73,106 +73,108 @@ public class PainelVendedor extends javax.swing.JFrame {
         setUndecorated(true);
         setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
 
-        texto1.setText("Nome:");
+        newClienteNomeLabel.setText("Nome:");
 
-        newCliNome.addActionListener(new java.awt.event.ActionListener() {
+        newClienteNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newCliNomeActionPerformed(evt);
+                newClienteNomeActionPerformed(evt);
             }
         });
 
-        text2.setText("CPF (somente digitos):");
+        newClienteCPFLabel.setText("CPF (somente digitos):");
 
-
-        newCliCPF.addActionListener(new java.awt.event.ActionListener() {
+        newClienteCPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newCliCPFActionPerformed(evt);
+                newClienteCPFActionPerformed(evt);
             }
         });
-        newCliCPF.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        newClienteCPF.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                newCliCPFPropertyChange(evt);
+                newClienteCPFPropertyChange(evt);
             }
         });
 
-        newCliIdadeLabel.setText("Idade:");
+        newClienteIdadeLabel.setText("Idade:");
 
-        newCliIdade.addActionListener(new java.awt.event.ActionListener() {
+        newClienteIdade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newCliIdadeActionPerformed(evt);
+                newClienteIdadeActionPerformed(evt);
             }
         });
 
+        newClienteSexoLabel.setText("Sexo:");
 
-        newCliSexoLabel.setText("Sexo:");
+        newClienteSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino" }));
+        newClienteSexo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newClienteSexoActionPerformed(evt);
+            }
+        });
 
-        newCliSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino" }));
+        newClienteEnderecoLabel.setText("Endereço:");
 
-        textInutil.setText("Endereço:");
+        newClienteEndereco.setToolTipText("Digite o endereço do cliente a ser cadastrado.");
 
-        inputEndereco.setToolTipText("Digite o endereço do cliente a ser cadastrado.");
+        newClienteBtnOK.setText("Confirmar");
+        newClienteBtnOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newClienteBtnOKActionPerformed(evt);
+            }
+        });
 
-        btConf23.setText("Confirmar");
-
-        btCancelar456.setText("Cancelar");
+        newClienteBtnCancel.setText("Cancelar");
 
         javax.swing.GroupLayout tabMkCliLayout = new javax.swing.GroupLayout(tabMkCli);
         tabMkCli.setLayout(tabMkCliLayout);
         tabMkCliLayout.setHorizontalGroup(
             tabMkCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabMkCliLayout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addContainerGap(29, Short.MAX_VALUE)
                 .addGroup(tabMkCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(inputEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
-                    .addComponent(textInutil)
-                    .addComponent(newCliSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newCliSexoLabel)
-                    .addComponent(newCliIdade)
-                    .addComponent(newCliIdadeLabel)
-                    .addComponent(newCliCPF)
-                    .addComponent(text2)
-                    .addComponent(newCliNome)
-                    .addComponent(texto1))
-                .addContainerGap(193, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabMkCliLayout.createSequentialGroup()
-                .addGap(38, 38, 38)
-                .addComponent(btConf23, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btCancelar456, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                    .addComponent(newClienteEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                    .addComponent(newClienteEnderecoLabel)
+                    .addComponent(newClienteSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newClienteSexoLabel)
+                    .addComponent(newClienteIdade)
+                    .addComponent(newClienteIdadeLabel)
+                    .addComponent(newClienteCPF)
+                    .addComponent(newClienteCPFLabel)
+                    .addComponent(newClienteNome)
+                    .addComponent(newClienteNomeLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGroup(tabMkCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(newClienteBtnCancel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newClienteBtnOK, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         tabMkCliLayout.setVerticalGroup(
             tabMkCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabMkCliLayout.createSequentialGroup()
-
-                .addGroup(tabMkCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(tabMkCliLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btCancelar456))
-                    .addGroup(tabMkCliLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(texto1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(newCliNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(text2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(newCliCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(newCliIdadeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(newCliIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(newCliSexoLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(newCliSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(textInutil)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(inputEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btConf23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGap(28, 28, 28)
+                .addComponent(newClienteNomeLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(newClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(newClienteCPFLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabMkCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newClienteCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newClienteBtnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(newClienteIdadeLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tabMkCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newClienteIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newClienteBtnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(newClienteSexoLabel)
+                .addGap(9, 9, 9)
+                .addComponent(newClienteSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(newClienteEnderecoLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(newClienteEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 71, Short.MAX_VALUE))
         );
 
         tabRmCli.addTab("Adicionar Cliente", tabMkCli);
@@ -180,7 +182,7 @@ public class PainelVendedor extends javax.swing.JFrame {
         jLabel2.setText("Selecione UM (1) cliente:");
 
         jComboBox2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jButton2.setText("Confirmar");
 
@@ -202,7 +204,7 @@ public class PainelVendedor extends javax.swing.JFrame {
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -211,7 +213,7 @@ public class PainelVendedor extends javax.swing.JFrame {
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 337, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 336, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -222,7 +224,7 @@ public class PainelVendedor extends javax.swing.JFrame {
 
         lbFilme.setText("Filme:");
 
-        selFilme.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selFilme.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         selFilme.setToolTipText("Seleção do filme, que o cliente deseja.");
         selFilme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,12 +234,12 @@ public class PainelVendedor extends javax.swing.JFrame {
 
         lbSessao.setText("Sessão");
 
-        selSessao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         selSessao.setToolTipText("Seleção da sessão que o cliente deseja.");
 
         texto.setText("Quantidade de ingressos:");
 
-        selQuantIngresso.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        selQuantIngresso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lbCpfCliente.setText("CPF do Cliente (opcional):");
 
@@ -263,7 +265,7 @@ public class PainelVendedor extends javax.swing.JFrame {
                         .addComponent(selFilme, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(selQuantIngresso, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(codCPFCliVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(60, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabVendaLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btOkVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -299,7 +301,6 @@ public class PainelVendedor extends javax.swing.JFrame {
 
         tabRmCli.addTab("Venda", tabVenda);
 
-
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -313,6 +314,7 @@ public class PainelVendedor extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(tabRmCli)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel3)
@@ -323,7 +325,7 @@ public class PainelVendedor extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(tabRmCli, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabRmCli, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogout)
@@ -338,20 +340,20 @@ public class PainelVendedor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_selFilmeActionPerformed
 
-    private void newCliIdadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCliIdadeActionPerformed
+    private void newClienteIdadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newClienteIdadeActionPerformed
 
-    }//GEN-LAST:event_newCliIdadeActionPerformed
+    }//GEN-LAST:event_newClienteIdadeActionPerformed
 
-    private void newCliNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCliNomeActionPerformed
+    private void newClienteNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newClienteNomeActionPerformed
 
-    }//GEN-LAST:event_newCliNomeActionPerformed
+    }//GEN-LAST:event_newClienteNomeActionPerformed
 
-    private void newCliCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCliCPFActionPerformed
+    private void newClienteCPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newClienteCPFActionPerformed
 
-    }//GEN-LAST:event_newCliCPFActionPerformed
+    }//GEN-LAST:event_newClienteCPFActionPerformed
 
-    private void newCliCPFPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_newCliCPFPropertyChange
-    }//GEN-LAST:event_newCliCPFPropertyChange
+    private void newClienteCPFPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_newClienteCPFPropertyChange
+    }//GEN-LAST:event_newClienteCPFPropertyChange
 
     private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
         this.dispose();
@@ -396,6 +398,51 @@ public class PainelVendedor extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void newClienteBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newClienteBtnOKActionPerformed
+        int idade;
+        if (newClienteNome.getText().trim().isEmpty()) {
+            newClienteNome.requestFocus();
+            return;
+        } else {
+            boolean op = false;
+            boolean op2 = false;
+            String idadeStr = newClienteIdade.getText().trim();
+
+            for (int i = 0; i < idadeStr.length(); i++) {
+                char carac = idadeStr.charAt(i);
+                if (!Character.isDigit(carac)) {
+                    op = true;
+                }
+            }
+            if (op) {
+                newClienteIdade.requestFocus();
+                return;
+            } else {
+                idade = Integer.parseInt(idadeStr);
+                if ((idade > 150) || (idade < 18)) {
+                    newClienteIdade.requestFocus();
+                    return;
+                } else {
+                    if (newClienteEndereco.getText().trim().isEmpty()) {
+                        newClienteEndereco.requestFocus();
+                        return;
+                    }
+                }
+            }
+        }
+        System.out.println(newClienteCPF.getText());
+        //hgs work warning here; acima fazer validação de cpf
+        boolean sexo;
+        if (newClienteSexo.getSelectedItem().equals("Masculino")) {
+            System.out.println("vtup");
+        }
+        Login.BD2.add(new Cliente(newClienteNome.getText().trim(), newClienteEndereco.getText().trim(), idade, true));
+    }//GEN-LAST:event_newClienteBtnOKActionPerformed
+
+    private void newClienteSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newClienteSexoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newClienteSexoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -407,13 +454,10 @@ public class PainelVendedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btCancelar456;
-    private javax.swing.JButton btConf23;
     private javax.swing.JButton btOkVenda;
     private javax.swing.JButton btSlFilmeCancelar;
     private javax.swing.JButton btnLogout;
     private javax.swing.JTextField codCPFCliVenda;
-    private javax.swing.JTextField inputEndereco;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox2;
@@ -423,21 +467,24 @@ public class PainelVendedor extends javax.swing.JFrame {
     private javax.swing.JLabel lbCpfCliente;
     private javax.swing.JLabel lbFilme;
     private javax.swing.JLabel lbSessao;
-    private javax.swing.JTextField newCliCPF;
-    private javax.swing.JTextField newCliIdade;
-    private javax.swing.JLabel newCliIdadeLabel;
-    private javax.swing.JTextField newCliNome;
-    private javax.swing.JComboBox<String> newCliSexo;
-    private javax.swing.JLabel newCliSexoLabel;
+    private javax.swing.JButton newClienteBtnCancel;
+    private javax.swing.JButton newClienteBtnOK;
+    private javax.swing.JTextField newClienteCPF;
+    private javax.swing.JLabel newClienteCPFLabel;
+    private javax.swing.JTextField newClienteEndereco;
+    private javax.swing.JLabel newClienteEnderecoLabel;
+    private javax.swing.JTextField newClienteIdade;
+    private javax.swing.JLabel newClienteIdadeLabel;
+    private javax.swing.JTextField newClienteNome;
+    private javax.swing.JLabel newClienteNomeLabel;
+    private javax.swing.JComboBox<String> newClienteSexo;
+    private javax.swing.JLabel newClienteSexoLabel;
     private javax.swing.JComboBox<String> selFilme;
     private javax.swing.JComboBox<String> selQuantIngresso;
     private javax.swing.JComboBox<String> selSessao;
     private javax.swing.JPanel tabMkCli;
     private javax.swing.JTabbedPane tabRmCli;
     private javax.swing.JPanel tabVenda;
-    private javax.swing.JLabel text2;
-    private javax.swing.JLabel textInutil;
     private javax.swing.JLabel texto;
-    private javax.swing.JLabel texto1;
     // End of variables declaration//GEN-END:variables
 }
