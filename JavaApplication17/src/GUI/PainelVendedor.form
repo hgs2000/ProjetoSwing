@@ -415,17 +415,8 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="selQuantIngresso">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
-                </Property>
-              </Properties>
               <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="setIntegerComboBox(0, 10)"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
@@ -438,6 +429,9 @@
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Cpf do cliente cadastrado."/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="validaNums(1)"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JButton" name="btOkVenda">
               <Properties>

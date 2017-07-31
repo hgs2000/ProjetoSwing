@@ -11,7 +11,7 @@ public class Msgs {
     public static boolean gerenteMsg(){
         if(JOptionPane.YES_OPTION == JOptionPane.showConfirmDialog(null, "Não a nenhum gerente cadatrado\n"
                 +                                                        "É nesesario cadastrar um gerente para continuar\n"
-                +                                                        "Deseja cadastrar um cliente agora?", "Atenção" , 
+                +                                                        "Deseja cadastrar um gerente agora?", "Atenção" , 
                 JOptionPane.YES_NO_OPTION)){
             return(true);
         }else{

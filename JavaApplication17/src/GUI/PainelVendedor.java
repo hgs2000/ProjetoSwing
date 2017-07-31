@@ -7,6 +7,7 @@ package GUI;
 
 import Objetos.Cliente;
 import Objetos.JNumberTextField;
+import static Tools.AutoBuild.setIntegerComboBox;
 import java.awt.Toolkit;
 import java.text.ParseException;
 import java.util.logging.Level;
@@ -61,9 +62,9 @@ public class PainelVendedor extends javax.swing.JFrame {
         lbSessao = new javax.swing.JLabel();
         selSessao = new javax.swing.JComboBox<>();
         texto = new javax.swing.JLabel();
-        selQuantIngresso = new javax.swing.JComboBox<>();
+        selQuantIngresso = setIntegerComboBox(0, 10);
         lbCpfCliente = new javax.swing.JLabel();
-        codCPFCliVenda = new javax.swing.JTextField();
+        codCPFCliVenda = validaNums(1);
         btOkVenda = new javax.swing.JButton();
         btSlFilmeCancelar = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
@@ -238,8 +239,6 @@ public class PainelVendedor extends javax.swing.JFrame {
         selSessao.setToolTipText("Seleção da sessão que o cliente deseja.");
 
         texto.setText("Quantidade de ingressos:");
-
-        selQuantIngresso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         lbCpfCliente.setText("CPF do Cliente (opcional):");
 
