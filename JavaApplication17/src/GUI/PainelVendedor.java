@@ -9,11 +9,7 @@ import Objetos.Cliente;
 import Objetos.JNumberTextField;
 import static Tools.AutoBuild.setIntegerComboBox;
 import java.awt.Toolkit;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JFormattedTextField;
-import javax.swing.text.MaskFormatter;
+import static Tools.AutoBuild.validaNums;
 
 /**
  *
@@ -365,32 +361,6 @@ public class PainelVendedor extends javax.swing.JFrame {
      * @param subOp
      * @return JTextField formatado
      */
-    private JFormattedTextField validaNums(int subOp) {
-        switch (subOp) {
-            case 1: {
-                MaskFormatter formatoCPF = null;
-                try {
-                    formatoCPF = new MaskFormatter("###.###.###-##");
-                } catch (ParseException ex) {
-                    Logger.getLogger(PainelVendedor.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                JFormattedTextField field = new JFormattedTextField(formatoCPF);
-                return field;
-            }
-            case 2: {
-                MaskFormatter formatoCPF = null;
-                try {
-                    formatoCPF = new MaskFormatter("###");
-                } catch (ParseException ex) {
-                    Logger.getLogger(PainelVendedor.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                JFormattedTextField field = new JFormattedTextField(formatoCPF);
-                return field;
-            }
-            default:
-                return new JFormattedTextField();
-        }
-    }
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
