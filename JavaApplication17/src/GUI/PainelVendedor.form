@@ -27,11 +27,11 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="tabRmCli" max="32767" attributes="0"/>
+          <Component id="tabsVendedor" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
+              <Component id="labelEstaLogado" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -40,11 +40,11 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="tabRmCli" min="-2" pref="507" max="-2" attributes="0"/>
+              <Component id="tabsVendedor" min="-2" pref="507" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btnLogout" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="labelEstaLogado" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -52,11 +52,11 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JTabbedPane" name="tabRmCli">
+    <Container class="javax.swing.JTabbedPane" name="tabsVendedor">
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="tabMkCli">
+        <Container class="javax.swing.JPanel" name="tabAddCliente">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Adicionar Cliente">
@@ -68,59 +68,60 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace pref="29" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="newClienteEndereco" alignment="0" pref="292" max="32767" attributes="0"/>
-                          <Component id="newClienteEnderecoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="newClienteSexo" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="newClienteSexoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="newClienteIdade" alignment="0" max="32767" attributes="0"/>
-                          <Component id="newClienteIdadeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="newClienteCPF" alignment="0" max="32767" attributes="0"/>
-                          <Component id="newClienteCPFLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="newClienteNome" alignment="0" max="32767" attributes="0"/>
-                          <Component id="newClienteNomeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="44" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <EmptySpace pref="133" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="newClienteBtnCancel" alignment="1" min="-2" pref="137" max="-2" attributes="0"/>
-                          <Component id="newClienteBtnOK" alignment="1" min="-2" pref="137" max="-2" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="newClienteBtnOK" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="114" max="-2" attributes="0"/>
+                              <Component id="newClienteBtnClear" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="newClienteEndereco" alignment="0" pref="292" max="32767" attributes="0"/>
+                              <Component id="newClienteEnderecoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="newClienteSexo" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="newClienteSexoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="newClienteIdade" alignment="0" max="32767" attributes="0"/>
+                              <Component id="newClienteIdadeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="newClienteCPF" alignment="0" max="32767" attributes="0"/>
+                              <Component id="newClienteCPFLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="newClienteNome" alignment="0" max="32767" attributes="0"/>
+                              <Component id="newClienteNomeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="133" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                      <EmptySpace pref="31" max="32767" attributes="0"/>
                       <Component id="newClienteNomeLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="newClienteNome" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="newClienteCPFLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="newClienteCPF" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="newClienteBtnOK" alignment="3" min="-2" pref="49" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="newClienteCPF" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="newClienteIdadeLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="newClienteIdade" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="newClienteBtnCancel" alignment="3" min="-2" pref="51" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="newClienteIdade" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="newClienteSexoLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       <Component id="newClienteSexo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="newClienteEnderecoLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="newClienteEndereco" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="71" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="newClienteBtnOK" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="newClienteBtnClear" alignment="3" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="30" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -132,6 +133,11 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="newClienteNome">
+              <Properties>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="newClienteCPF"/>
+                </Property>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newClienteNomeActionPerformed"/>
               </Events>
@@ -142,6 +148,11 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="newClienteCPF">
+              <Properties>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="newClienteIdade"/>
+                </Property>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newClienteCPFActionPerformed"/>
                 <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="newClienteCPFPropertyChange"/>
@@ -156,8 +167,16 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="newClienteIdade">
+              <Properties>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="newClienteSexo"/>
+                </Property>
+              </Properties>
               <Events>
+                <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="newClienteIdadeFocusLost"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newClienteIdadeActionPerformed"/>
+                <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="newClienteIdadePropertyChange"/>
+                <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="newClienteIdadeKeyTyped"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JNumberTextField(3)"/>
@@ -176,6 +195,9 @@
                     <StringItem index="1" value="Feminino"/>
                   </StringArray>
                 </Property>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="newClienteEndereco"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newClienteSexoActionPerformed"/>
@@ -192,24 +214,36 @@
             <Component class="javax.swing.JTextField" name="newClienteEndereco">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Digite o endere&#xe7;o do cliente a ser cadastrado."/>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="newClienteBtnOK"/>
+                </Property>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="newClienteBtnOK">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Confirmar"/>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="newClienteBtnClear"/>
+                </Property>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newClienteBtnOKActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="newClienteBtnCancel">
+            <Component class="javax.swing.JButton" name="newClienteBtnClear">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cancelar"/>
+                <Property name="text" type="java.lang.String" value="Limpar Campos"/>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="newClienteNome"/>
+                </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newClienteBtnClearActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="jPanel3">
+        <Container class="javax.swing.JPanel" name="tabRmvCliente">
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Remover Cliente">
@@ -222,46 +256,46 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBox2" min="-2" pref="435" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="62" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="rmvClienteOptLabel" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="rmvClienteBtnOK" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="rmvClienteBtnClear" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="rmvClienteOpt" min="-2" pref="435" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
+                      <EmptySpace pref="62" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                      <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="168" max="32767" attributes="0"/>
+                      <Component id="rmvClienteOptLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jComboBox2" min="-2" pref="39" max="-2" attributes="0"/>
-                      <EmptySpace pref="336" max="32767" attributes="0"/>
+                      <Component id="rmvClienteOpt" min="-2" pref="39" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton2" alignment="3" max="32767" attributes="0"/>
+                          <Component id="rmvClienteBtnOK" alignment="3" max="32767" attributes="0"/>
+                          <Component id="rmvClienteBtnClear" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="169" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel2">
+            <Component class="javax.swing.JLabel" name="rmvClienteOptLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Selecione UM (1) cliente:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox2">
+            <Component class="javax.swing.JComboBox" name="rmvClienteOpt">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Dialog" size="18" style="1"/>
@@ -274,24 +308,33 @@
                     <StringItem index="3" value="Item 4"/>
                   </StringArray>
                 </Property>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="rmvClienteBtnOK"/>
+                </Property>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton2">
+            <Component class="javax.swing.JButton" name="rmvClienteBtnOK">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Confirmar"/>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="rmvClienteBtnClear"/>
+                </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="rmvClienteBtnClear">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cancelar"/>
+                <Property name="text" type="java.lang.String" value="Limpa sele&#xe7;&#xe3;o"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[79, 23]"/>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[79, 23]"/>
+                </Property>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="rmvClienteOpt"/>
                 </Property>
               </Properties>
             </Component>
@@ -310,66 +353,66 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace pref="60" max="32767" attributes="0"/>
+                      <EmptySpace pref="92" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="texto" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="vendaQuantIngresso" min="-2" pref="83" max="-2" attributes="0"/>
+                          <Component id="vendaQuantIngressoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="lbCpfCliente" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbSessao" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="lbFilme" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="selSessao" alignment="0" pref="374" max="32767" attributes="0"/>
-                              <Component id="selFilme" alignment="0" max="32767" attributes="0"/>
+                              <Component id="vendaCPFClienteLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="vendaSessaoLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="vendaFilmeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="vendaSessao" alignment="0" pref="374" max="32767" attributes="0"/>
+                              <Component id="vendaFilme" alignment="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="selQuantIngresso" alignment="0" min="-2" pref="83" max="-2" attributes="0"/>
-                          <Component id="codCPFCliVenda" alignment="0" min="-2" pref="374" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="vendaBtnOK" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="vendaBtnClear" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="vendaCPFCliente" alignment="0" min="-2" pref="374" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace pref="60" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btOkVenda" min="-2" pref="79" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btSlFilmeCancelar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
+                      <EmptySpace pref="93" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="71" max="32767" attributes="0"/>
+                      <Component id="vendaFilmeLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lbFilme" min="-2" max="-2" attributes="0"/>
+                      <Component id="vendaFilme" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="vendaSessaoLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="selFilme" min="-2" max="-2" attributes="0"/>
+                      <Component id="vendaSessao" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="lbSessao" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="selSessao" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="texto" min="-2" max="-2" attributes="0"/>
+                      <Component id="vendaQuantIngressoLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="selQuantIngresso" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="lbCpfCliente" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="codCPFCliVenda" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
+                      <Component id="vendaQuantIngresso" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="vendaCPFClienteLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="vendaCPFCliente" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btSlFilmeCancelar" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btOkVenda" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="vendaBtnOK" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="vendaBtnClear" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace pref="72" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lbFilme">
+            <Component class="javax.swing.JLabel" name="vendaFilmeLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Filme:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="selFilme">
+            <Component class="javax.swing.JComboBox" name="vendaFilme">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
@@ -380,20 +423,23 @@
                   </StringArray>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Sele&#xe7;&#xe3;o do filme, que o cliente deseja."/>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="vendaSessao"/>
+                </Property>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="selFilmeActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vendaFilmeActionPerformed"/>
               </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbSessao">
+            <Component class="javax.swing.JLabel" name="vendaSessaoLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Sess&#xe3;o"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="selSessao">
+            <Component class="javax.swing.JComboBox" name="vendaSessao">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="4">
@@ -404,43 +450,60 @@
                   </StringArray>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value="Sele&#xe7;&#xe3;o da sess&#xe3;o que o cliente deseja."/>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="vendaQuantIngresso"/>
+                </Property>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="texto">
+            <Component class="javax.swing.JLabel" name="vendaQuantIngressoLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Quantidade de ingressos:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="selQuantIngresso">
+            <Component class="javax.swing.JComboBox" name="vendaQuantIngresso">
+              <Properties>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="vendaCPFCliente"/>
+                </Property>
+              </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="setIntegerComboBox(0, 10)"/>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JLabel" name="lbCpfCliente">
+            <Component class="javax.swing.JLabel" name="vendaCPFClienteLabel">
               <Properties>
                 <Property name="text" type="java.lang.String" value="CPF do Cliente (opcional):"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="codCPFCliVenda">
+            <Component class="javax.swing.JTextField" name="vendaCPFCliente">
               <Properties>
                 <Property name="toolTipText" type="java.lang.String" value="Cpf do cliente cadastrado."/>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="vendaBtnOK"/>
+                </Property>
               </Properties>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="validaNums(1)"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JButton" name="btOkVenda">
+            <Component class="javax.swing.JButton" name="vendaBtnOK">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Confirmar"/>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="vendaBtnClear"/>
+                </Property>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="btSlFilmeCancelar">
+            <Component class="javax.swing.JButton" name="vendaBtnClear">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Cancelar"/>
+                <Property name="text" type="java.lang.String" value="Limpar campos"/>
+                <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
+                  <ComponentRef name="vendaFilme"/>
+                </Property>
               </Properties>
             </Component>
           </SubComponents>
@@ -455,7 +518,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel3">
+    <Component class="javax.swing.JLabel" name="labelEstaLogado">
       <Properties>
         <Property name="text" type="java.lang.String" value="Voc&#xea; est&#xe1; logado como: *******"/>
       </Properties>

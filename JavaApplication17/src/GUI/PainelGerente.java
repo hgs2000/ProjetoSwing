@@ -777,7 +777,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addComponent(tabsGerente)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogout)
-                .addGap(12, 12, 12))
+                .addContainerGap())
         );
 
         pack();

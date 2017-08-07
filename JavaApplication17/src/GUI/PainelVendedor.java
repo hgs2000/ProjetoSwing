@@ -33,8 +33,8 @@ public class PainelVendedor extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tabRmCli = new javax.swing.JTabbedPane();
-        tabMkCli = new javax.swing.JPanel();
+        tabsVendedor = new javax.swing.JTabbedPane();
+        tabAddCliente = new javax.swing.JPanel();
         newClienteNomeLabel = new javax.swing.JLabel();
         newClienteNome = new javax.swing.JTextField();
         newClienteCPFLabel = new javax.swing.JLabel();
@@ -46,25 +46,25 @@ public class PainelVendedor extends javax.swing.JFrame {
         newClienteEnderecoLabel = new javax.swing.JLabel();
         newClienteEndereco = new javax.swing.JTextField();
         newClienteBtnOK = new javax.swing.JButton();
-        newClienteBtnCancel = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        newClienteBtnClear = new javax.swing.JButton();
+        tabRmvCliente = new javax.swing.JPanel();
+        rmvClienteOptLabel = new javax.swing.JLabel();
+        rmvClienteOpt = new javax.swing.JComboBox<>();
+        rmvClienteBtnOK = new javax.swing.JButton();
+        rmvClienteBtnClear = new javax.swing.JButton();
         tabVenda = new javax.swing.JPanel();
-        lbFilme = new javax.swing.JLabel();
-        selFilme = new javax.swing.JComboBox<>();
-        lbSessao = new javax.swing.JLabel();
-        selSessao = new javax.swing.JComboBox<>();
-        texto = new javax.swing.JLabel();
-        selQuantIngresso = setIntegerComboBox(0, 10);
-        lbCpfCliente = new javax.swing.JLabel();
-        codCPFCliVenda = validaNums(1);
-        btOkVenda = new javax.swing.JButton();
-        btSlFilmeCancelar = new javax.swing.JButton();
+        vendaFilmeLabel = new javax.swing.JLabel();
+        vendaFilme = new javax.swing.JComboBox<>();
+        vendaSessaoLabel = new javax.swing.JLabel();
+        vendaSessao = new javax.swing.JComboBox<>();
+        vendaQuantIngressoLabel = new javax.swing.JLabel();
+        vendaQuantIngresso = setIntegerComboBox(0, 10);
+        vendaCPFClienteLabel = new javax.swing.JLabel();
+        vendaCPFCliente = validaNums(1);
+        vendaBtnOK = new javax.swing.JButton();
+        vendaBtnClear = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        labelEstaLogado = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -72,6 +72,7 @@ public class PainelVendedor extends javax.swing.JFrame {
 
         newClienteNomeLabel.setText("Nome:");
 
+        newClienteNome.setNextFocusableComponent(newClienteCPF);
         newClienteNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newClienteNomeActionPerformed(evt);
@@ -80,6 +81,7 @@ public class PainelVendedor extends javax.swing.JFrame {
 
         newClienteCPFLabel.setText("CPF (somente digitos):");
 
+        newClienteCPF.setNextFocusableComponent(newClienteIdade);
         newClienteCPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newClienteCPFActionPerformed(evt);
@@ -93,15 +95,32 @@ public class PainelVendedor extends javax.swing.JFrame {
 
         newClienteIdadeLabel.setText("Idade:");
 
+        newClienteIdade.setNextFocusableComponent(newClienteSexo);
+        newClienteIdade.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                newClienteIdadeFocusLost(evt);
+            }
+        });
         newClienteIdade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newClienteIdadeActionPerformed(evt);
+            }
+        });
+        newClienteIdade.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                newClienteIdadePropertyChange(evt);
+            }
+        });
+        newClienteIdade.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                newClienteIdadeKeyTyped(evt);
             }
         });
 
         newClienteSexoLabel.setText("Sexo:");
 
         newClienteSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino" }));
+        newClienteSexo.setNextFocusableComponent(newClienteEndereco);
         newClienteSexo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newClienteSexoActionPerformed(evt);
@@ -111,190 +130,208 @@ public class PainelVendedor extends javax.swing.JFrame {
         newClienteEnderecoLabel.setText("Endereço:");
 
         newClienteEndereco.setToolTipText("Digite o endereço do cliente a ser cadastrado.");
+        newClienteEndereco.setNextFocusableComponent(newClienteBtnOK);
 
         newClienteBtnOK.setText("Confirmar");
+        newClienteBtnOK.setNextFocusableComponent(newClienteBtnClear);
         newClienteBtnOK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newClienteBtnOKActionPerformed(evt);
             }
         });
 
-        newClienteBtnCancel.setText("Cancelar");
+        newClienteBtnClear.setText("Limpar Campos");
+        newClienteBtnClear.setNextFocusableComponent(newClienteNome);
+        newClienteBtnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newClienteBtnClearActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout tabMkCliLayout = new javax.swing.GroupLayout(tabMkCli);
-        tabMkCli.setLayout(tabMkCliLayout);
-        tabMkCliLayout.setHorizontalGroup(
-            tabMkCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tabMkCliLayout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
-                .addGroup(tabMkCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(newClienteEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
-                    .addComponent(newClienteEnderecoLabel)
-                    .addComponent(newClienteSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newClienteSexoLabel)
-                    .addComponent(newClienteIdade)
-                    .addComponent(newClienteIdadeLabel)
-                    .addComponent(newClienteCPF)
-                    .addComponent(newClienteCPFLabel)
-                    .addComponent(newClienteNome)
-                    .addComponent(newClienteNomeLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
-                .addGroup(tabMkCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(newClienteBtnCancel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newClienteBtnOK, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        javax.swing.GroupLayout tabAddClienteLayout = new javax.swing.GroupLayout(tabAddCliente);
+        tabAddCliente.setLayout(tabAddClienteLayout);
+        tabAddClienteLayout.setHorizontalGroup(
+            tabAddClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabAddClienteLayout.createSequentialGroup()
+                .addContainerGap(133, Short.MAX_VALUE)
+                .addGroup(tabAddClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tabAddClienteLayout.createSequentialGroup()
+                        .addComponent(newClienteBtnOK)
+                        .addGap(114, 114, 114)
+                        .addComponent(newClienteBtnClear))
+                    .addGroup(tabAddClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(newClienteEndereco, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                        .addComponent(newClienteEnderecoLabel)
+                        .addComponent(newClienteSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(newClienteSexoLabel)
+                        .addComponent(newClienteIdade)
+                        .addComponent(newClienteIdadeLabel)
+                        .addComponent(newClienteCPF)
+                        .addComponent(newClienteCPFLabel)
+                        .addComponent(newClienteNome)
+                        .addComponent(newClienteNomeLabel)))
+                .addContainerGap(133, Short.MAX_VALUE))
         );
-        tabMkCliLayout.setVerticalGroup(
-            tabMkCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabMkCliLayout.createSequentialGroup()
-                .addGap(28, 28, 28)
+        tabAddClienteLayout.setVerticalGroup(
+            tabAddClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabAddClienteLayout.createSequentialGroup()
+                .addContainerGap(31, Short.MAX_VALUE)
                 .addComponent(newClienteNomeLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(newClienteNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(newClienteCPFLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tabMkCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newClienteCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newClienteBtnOK, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(newClienteCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(newClienteIdadeLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tabMkCliLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newClienteIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newClienteBtnCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(newClienteIdade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(newClienteSexoLabel)
-                .addGap(9, 9, 9)
+                .addGap(6, 6, 6)
                 .addComponent(newClienteSexo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(newClienteEnderecoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(newClienteEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 71, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addGroup(tabAddClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newClienteBtnOK)
+                    .addComponent(newClienteBtnClear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        tabRmCli.addTab("Adicionar Cliente", tabMkCli);
+        tabsVendedor.addTab("Adicionar Cliente", tabAddCliente);
 
-        jLabel2.setText("Selecione UM (1) cliente:");
+        rmvClienteOptLabel.setText("Selecione UM (1) cliente:");
 
-        jComboBox2.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        rmvClienteOpt.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        rmvClienteOpt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        rmvClienteOpt.setNextFocusableComponent(rmvClienteBtnOK);
 
-        jButton2.setText("Confirmar");
+        rmvClienteBtnOK.setText("Confirmar");
+        rmvClienteBtnOK.setNextFocusableComponent(rmvClienteBtnClear);
 
-        jButton1.setText("Cancelar");
-        jButton1.setMaximumSize(new java.awt.Dimension(79, 23));
-        jButton1.setMinimumSize(new java.awt.Dimension(79, 23));
+        rmvClienteBtnClear.setText("Limpa seleção");
+        rmvClienteBtnClear.setMaximumSize(new java.awt.Dimension(79, 23));
+        rmvClienteBtnClear.setMinimumSize(new java.awt.Dimension(79, 23));
+        rmvClienteBtnClear.setNextFocusableComponent(rmvClienteOpt);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel2)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(20, Short.MAX_VALUE))
+        javax.swing.GroupLayout tabRmvClienteLayout = new javax.swing.GroupLayout(tabRmvCliente);
+        tabRmvCliente.setLayout(tabRmvClienteLayout);
+        tabRmvClienteLayout.setHorizontalGroup(
+            tabRmvClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabRmvClienteLayout.createSequentialGroup()
+                .addContainerGap(62, Short.MAX_VALUE)
+                .addGroup(tabRmvClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rmvClienteOptLabel)
+                    .addGroup(tabRmvClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(tabRmvClienteLayout.createSequentialGroup()
+                            .addComponent(rmvClienteBtnOK)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(rmvClienteBtnClear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(rmvClienteOpt, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2)
+        tabRmvClienteLayout.setVerticalGroup(
+            tabRmvClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tabRmvClienteLayout.createSequentialGroup()
+                .addContainerGap(168, Short.MAX_VALUE)
+                .addComponent(rmvClienteOptLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 336, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addComponent(rmvClienteOpt, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addGroup(tabRmvClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rmvClienteBtnOK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(rmvClienteBtnClear, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
 
-        tabRmCli.addTab("Remover Cliente", jPanel3);
+        tabsVendedor.addTab("Remover Cliente", tabRmvCliente);
 
-        lbFilme.setText("Filme:");
+        vendaFilmeLabel.setText("Filme:");
 
-        selFilme.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        selFilme.setToolTipText("Seleção do filme, que o cliente deseja.");
-        selFilme.addActionListener(new java.awt.event.ActionListener() {
+        vendaFilme.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        vendaFilme.setToolTipText("Seleção do filme, que o cliente deseja.");
+        vendaFilme.setNextFocusableComponent(vendaSessao);
+        vendaFilme.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selFilmeActionPerformed(evt);
+                vendaFilmeActionPerformed(evt);
             }
         });
 
-        lbSessao.setText("Sessão");
+        vendaSessaoLabel.setText("Sessão");
 
-        selSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        selSessao.setToolTipText("Seleção da sessão que o cliente deseja.");
+        vendaSessao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        vendaSessao.setToolTipText("Seleção da sessão que o cliente deseja.");
+        vendaSessao.setNextFocusableComponent(vendaQuantIngresso);
 
-        texto.setText("Quantidade de ingressos:");
+        vendaQuantIngressoLabel.setText("Quantidade de ingressos:");
 
-        lbCpfCliente.setText("CPF do Cliente (opcional):");
+        vendaQuantIngresso.setNextFocusableComponent(vendaCPFCliente);
 
-        codCPFCliVenda.setToolTipText("Cpf do cliente cadastrado.");
+        vendaCPFClienteLabel.setText("CPF do Cliente (opcional):");
 
-        btOkVenda.setText("Confirmar");
+        vendaCPFCliente.setToolTipText("Cpf do cliente cadastrado.");
+        vendaCPFCliente.setNextFocusableComponent(vendaBtnOK);
 
-        btSlFilmeCancelar.setText("Cancelar");
+        vendaBtnOK.setText("Confirmar");
+        vendaBtnOK.setNextFocusableComponent(vendaBtnClear);
+
+        vendaBtnClear.setText("Limpar campos");
+        vendaBtnClear.setNextFocusableComponent(vendaFilme);
 
         javax.swing.GroupLayout tabVendaLayout = new javax.swing.GroupLayout(tabVenda);
         tabVenda.setLayout(tabVendaLayout);
         tabVendaLayout.setHorizontalGroup(
             tabVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tabVendaLayout.createSequentialGroup()
-                .addContainerGap(60, Short.MAX_VALUE)
+                .addContainerGap(92, Short.MAX_VALUE)
                 .addGroup(tabVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(texto)
+                    .addComponent(vendaQuantIngresso, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(vendaQuantIngressoLabel)
                     .addGroup(tabVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(lbCpfCliente)
-                        .addComponent(lbSessao)
-                        .addComponent(lbFilme)
-                        .addComponent(selSessao, 0, 374, Short.MAX_VALUE)
-                        .addComponent(selFilme, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(selQuantIngresso, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(codCPFCliVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(60, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabVendaLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btOkVenda, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btSlFilmeCancelar)
-                .addGap(38, 38, 38))
+                        .addComponent(vendaCPFClienteLabel)
+                        .addComponent(vendaSessaoLabel)
+                        .addComponent(vendaFilmeLabel)
+                        .addComponent(vendaSessao, 0, 374, Short.MAX_VALUE)
+                        .addComponent(vendaFilme, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(tabVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, tabVendaLayout.createSequentialGroup()
+                            .addComponent(vendaBtnOK)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(vendaBtnClear))
+                        .addComponent(vendaCPFCliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 374, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(93, Short.MAX_VALUE))
         );
         tabVendaLayout.setVerticalGroup(
             tabVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tabVendaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbFilme)
+                .addContainerGap(71, Short.MAX_VALUE)
+                .addComponent(vendaFilmeLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(selFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(vendaFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lbSessao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(selSessao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(texto)
+                .addComponent(vendaSessaoLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(selQuantIngresso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lbCpfCliente)
+                .addComponent(vendaSessao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(codCPFCliVenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(197, 197, 197)
+                .addComponent(vendaQuantIngressoLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(vendaQuantIngresso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(vendaCPFClienteLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(vendaCPFCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tabVendaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btSlFilmeCancelar)
-                    .addComponent(btOkVenda))
-                .addContainerGap())
+                    .addComponent(vendaBtnOK)
+                    .addComponent(vendaBtnClear))
+                .addContainerGap(72, Short.MAX_VALUE))
         );
 
-        tabRmCli.addTab("Venda", tabVenda);
+        tabsVendedor.addTab("Venda", tabVenda);
 
         btnLogout.setText("Logout");
         btnLogout.addActionListener(new java.awt.event.ActionListener() {
@@ -303,37 +340,37 @@ public class PainelVendedor extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setText("Você está logado como: *******");
+        labelEstaLogado.setText("Você está logado como: *******");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tabRmCli)
+            .addComponent(tabsVendedor)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(5, 5, 5)
+                .addComponent(labelEstaLogado)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogout)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(tabRmCli, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(tabsVendedor, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnLogout)
-                    .addComponent(jLabel3))
+                    .addComponent(labelEstaLogado))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void selFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selFilmeActionPerformed
+    private void vendaFilmeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaFilmeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_selFilmeActionPerformed
+    }//GEN-LAST:event_vendaFilmeActionPerformed
 
     private void newClienteIdadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newClienteIdadeActionPerformed
 
@@ -369,7 +406,7 @@ public class PainelVendedor extends javax.swing.JFrame {
 
     private void newClienteBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newClienteBtnOKActionPerformed
         int idade;
-        if (newClienteNome.getText().trim().isEmpty()) {
+        /*if (newClienteNome.getText().trim().isEmpty()) {
             newClienteNome.requestFocus();
             return;
         } else {
@@ -405,12 +442,58 @@ public class PainelVendedor extends javax.swing.JFrame {
         if (newClienteSexo.getSelectedItem().equals("Masculino")) {
             System.out.println("vtup");
         }
-        Login.BD2.add(new Cliente(newClienteNome.getText().trim(), newClienteEndereco.getText().trim(), idade, true));
+        Login.BD2.add(new Cliente(newClienteNome.getText().trim(), newClienteEndereco.getText().trim(), idade, true));*/
+        if (newClienteNome.getText().isEmpty()) {
+            System.out.println("No name");
+            newClienteNome.requestFocus();
+            return;
+        }
+        if (newClienteCPF.getText().isEmpty()) {
+            System.out.println("No CPF");
+            newClienteCPF.requestFocus();
+            return;
+        }
+        if (newClienteIdade.getText().isEmpty()) {
+            System.out.println("No age");
+            newClienteIdade.requestFocus();
+            return;
+        }
+        if (newClienteEndereco.getText().isEmpty()) {
+            System.out.println("No adress");
+            newClienteEndereco.requestFocus();
+        }
     }//GEN-LAST:event_newClienteBtnOKActionPerformed
 
     private void newClienteSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newClienteSexoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_newClienteSexoActionPerformed
+
+    private void newClienteBtnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newClienteBtnClearActionPerformed
+        newClienteCPF.setText("");
+        newClienteEndereco.setText("");
+        newClienteIdade.setText("");
+        newClienteNome.setText("");
+        newClienteSexo.setSelectedIndex(0);
+    }//GEN-LAST:event_newClienteBtnClearActionPerformed
+
+    private void newClienteIdadeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newClienteIdadeKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newClienteIdadeKeyTyped
+
+    private void newClienteIdadePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_newClienteIdadePropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newClienteIdadePropertyChange
+
+    private void newClienteIdadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newClienteIdadeFocusLost
+        System.out.println(Integer.parseInt(newClienteIdade.getText()));
+        if (Integer.parseInt(newClienteIdade.getText()) > 150) {
+            newClienteIdade.setText("150");
+            return;
+        } else if (Integer.parseInt(newClienteIdade.getText()) < 18) {
+            newClienteIdade.setText("18");
+            return;
+        }
+    }//GEN-LAST:event_newClienteIdadeFocusLost
 
     /**
      * @param args the command line arguments
@@ -423,20 +506,9 @@ public class PainelVendedor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btOkVenda;
-    private javax.swing.JButton btSlFilmeCancelar;
     private javax.swing.JButton btnLogout;
-    private javax.swing.JTextField codCPFCliVenda;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel lbCpfCliente;
-    private javax.swing.JLabel lbFilme;
-    private javax.swing.JLabel lbSessao;
-    private javax.swing.JButton newClienteBtnCancel;
+    private javax.swing.JLabel labelEstaLogado;
+    private javax.swing.JButton newClienteBtnClear;
     private javax.swing.JButton newClienteBtnOK;
     private javax.swing.JTextField newClienteCPF;
     private javax.swing.JLabel newClienteCPFLabel;
@@ -448,12 +520,23 @@ public class PainelVendedor extends javax.swing.JFrame {
     private javax.swing.JLabel newClienteNomeLabel;
     private javax.swing.JComboBox<String> newClienteSexo;
     private javax.swing.JLabel newClienteSexoLabel;
-    private javax.swing.JComboBox<String> selFilme;
-    private javax.swing.JComboBox<String> selQuantIngresso;
-    private javax.swing.JComboBox<String> selSessao;
-    private javax.swing.JPanel tabMkCli;
-    private javax.swing.JTabbedPane tabRmCli;
+    private javax.swing.JButton rmvClienteBtnClear;
+    private javax.swing.JButton rmvClienteBtnOK;
+    private javax.swing.JComboBox<String> rmvClienteOpt;
+    private javax.swing.JLabel rmvClienteOptLabel;
+    private javax.swing.JPanel tabAddCliente;
+    private javax.swing.JPanel tabRmvCliente;
     private javax.swing.JPanel tabVenda;
-    private javax.swing.JLabel texto;
+    private javax.swing.JTabbedPane tabsVendedor;
+    private javax.swing.JButton vendaBtnClear;
+    private javax.swing.JButton vendaBtnOK;
+    private javax.swing.JTextField vendaCPFCliente;
+    private javax.swing.JLabel vendaCPFClienteLabel;
+    private javax.swing.JComboBox<String> vendaFilme;
+    private javax.swing.JLabel vendaFilmeLabel;
+    private javax.swing.JComboBox<String> vendaQuantIngresso;
+    private javax.swing.JLabel vendaQuantIngressoLabel;
+    private javax.swing.JComboBox<String> vendaSessao;
+    private javax.swing.JLabel vendaSessaoLabel;
     // End of variables declaration//GEN-END:variables
 }
