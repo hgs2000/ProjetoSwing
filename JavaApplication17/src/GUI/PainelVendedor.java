@@ -8,12 +8,8 @@ package GUI;
 import Objetos.Cliente;
 import Objetos.JNumberTextField;
 import static Tools.AutoBuild.setIntegerComboBox;
-import java.awt.Toolkit;
 import static Tools.AutoBuild.validaNums;
 import Tools.Msgs;
-import java.awt.event.MouseEvent;
-import javax.swing.JOptionPane;
-import javax.swing.ToolTipManager;
 
 /**
  *
@@ -42,7 +38,7 @@ public class PainelVendedor extends javax.swing.JFrame {
         newClienteNomeLabel = new javax.swing.JLabel();
         newClienteNome = new javax.swing.JTextField();
         newClienteCPFLabel = new javax.swing.JLabel();
-        newClienteCPF = validaNums(1);
+        newClienteCPF = new JNumberTextField();
         newClienteIdadeLabel = new javax.swing.JLabel();
         newClienteIdade = new JNumberTextField(3);
         newClienteSexoLabel = new javax.swing.JLabel();
@@ -72,7 +68,6 @@ public class PainelVendedor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
 
         newClienteNomeLabel.setText("Nome:");
 
@@ -297,6 +292,11 @@ public class PainelVendedor extends javax.swing.JFrame {
 
         vendaBtnOK.setText("Confirmar");
         vendaBtnOK.setNextFocusableComponent(vendaBtnClear);
+        vendaBtnOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vendaBtnOKActionPerformed(evt);
+            }
+        });
 
         vendaBtnClear.setText("Limpar campos");
         vendaBtnClear.setNextFocusableComponent(vendaFilme);
@@ -415,14 +415,6 @@ public class PainelVendedor extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnLogoutActionPerformed
 
-    /**
-     * Método utilizado para transformar o JTextField num JFormattedTextField
-     * afim de aceitar somente a entrada descrita.
-     *
-     * @param subOp
-     * @return JTextField formatado
-     */
-
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         this.dispose();
@@ -473,9 +465,11 @@ public class PainelVendedor extends javax.swing.JFrame {
             Msgs.displayErrorJOP("Erro! O nome não pode ser vazio.", this);
             return;
         }
-        if (newClienteCPF.getText().equals("")) {
+        System.out.println(newClienteCPF.getText());
+        if (newClienteCPF.getText().equals("   .   .   -  ")) {
             System.out.println("No CPF");
             newClienteCPF.requestFocus();
+            //newClienteCPF.setText("   .   .   -  ");
             Msgs.displayErrorJOP("Erro! O CPF não pode ser vazio.", this);
             return;
         }
@@ -486,10 +480,20 @@ public class PainelVendedor extends javax.swing.JFrame {
             return;
         }
         if (newClienteEndereco.getText().isEmpty()) {
-            System.out.println("No adress");
+            System.out.println("No address");
             newClienteEndereco.requestFocus();
             Msgs.displayErrorJOP("Erro! O endereço não pode ser vazio.", this);
         }
+        Cliente cl = new Cliente(newClienteNome.getText(), newClienteEndereco.toText(), Integer.parseInt(newClienteIdade.getText()), {
+            new Boolean(){
+                if (newClienteSexo.getSelectedItem().equals("Masculino")) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+    );
     }//GEN-LAST:event_newClienteBtnOKActionPerformed
 
     private void newClienteSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newClienteSexoActionPerformed
@@ -513,13 +517,13 @@ public class PainelVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_newClienteIdadePropertyChange
 
     private void newClienteIdadeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newClienteIdadeFocusLost
-        System.out.println(Integer.parseInt(newClienteIdade.getText()));
-        if (Integer.parseInt(newClienteIdade.getText()) > 150) {
+        System.out.println(/*Integer.parseInt(*/newClienteIdade.getText()/*)*/);
+        if (newClienteIdade.getText().isEmpty()) {
+            System.out.println("Idade empty");
+        } else if (Integer.parseInt(newClienteIdade.getText()) > 150) {
             newClienteIdade.setText("150");
-            return;
         } else if (Integer.parseInt(newClienteIdade.getText()) < 18) {
             newClienteIdade.setText("18");
-            return;
         }
     }//GEN-LAST:event_newClienteIdadeFocusLost
 
@@ -542,6 +546,10 @@ public class PainelVendedor extends javax.swing.JFrame {
     private void vendaCPFClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaCPFClienteActionPerformed
         vendaCPFCliente.setCaretPosition(0);
     }//GEN-LAST:event_vendaCPFClienteActionPerformed
+
+    private void vendaBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaBtnOKActionPerformed
+        Msgs.displayErrorJOP("Erro! O CPF não deve ser vazio.", this);
+    }//GEN-LAST:event_vendaBtnOKActionPerformed
 
     /**
      * @param args the command line arguments
