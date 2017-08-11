@@ -10,6 +10,10 @@ import Objetos.JNumberTextField;
 import static Tools.AutoBuild.setIntegerComboBox;
 import java.awt.Toolkit;
 import static Tools.AutoBuild.validaNums;
+import Tools.Msgs;
+import java.awt.event.MouseEvent;
+import javax.swing.JOptionPane;
+import javax.swing.ToolTipManager;
 
 /**
  *
@@ -82,6 +86,11 @@ public class PainelVendedor extends javax.swing.JFrame {
         newClienteCPFLabel.setText("CPF (somente digitos):");
 
         newClienteCPF.setNextFocusableComponent(newClienteIdade);
+        newClienteCPF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                newClienteCPFFocusGained(evt);
+            }
+        });
         newClienteCPF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newClienteCPFActionPerformed(evt);
@@ -217,6 +226,11 @@ public class PainelVendedor extends javax.swing.JFrame {
         rmvClienteBtnClear.setMaximumSize(new java.awt.Dimension(79, 23));
         rmvClienteBtnClear.setMinimumSize(new java.awt.Dimension(79, 23));
         rmvClienteBtnClear.setNextFocusableComponent(rmvClienteOpt);
+        rmvClienteBtnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rmvClienteBtnClearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tabRmvClienteLayout = new javax.swing.GroupLayout(tabRmvCliente);
         tabRmvCliente.setLayout(tabRmvClienteLayout);
@@ -275,12 +289,22 @@ public class PainelVendedor extends javax.swing.JFrame {
 
         vendaCPFCliente.setToolTipText("Cpf do cliente cadastrado.");
         vendaCPFCliente.setNextFocusableComponent(vendaBtnOK);
+        vendaCPFCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vendaCPFClienteActionPerformed(evt);
+            }
+        });
 
         vendaBtnOK.setText("Confirmar");
         vendaBtnOK.setNextFocusableComponent(vendaBtnClear);
 
         vendaBtnClear.setText("Limpar campos");
         vendaBtnClear.setNextFocusableComponent(vendaFilme);
+        vendaBtnClear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                vendaBtnClearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout tabVendaLayout = new javax.swing.GroupLayout(tabVenda);
         tabVenda.setLayout(tabVendaLayout);
@@ -446,21 +470,25 @@ public class PainelVendedor extends javax.swing.JFrame {
         if (newClienteNome.getText().isEmpty()) {
             System.out.println("No name");
             newClienteNome.requestFocus();
+            Msgs.displayErrorJOP("Erro! O nome não pode ser vazio.", this);
             return;
         }
-        if (newClienteCPF.getText().isEmpty()) {
+        if (newClienteCPF.getText().equals("")) {
             System.out.println("No CPF");
             newClienteCPF.requestFocus();
+            Msgs.displayErrorJOP("Erro! O CPF não pode ser vazio.", this);
             return;
         }
         if (newClienteIdade.getText().isEmpty()) {
             System.out.println("No age");
             newClienteIdade.requestFocus();
+            Msgs.displayErrorJOP("Erro! A idade não pode ser vazia.", this);
             return;
         }
         if (newClienteEndereco.getText().isEmpty()) {
             System.out.println("No adress");
             newClienteEndereco.requestFocus();
+            Msgs.displayErrorJOP("Erro! O endereço não pode ser vazio.", this);
         }
     }//GEN-LAST:event_newClienteBtnOKActionPerformed
 
@@ -494,6 +522,26 @@ public class PainelVendedor extends javax.swing.JFrame {
             return;
         }
     }//GEN-LAST:event_newClienteIdadeFocusLost
+
+    private void newClienteCPFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newClienteCPFFocusGained
+        newClienteCPF.setCaretPosition(0);
+    }//GEN-LAST:event_newClienteCPFFocusGained
+
+    private void rmvClienteBtnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmvClienteBtnClearActionPerformed
+        rmvClienteOpt.setSelectedIndex(0);
+    }//GEN-LAST:event_rmvClienteBtnClearActionPerformed
+
+    private void vendaBtnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaBtnClearActionPerformed
+        vendaCPFCliente.setText("");
+        vendaFilme.setSelectedIndex(0);
+        vendaQuantIngresso.setSelectedIndex(0);
+        vendaSessao.setSelectedIndex(0);
+
+    }//GEN-LAST:event_vendaBtnClearActionPerformed
+
+    private void vendaCPFClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaCPFClienteActionPerformed
+        vendaCPFCliente.setCaretPosition(0);
+    }//GEN-LAST:event_vendaCPFClienteActionPerformed
 
     /**
      * @param args the command line arguments

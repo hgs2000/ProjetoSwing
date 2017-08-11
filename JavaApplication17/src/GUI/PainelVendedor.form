@@ -154,6 +154,7 @@
                 </Property>
               </Properties>
               <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="newClienteCPFFocusGained"/>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newClienteCPFActionPerformed"/>
                 <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="newClienteCPFPropertyChange"/>
               </Events>
@@ -337,6 +338,9 @@
                   <ComponentRef name="rmvClienteOpt"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rmvClienteBtnClearActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -486,6 +490,9 @@
                   <ComponentRef name="vendaBtnOK"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vendaCPFClienteActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="validaNums(1)"/>
               </AuxValues>
@@ -505,6 +512,9 @@
                   <ComponentRef name="vendaFilme"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="vendaBtnClearActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
