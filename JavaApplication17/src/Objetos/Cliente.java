@@ -7,14 +7,27 @@ package Objetos;
 public class Cliente {
 
     private String nome, endereco;
-    private int idade;
-    boolean sexo;//true : masc, false femi;
+    private int idade, CPF;
 
-    public Cliente(String nome, String endereco, int idade, boolean sexo) {
+    public int getCPF() {
+        return CPF;
+    }
+
+    public void setCPF(int cpf) {
+        this.CPF = cpf;
+    }
+    private boolean sexo;//true : masc, false femi;
+
+    public Cliente(){
+        
+    }
+    
+    public Cliente(String nome, String endereco, int idade, boolean sexo, int cpf) {
         this.nome = nome;
         this.endereco = endereco;
         this.idade = idade;
         this.sexo = sexo;
+        this.CPF = cpf;
     }
 
     public String getNome() {
@@ -24,7 +37,7 @@ public class Cliente {
     public void setNome(String nome) throws Exception {
         if (!nome.isEmpty()) {
             this.nome = nome;
-        }else{
+        } else {
             throw new Exception("nome invalido");
         }
     }
@@ -53,12 +66,20 @@ public class Cliente {
         }
     }
 
-    public boolean isSexo() {
-        return sexo;
+    public String getSexo() {
+        if (sexo == true) {
+            return "Masculino";
+        } else {
+            return "Feminino";
+        }
     }
 
     public void setSexo(boolean sexo) {
         this.sexo = sexo;
+    }
+    
+    public void sendToDB(){
+        
     }
 
 }

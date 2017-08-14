@@ -10,6 +10,7 @@ import Objetos.JNumberTextField;
 import static Tools.AutoBuild.setIntegerComboBox;
 import static Tools.AutoBuild.validaNums;
 import Tools.Msgs;
+import Tools.Validadores;
 
 /**
  *
@@ -421,44 +422,6 @@ public class PainelVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void newClienteBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newClienteBtnOKActionPerformed
-        int idade;
-        /*if (newClienteNome.getText().trim().isEmpty()) {
-            newClienteNome.requestFocus();
-            return;
-        } else {
-            boolean op = false;
-            boolean op2 = false;
-            String idadeStr = newClienteIdade.getText().trim();
-
-            for (int i = 0; i < idadeStr.length(); i++) {
-                char carac = idadeStr.charAt(i);
-                if (!Character.isDigit(carac)) {
-                    op = true;
-                }
-            }
-            if (op) {
-                newClienteIdade.requestFocus();
-                return;
-            } else {
-                idade = Integer.parseInt(idadeStr);
-                if ((idade > 150) || (idade < 18)) {
-                    newClienteIdade.requestFocus();
-                    return;
-                } else {
-                    if (newClienteEndereco.getText().trim().isEmpty()) {
-                        newClienteEndereco.requestFocus();
-                        return;
-                    }
-                }
-            }
-        }
-        System.out.println(newClienteCPF.getText());
-        //hgs work warning here; acima fazer validação de cpf
-        boolean sexo;
-        if (newClienteSexo.getSelectedItem().equals("Masculino")) {
-            System.out.println("vtup");
-        }
-        Login.BD2.add(new Cliente(newClienteNome.getText().trim(), newClienteEndereco.getText().trim(), idade, true));*/
         if (newClienteNome.getText().isEmpty()) {
             System.out.println("No name");
             newClienteNome.requestFocus();
@@ -484,16 +447,13 @@ public class PainelVendedor extends javax.swing.JFrame {
             newClienteEndereco.requestFocus();
             Msgs.displayErrorJOP("Erro! O endereço não pode ser vazio.", this);
         }
-        Cliente cl = new Cliente(newClienteNome.getText(), newClienteEndereco.toText(), Integer.parseInt(newClienteIdade.getText()), {
-            new Boolean(){
-                if (newClienteSexo.getSelectedItem().equals("Masculino")) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        }
-    );
+        Cliente cl = new Cliente(newClienteNome.getText(), newClienteEndereco.getText(), Integer.parseInt(newClienteIdade.getText()), Validadores.isMaleOrFemale(newClienteSexo.getSelectedItem()), Validadores.getIntValue(newClienteCPF.getText()));
+        System.out.println(cl.getNome());
+        System.out.println(cl.getEndereco());
+        System.out.println(cl.getIdade());
+        System.out.println(cl.getSexo());
+        System.out.println(cl.getCPF());
+        
     }//GEN-LAST:event_newClienteBtnOKActionPerformed
 
     private void newClienteSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newClienteSexoActionPerformed
