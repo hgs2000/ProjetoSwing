@@ -20,4 +20,22 @@ public class Validadores {
             return -1;
         }
     }
+
+    public static String getSexoFromBool(boolean sexo) {
+        if (sexo) {
+            return "Masculino";
+        } else {
+            return "Feminino";
+        }
+    }
+
+    public static long getLongValue(String text) {
+        try {
+            long val = Long.parseLong(text);
+            return val;
+        } catch (NumberFormatException ex) {
+            ex.printStackTrace();
+            return -1;
+        }
+    }
 }

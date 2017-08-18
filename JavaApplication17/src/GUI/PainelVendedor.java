@@ -39,7 +39,7 @@ public class PainelVendedor extends javax.swing.JFrame {
         newClienteNomeLabel = new javax.swing.JLabel();
         newClienteNome = new javax.swing.JTextField();
         newClienteCPFLabel = new javax.swing.JLabel();
-        newClienteCPF = new JNumberTextField();
+        newClienteCPF = new JNumberTextField(11);
         newClienteIdadeLabel = new javax.swing.JLabel();
         newClienteIdade = new JNumberTextField(3);
         newClienteSexoLabel = new javax.swing.JLabel();
@@ -61,7 +61,7 @@ public class PainelVendedor extends javax.swing.JFrame {
         vendaQuantIngressoLabel = new javax.swing.JLabel();
         vendaQuantIngresso = setIntegerComboBox(0, 10);
         vendaCPFClienteLabel = new javax.swing.JLabel();
-        vendaCPFCliente = validaNums(1);
+        vendaCPFCliente = new JNumberTextField(11);
         vendaBtnOK = new javax.swing.JButton();
         vendaBtnClear = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
@@ -218,7 +218,7 @@ public class PainelVendedor extends javax.swing.JFrame {
         rmvClienteBtnOK.setText("Confirmar");
         rmvClienteBtnOK.setNextFocusableComponent(rmvClienteBtnClear);
 
-        rmvClienteBtnClear.setText("Limpa seleção");
+        rmvClienteBtnClear.setText("Limpar seleção");
         rmvClienteBtnClear.setMaximumSize(new java.awt.Dimension(79, 23));
         rmvClienteBtnClear.setMinimumSize(new java.awt.Dimension(79, 23));
         rmvClienteBtnClear.setNextFocusableComponent(rmvClienteOpt);
@@ -429,11 +429,15 @@ public class PainelVendedor extends javax.swing.JFrame {
             return;
         }
         System.out.println(newClienteCPF.getText());
-        if (newClienteCPF.getText().equals("   .   .   -  ")) {
+        if (newClienteCPF.getText().isEmpty()) {
             System.out.println("No CPF");
-            newClienteCPF.requestFocus();
-            //newClienteCPF.setText("   .   .   -  ");
             Msgs.displayErrorJOP("Erro! O CPF não pode ser vazio.", this);
+            newClienteCPF.requestFocus();
+            return;
+        } else if (newClienteCPF.getText().length() < 11) {
+            System.out.println("CPF under 11.");
+            Msgs.displayErrorJOP("Erro! O CPF não tem 11 caracteres.", this);
+            newClienteCPF.requestFocus();
             return;
         }
         if (newClienteIdade.getText().isEmpty()) {
@@ -447,13 +451,14 @@ public class PainelVendedor extends javax.swing.JFrame {
             newClienteEndereco.requestFocus();
             Msgs.displayErrorJOP("Erro! O endereço não pode ser vazio.", this);
         }
-        Cliente cl = new Cliente(newClienteNome.getText(), newClienteEndereco.getText(), Integer.parseInt(newClienteIdade.getText()), Validadores.isMaleOrFemale(newClienteSexo.getSelectedItem()), Validadores.getIntValue(newClienteCPF.getText()));
+        Cliente cl = new Cliente(newClienteNome.getText(), newClienteEndereco.getText(), Integer.parseInt(newClienteIdade.getText()), Validadores.isMaleOrFemale(newClienteSexo.getSelectedItem()), newClienteCPF.getText());
         System.out.println(cl.getNome());
         System.out.println(cl.getEndereco());
         System.out.println(cl.getIdade());
         System.out.println(cl.getSexo());
         System.out.println(cl.getCPF());
-        
+        cl.sendToDB();
+
     }//GEN-LAST:event_newClienteBtnOKActionPerformed
 
     private void newClienteSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newClienteSexoActionPerformed
@@ -488,7 +493,7 @@ public class PainelVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_newClienteIdadeFocusLost
 
     private void newClienteCPFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newClienteCPFFocusGained
-        newClienteCPF.setCaretPosition(0);
+        //newClienteCPF.setCaretPosition(0);
     }//GEN-LAST:event_newClienteCPFFocusGained
 
     private void rmvClienteBtnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmvClienteBtnClearActionPerformed
@@ -504,11 +509,23 @@ public class PainelVendedor extends javax.swing.JFrame {
     }//GEN-LAST:event_vendaBtnClearActionPerformed
 
     private void vendaCPFClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaCPFClienteActionPerformed
-        vendaCPFCliente.setCaretPosition(0);
+        //vendaCPFCliente.setCaretPosition(0);
     }//GEN-LAST:event_vendaCPFClienteActionPerformed
 
     private void vendaBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_vendaBtnOKActionPerformed
-        Msgs.displayErrorJOP("Erro! O CPF não deve ser vazio.", this);
+        System.out.println(vendaCPFCliente.getText());
+        if (vendaCPFCliente.getText().isEmpty()) {
+            System.out.println("No CPF");
+            Msgs.displayErrorJOP("Erro! O CPF não pode ser vazio.", this);
+            vendaCPFCliente.requestFocus();
+            return;
+        } else if (vendaCPFCliente.getText().length() < 11) {
+            System.out.println("CPF under 11.");
+            Msgs.displayErrorJOP("Erro! O CPF não tem 11 caracteres.", this);
+            vendaCPFCliente.requestFocus();
+            return;
+        }
+        //Msgs.displayErrorJOP("Erro! O CPF não deve ser vazio.", this);
     }//GEN-LAST:event_vendaBtnOKActionPerformed
 
     /**

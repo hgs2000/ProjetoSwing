@@ -1,33 +1,39 @@
 package Objetos;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author informatica
  */
 public class Cliente {
 
-    private String nome, endereco;
-    private int idade, CPF;
+    private ClienteDAO dao;
+    private String nome, endereco, CPF;
+    private int idade;
 
-    public int getCPF() {
+    public String getCPF() {
         return CPF;
     }
 
-    public void setCPF(int cpf) {
+    public void setCPF(String cpf) {
         this.CPF = cpf;
     }
     private boolean sexo;//true : masc, false femi;
 
-    public Cliente(){
-        
+    public Cliente() {
+
     }
-    
-    public Cliente(String nome, String endereco, int idade, boolean sexo, int cpf) {
+
+    public Cliente(String nome, String endereco, int idade, boolean sexo, String cpf) {
         this.nome = nome;
         this.endereco = endereco;
         this.idade = idade;
         this.sexo = sexo;
         this.CPF = cpf;
+        this.dao = new ClienteDAO(this);
     }
 
     public String getNome() {
@@ -77,9 +83,14 @@ public class Cliente {
     public void setSexo(boolean sexo) {
         this.sexo = sexo;
     }
-    
-    public void sendToDB(){
-        
+
+    public void sendToDB() {
+        try {
+            dao.adicionaCliente();
+        } catch (SQLException ex) {
+            Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Erro do SQL!");
+        }
     }
 
 }

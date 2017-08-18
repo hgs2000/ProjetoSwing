@@ -1,3 +1,4 @@
+DROP SCHEMA if exists Opencine ;
 CREATE DATABASE Opencine;
 USE Opencine;
 CREATE TABLE filmes (
@@ -26,9 +27,9 @@ CREATE TABLE sessao (
 CREATE TABLE cliente (
     nome_cliente VARCHAR(50) NOT NULL,
     idade_cliente INT NOT NULL,
-    sexo_cliente ENUM('Masculino''Feminino') NOT NULL,
+    sexo_cliente VARCHAR(10) NOT NULL,
     endereco_cliente VARCHAR(300) NOT NULL,
-    cpf_cliente VARCHAR(12) NOT NULL,
+    cpf_cliente VARCHAR(11) NOT NULL,
     id_cliente INT PRIMARY KEY AUTO_INCREMENT
 );
 
@@ -45,3 +46,4 @@ CREATE TABLE funcionario (
     nome_func VARCHAR(100) NOT NULL
 );
 
+SELECT * from cliente;

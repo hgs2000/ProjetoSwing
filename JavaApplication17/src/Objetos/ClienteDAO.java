@@ -3,14 +3,17 @@ package Objetos;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ClienteDAO {
 
-    public Cliente autenticaUsuario(
+    Cliente c;
+
+    public ClienteDAO(Cliente cli) {
+        this.c = cli;
+    }
+
+    /*public Cliente retornaCliente(
             String nome,
             String senha)
             throws SQLException {
@@ -39,9 +42,22 @@ public class ClienteDAO {
                 cl.setCPF(rs.getInt(4));
                 cl.setSexo(rs.getBoolean(5));
             } catch (Exception ex) {
-                Logger.getLogger(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLoggString sqler(ClienteDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         return cl;
+    }*/
+    public void adicionaCliente() throws SQLException {
+        String str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=alunoifc";
+        Connection conn = DriverManager.getConnection(str);
+        String sql = "insert into cliente (nome_cliente, idade_cliente, sexo_cliente, endereco_cliente, cpf_cliente) values (?, ?, ?, ?, ?);";
+        PreparedStatement p = conn.prepareStatement(sql);
+        p.setString(1, this.c.getNome());
+        p.setInt(2, this.c.getIdade());
+        p.setString(3, this.c.getSexo());
+        p.setString(4, this.c.getEndereco());
+        p.setString(5, this.c.getCPF());
+        p.execute();
+        System.out.println("Novo cliente adicionado.");
     }
 }
