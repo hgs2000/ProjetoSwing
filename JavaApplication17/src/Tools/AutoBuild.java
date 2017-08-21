@@ -1,6 +1,7 @@
 package Tools;
 
 import GUI.PainelVendedor;
+import Objetos.Cliente;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -44,5 +45,13 @@ public class AutoBuild {
             default:
                 return new JFormattedTextField();
         }
+    }
+
+    public static ArrayList<Cliente> getClientesFromDB() {
+        ArrayList<Cliente> clientes = new ArrayList<>();
+        
+        
+        
+        return null;
     }
 }

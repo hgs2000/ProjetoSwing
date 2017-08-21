@@ -11,6 +11,7 @@ import static Tools.AutoBuild.setIntegerComboBox;
 import static Tools.AutoBuild.validaNums;
 import Tools.Msgs;
 import Tools.Validadores;
+import java.awt.Toolkit;
 
 /**
  *
@@ -69,6 +70,8 @@ public class PainelVendedor extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
+        setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
+        setResizable(false);
 
         newClienteNomeLabel.setText("Nome:");
 
@@ -212,7 +215,6 @@ public class PainelVendedor extends javax.swing.JFrame {
         rmvClienteOptLabel.setText("Selecione UM (1) cliente:");
 
         rmvClienteOpt.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        rmvClienteOpt.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         rmvClienteOpt.setNextFocusableComponent(rmvClienteBtnOK);
 
         rmvClienteBtnOK.setText("Confirmar");
@@ -451,14 +453,13 @@ public class PainelVendedor extends javax.swing.JFrame {
             newClienteEndereco.requestFocus();
             Msgs.displayErrorJOP("Erro! O endereço não pode ser vazio.", this);
         }
-        Cliente cl = new Cliente(newClienteNome.getText(), newClienteEndereco.getText(), Integer.parseInt(newClienteIdade.getText()), Validadores.isMaleOrFemale(newClienteSexo.getSelectedItem()), newClienteCPF.getText());
+        Cliente cl = new Cliente(newClienteNome.getText(), newClienteEndereco.getText(), Integer.parseInt(newClienteIdade.getText()), (String) newClienteSexo.getSelectedItem(), newClienteCPF.getText());
         System.out.println(cl.getNome());
         System.out.println(cl.getEndereco());
         System.out.println(cl.getIdade());
         System.out.println(cl.getSexo());
         System.out.println(cl.getCPF());
         cl.sendToDB();
-
     }//GEN-LAST:event_newClienteBtnOKActionPerformed
 
     private void newClienteSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newClienteSexoActionPerformed
@@ -518,14 +519,11 @@ public class PainelVendedor extends javax.swing.JFrame {
             System.out.println("No CPF");
             Msgs.displayErrorJOP("Erro! O CPF não pode ser vazio.", this);
             vendaCPFCliente.requestFocus();
-            return;
         } else if (vendaCPFCliente.getText().length() < 11) {
             System.out.println("CPF under 11.");
             Msgs.displayErrorJOP("Erro! O CPF não tem 11 caracteres.", this);
             vendaCPFCliente.requestFocus();
-            return;
         }
-        //Msgs.displayErrorJOP("Erro! O CPF não deve ser vazio.", this);
     }//GEN-LAST:event_vendaBtnOKActionPerformed
 
     /**

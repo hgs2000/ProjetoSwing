@@ -9,11 +9,18 @@ package Objetos;
  *
  * @author informatica
  */
-public class Gerente extends Funcionario{
+public class Gerente extends Funcionario {
 
-    final int typeId = 0;
-
+    GerenteDAO dao;
+    
     public Gerente(String username, char[] password) {
         super(username, password);
+        dao = new GerenteDAO(this);
     }
+    
+    @Override
+    public void sendToDB(){
+        
+    }
+
 }

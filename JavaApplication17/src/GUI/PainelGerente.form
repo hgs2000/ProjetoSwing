@@ -30,10 +30,12 @@
           <Component id="tabsGerente" alignment="0" max="32767" attributes="0"/>
           <Group type="102" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="tituloPainelGerente" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnLogout" alignment="0" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="tituloPainelGerente" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
+              <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -103,7 +105,7 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="newFilmeGenPanel" alignment="1" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane1" alignment="0" pref="706" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" alignment="0" pref="665" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="newFilmeNome" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
@@ -231,7 +233,7 @@
                         <DimensionLayout dim="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace pref="154" max="32767" attributes="0"/>
+                                  <EmptySpace pref="143" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="newFilmeGenAcao" max="32767" attributes="0"/>
                                       <Component id="newFilmeGenRoman" max="32767" attributes="0"/>
@@ -254,7 +256,7 @@
                                       </Group>
                                       <Component id="newFilmeGenHist" min="-2" pref="121" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="155" max="32767" attributes="0"/>
+                                  <EmptySpace pref="142" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                         </DimensionLayout>
@@ -469,7 +471,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace pref="163" max="32767" attributes="0"/>
+                              <EmptySpace pref="142" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="newSalaCodLabel" min="-2" max="-2" attributes="0"/>
                                   <Component id="newSalaNomeLabel" min="-2" max="-2" attributes="0"/>
@@ -486,7 +488,7 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="161" max="32767" attributes="0"/>
+                              <EmptySpace pref="141" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -506,7 +508,7 @@
                                   <Component id="newSalaBtnSave" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="newSalaBtnClear" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="165" max="32767" attributes="0"/>
+                              <EmptySpace pref="166" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -563,7 +565,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace pref="192" max="32767" attributes="0"/>
+                              <EmptySpace pref="175" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
@@ -596,14 +598,14 @@
                                       <Component id="newSessaoTimeMin" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="193" max="32767" attributes="0"/>
+                              <EmptySpace pref="175" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="173" max="32767" attributes="0"/>
+                              <EmptySpace pref="174" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="newSessaoFilmeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="newSessaoFilme" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -629,7 +631,7 @@
                                   <Component id="newSessaoBtnSave" max="32767" attributes="0"/>
                                   <Component id="newSessaoBtnClear" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="129" max="32767" attributes="0"/>
+                              <EmptySpace pref="130" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -739,7 +741,7 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace pref="223" max="32767" attributes="0"/>
+                              <EmptySpace pref="202" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="newVendedorSenhaLabel" min="-2" max="-2" attributes="0"/>
                                   <Component id="newVendedorLoginLabel" min="-2" max="-2" attributes="0"/>
@@ -757,14 +759,14 @@
                                   <Component id="newVendedorLogin" alignment="0" max="32767" attributes="0"/>
                                   <Component id="newVendedorSenha" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="211" max="32767" attributes="0"/>
+                              <EmptySpace pref="191" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="86" max="32767" attributes="0"/>
+                              <EmptySpace pref="84" max="32767" attributes="0"/>
                               <Component id="newVendedorCPFLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="newVendedorCPF" min="-2" max="-2" attributes="0"/>
@@ -782,14 +784,14 @@
                               <Component id="newVendedorLogin" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="newVendedorSenhaLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="newVendedorSenha" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="newVendedorBtnSave" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="newVendedorBtnClear" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="88" max="32767" attributes="0"/>
+                              <EmptySpace pref="86" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -805,7 +807,7 @@
                         <Property name="toolTipText" type="java.lang.String" value="Digite o CPF do funcion&#xe1;rio a aser cadastrado."/>
                       </Properties>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="validaNums(1)"/>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JNumberTextField(11)"/>
                       </AuxValues>
                     </Component>
                     <Component class="javax.swing.JLabel" name="newVendedorTurnoLabel">
@@ -815,13 +817,8 @@
                     </Component>
                     <Component class="javax.swing.JComboBox" name="newVendedorTurno">
                       <Properties>
-                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                          <StringArray count="4">
-                            <StringItem index="0" value="Item 1"/>
-                            <StringItem index="1" value="Item 2"/>
-                            <StringItem index="2" value="Item 3"/>
-                            <StringItem index="3" value="Item 4"/>
-                          </StringArray>
+                        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                          <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] {&quot;Matutino&quot;, &quot;Vespertinho&quot;, &quot;Noturno&quot;})" type="code"/>
                         </Property>
                         <Property name="toolTipText" type="java.lang.String" value="Selecione o turno do funcion&#xe1;rio."/>
                       </Properties>
@@ -843,6 +840,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Salvar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newVendedorBtnSaveActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="newVendedorLoginLabel">
                       <Properties>
@@ -911,20 +911,20 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace pref="163" max="32767" attributes="0"/>
+                              <EmptySpace pref="143" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="rmvFilmeOpt" alignment="0" min="-2" pref="391" max="-2" attributes="0"/>
                                   <Component id="rmvFilmeOptLabel" min="-2" max="-2" attributes="0"/>
                                   <Component id="rmvFilmeBtnYes" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="164" max="32767" attributes="0"/>
+                              <EmptySpace pref="143" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="164" max="32767" attributes="0"/>
+                              <EmptySpace pref="165" max="32767" attributes="0"/>
                               <Component id="rmvFilmeOptLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="rmvFilmeOpt" min="-2" max="-2" attributes="0"/>
@@ -989,7 +989,7 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="86" max="32767" attributes="0"/>
+                              <EmptySpace pref="87" max="32767" attributes="0"/>
                               <Component id="rmvSalaOptLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="rmvSalaOpt" min="-2" max="-2" attributes="0"/>
@@ -1041,7 +1041,7 @@
                                   <Component id="rmvSessaoOptLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="rmvSessaoOpt" alignment="0" min="-2" pref="260" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="235" max="32767" attributes="0"/>
+                              <EmptySpace pref="194" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1057,7 +1057,7 @@
                                   <Component id="rmvSessaoBtnYes" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="rmvSessaoBtnClear" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="241" max="32767" attributes="0"/>
+                              <EmptySpace pref="244" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1107,29 +1107,47 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace pref="225" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="rmvVendedorCPFLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rmvVendedorCPF" min="-2" pref="260" max="-2" attributes="0"/>
+                              <EmptySpace pref="209" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="rmvVendPrevTurnoLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rmvVendPrevLoginLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rmvVendPrevEmailLabel" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rmvVendedorCPF" max="32767" attributes="0"/>
                                   <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="179" max="-2" attributes="0"/>
                                       <Component id="rmvVendBtnClear" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="rmvVendPrevEmail" max="32767" attributes="0"/>
+                                  <Component id="rmvVendedorCPFLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="rmvVendPrevLogin" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="rmvVendPrevTurno" alignment="0" max="32767" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="225" max="32767" attributes="0"/>
+                              <EmptySpace pref="208" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="143" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                               <Component id="rmvVendedorCPFLabel" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="rmvVendedorCPF" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="rmvVendPrevEmailLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="rmvVendPrevEmail" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="rmvVendPrevLoginLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="rmvVendPrevLogin" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="rmvVendPrevTurnoLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="rmvVendPrevTurno" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               <Component id="rmvVendBtnClear" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="222" max="32767" attributes="0"/>
+                              <EmptySpace pref="136" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -1144,10 +1162,47 @@
                       <Properties>
                         <Property name="toolTipText" type="java.lang.String" value="Digite o CPF do funcion&#xe1;rio a ser removido."/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="caretPositionChanged" listener="java.awt.event.InputMethodListener" parameters="java.awt.event.InputMethodEvent" handler="rmvVendedorCPFCaretPositionChanged"/>
+                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="rmvVendedorCPFPropertyChange"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="rmvVendBtnClear">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Cancelar"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="rmvVendPrevEmail">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                        <Property name="focusable" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="rmvVendPrevEmailLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Email Vendedor"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="rmvVendPrevLogin">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                        <Property name="focusable" type="boolean" value="false"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="rmvVendPrevLoginLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Login Vendedor"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="rmvVendPrevTurnoLabel">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Turno Vendedor"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="rmvVendPrevTurno">
+                      <Properties>
+                        <Property name="enabled" type="boolean" value="false"/>
+                        <Property name="focusable" type="boolean" value="false"/>
                       </Properties>
                     </Component>
                   </SubComponents>

@@ -48,7 +48,14 @@ public class ClienteDAO {
         return cl;
     }*/
     public void adicionaCliente() throws SQLException {
-        String str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=alunoifc";
+        String str;
+        //if (!System.getProperty("user.name").equals("dupla")) {
+        //System.out.println("Yes");
+        str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=root";
+        //} else /*if (System.getProperty("user.name").equals("Sake"))*/ {
+        //System.out.println("No");
+        //str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=alunoifc";
+        //}
         Connection conn = DriverManager.getConnection(str);
         String sql = "insert into cliente (nome_cliente, idade_cliente, sexo_cliente, endereco_cliente, cpf_cliente) values (?, ?, ?, ?, ?);";
         PreparedStatement p = conn.prepareStatement(sql);

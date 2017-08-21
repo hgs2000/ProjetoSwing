@@ -4,16 +4,24 @@ import Objetos.Cliente;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import Objetos.Gerente;
+import Objetos.GerenteDAO;
 import Objetos.Vendedor;
 import Tools.Msgs;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Login extends javax.swing.JFrame {
 
-    //Este array é temporario pois sera usado Banco de Dados para salvar os dados futuramente.
     static ArrayList<Vendedor> BD = new ArrayList<>();
     static Gerente gerente;
     static ArrayList<Cliente> BD2 = new ArrayList<>();
+
+    private static void getGerente() throws SQLException {
+        GerenteDAO dao = new GerenteDAO(gerente);
+        gerente = dao.getGerente();
+    }
 
     public Login() {
         initComponents();
@@ -120,32 +128,27 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_inputSenhaActionPerformed
 
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
-        boolean eVazio = false;
         if (inputNome.getText().isEmpty()) {
             inputNome.grabFocus();
-            eVazio = true;
+            return;
         }
         char[] temp2 = inputSenha.getPassword();
         if (temp2.length == 0) {
             inputSenha.grabFocus();
-            eVazio = true;
+            return;
         }
-        if (!eVazio) {
-            char[] safe = inputSenha.getPassword();
-            if (Login.gerente.validLogin(inputNome.getText(), safe)) {
-                PainelGerente guiG = new PainelGerente();
-                this.dispose();
-            } else {
-                for (Vendedor vend : BD) {
-                    if (vend.validLogin(inputNome.getText(), safe)) {
-                        PainelVendedor guiV = new PainelVendedor();
-                        this.dispose();
-                    }
+        char[] safe = inputSenha.getPassword();
+        if (Login.gerente.validLogin(inputNome.getText(), safe)) {
+            PainelGerente guiG = new PainelGerente();
+            this.dispose();
+        } else {
+            for (Vendedor vend : BD) {
+                if (vend.validLogin(inputNome.getText(), safe)) {
+                    PainelVendedor guiV = new PainelVendedor();
+                    this.dispose();
                 }
             }
-
         }
-
     }//GEN-LAST:event_botaoLoginActionPerformed
 
     private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
@@ -155,7 +158,6 @@ public class Login extends javax.swing.JFrame {
             System.exit(0);
 
         }
-        return;
     }//GEN-LAST:event_botaoSairActionPerformed
 
     private void inputNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputNomeActionPerformed
@@ -166,6 +168,13 @@ public class Login extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
+
+        try {
+            getGerente();
+        } catch (SQLException ex) {
+            System.out.println("Erro SQL!");
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
         if (gerente == null) {
             if (Msgs.gerenteMsg()) {
@@ -201,9 +210,6 @@ public class Login extends javax.swing.JFrame {
         });
 
     }
-
-    //-------------------------------------------logic methods--------------------------------------------------------
-    //----------------------------------------------------------------------------------------------------------------
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoLogin;

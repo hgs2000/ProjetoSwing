@@ -11,7 +11,8 @@ import java.util.logging.Logger;
 public class Cliente {
 
     private ClienteDAO dao;
-    private String nome, endereco, CPF;
+    private String nome, endereco, CPF, sexo;
+    ;
     private int idade;
 
     public String getCPF() {
@@ -21,13 +22,12 @@ public class Cliente {
     public void setCPF(String cpf) {
         this.CPF = cpf;
     }
-    private boolean sexo;//true : masc, false femi;
 
     public Cliente() {
 
     }
 
-    public Cliente(String nome, String endereco, int idade, boolean sexo, String cpf) {
+    public Cliente(String nome, String endereco, int idade, String sexo, String cpf) {
         this.nome = nome;
         this.endereco = endereco;
         this.idade = idade;
@@ -73,14 +73,10 @@ public class Cliente {
     }
 
     public String getSexo() {
-        if (sexo == true) {
-            return "Masculino";
-        } else {
-            return "Feminino";
-        }
+        return sexo;
     }
 
-    public void setSexo(boolean sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
@@ -92,5 +88,5 @@ public class Cliente {
             System.out.println("Erro do SQL!");
         }
     }
-
+    
 }

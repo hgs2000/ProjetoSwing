@@ -3,23 +3,36 @@ package GUI;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import Objetos.Filme;
-import static Tools.AutoBuild.validaNums;
-import java.text.ParseException;
 import javax.swing.JCheckBox;
-import javax.swing.JFormattedTextField;
-import javax.swing.JTextField;
 import javax.swing.SpinnerNumberModel;
-import javax.swing.text.MaskFormatter;
+import Objetos.JNumberTextField;
+import Objetos.Vendedor;
+import Objetos.VendedorDAO;
+import Tools.Msgs;
+import java.sql.SQLException;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PainelGerente extends javax.swing.JFrame {
 
-    private final ArrayList<Filme> listaFilmes;
+    private static ArrayList<Filme> listaFilmes;
+    private static ArrayList<Vendedor> listaVendedores;
 
     public PainelGerente() {
         initComponents();
         listaFilmes = new ArrayList<>();
-        //listaFilmes = carregadorDeFilmes();
-        this.setVisible(true);
+        try {
+            listaVendedores = VendedorDAO.getVendedores();
+            //listaFilmes = carregadorDeFilmes();
+        } catch (SQLException ex) {
+            System.out.println("Erro do SQL!");
+            Logger.getLogger(PainelGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        listaVendedores.forEach((listaVendedore) -> {
+            System.out.println(listaVendedore.getLogin_pessoa().getUserName());
+        });
     }
 
     /**
@@ -81,7 +94,7 @@ public class PainelGerente extends javax.swing.JFrame {
         newSessaoTimeMin = new javax.swing.JSpinner(new SpinnerNumberModel(0, -1, 60, 1));
         painelAddVendedor = new javax.swing.JPanel();
         newVendedorCPFLabel = new javax.swing.JLabel();
-        newVendedorCPF = validaNums(1);
+        newVendedorCPF = new JNumberTextField(11);
         newVendedorTurnoLabel = new javax.swing.JLabel();
         newVendedorTurno = new javax.swing.JComboBox<>();
         newVendedorEmailLabel = new javax.swing.JLabel();
@@ -111,6 +124,12 @@ public class PainelGerente extends javax.swing.JFrame {
         rmvVendedorCPFLabel = new javax.swing.JLabel();
         rmvVendedorCPF = new javax.swing.JTextField();
         rmvVendBtnClear = new javax.swing.JButton();
+        rmvVendPrevEmail = new javax.swing.JTextField();
+        rmvVendPrevEmailLabel = new javax.swing.JLabel();
+        rmvVendPrevLogin = new javax.swing.JTextField();
+        rmvVendPrevLoginLabel = new javax.swing.JLabel();
+        rmvVendPrevTurnoLabel = new javax.swing.JLabel();
+        rmvVendPrevTurno = new javax.swing.JTextField();
         tituloPainelGerente = new javax.swing.JLabel();
         btnLogout = new javax.swing.JButton();
 
@@ -191,7 +210,7 @@ public class PainelGerente extends javax.swing.JFrame {
         newFilmeGenPanelLayout.setHorizontalGroup(
             newFilmeGenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newFilmeGenPanelLayout.createSequentialGroup()
-                .addContainerGap(154, Short.MAX_VALUE)
+                .addContainerGap(143, Short.MAX_VALUE)
                 .addGroup(newFilmeGenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(newFilmeGenAcao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(newFilmeGenRoman, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -210,7 +229,7 @@ public class PainelGerente extends javax.swing.JFrame {
                         .addComponent(newFilmeGenMusi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(newFilmeGenGuerra, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(newFilmeGenHist, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(142, Short.MAX_VALUE))
         );
         newFilmeGenPanelLayout.setVerticalGroup(
             newFilmeGenPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,7 +293,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(panelAddFilmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(newFilmeGenPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 706, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
                     .addGroup(panelAddFilmeLayout.createSequentialGroup()
                         .addGroup(panelAddFilmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(newFilmeNome, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -359,7 +378,7 @@ public class PainelGerente extends javax.swing.JFrame {
         painelAddSalaLayout.setHorizontalGroup(
             painelAddSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAddSalaLayout.createSequentialGroup()
-                .addContainerGap(163, Short.MAX_VALUE)
+                .addContainerGap(142, Short.MAX_VALUE)
                 .addGroup(painelAddSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(newSalaCodLabel)
                     .addComponent(newSalaNomeLabel)
@@ -372,7 +391,7 @@ public class PainelGerente extends javax.swing.JFrame {
                                 .addComponent(newSalaBtnClear))
                             .addComponent(newSalaNome, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(newSalaCod, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
         painelAddSalaLayout.setVerticalGroup(
             painelAddSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -389,7 +408,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addGroup(painelAddSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newSalaBtnSave)
                     .addComponent(newSalaBtnClear))
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addContainerGap(166, Short.MAX_VALUE))
         );
 
         adicionarTabs.addTab("Sala", painelAddSala);
@@ -441,7 +460,7 @@ public class PainelGerente extends javax.swing.JFrame {
         painelAddSessaoLayout.setHorizontalGroup(
             painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAddSessaoLayout.createSequentialGroup()
-                .addContainerGap(192, Short.MAX_VALUE)
+                .addContainerGap(175, Short.MAX_VALUE)
                 .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelAddSessaoLayout.createSequentialGroup()
                         .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -466,12 +485,12 @@ public class PainelGerente extends javax.swing.JFrame {
                         .addComponent(newSessaoTimeHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(newSessaoTimeMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(175, Short.MAX_VALUE))
         );
         painelAddSessaoLayout.setVerticalGroup(
             painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAddSessaoLayout.createSequentialGroup()
-                .addContainerGap(173, Short.MAX_VALUE)
+                .addContainerGap(174, Short.MAX_VALUE)
                 .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newSessaoFilmeLabel)
                     .addComponent(newSessaoFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -492,7 +511,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(newSessaoBtnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(newSessaoBtnClear))
-                .addContainerGap(129, Short.MAX_VALUE))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
 
         adicionarTabs.addTab("Sessão", painelAddSessao);
@@ -503,7 +522,7 @@ public class PainelGerente extends javax.swing.JFrame {
 
         newVendedorTurnoLabel.setText("Turno:");
 
-        newVendedorTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        newVendedorTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Matutino", "Vespertinho", "Noturno"}));
         newVendedorTurno.setToolTipText("Selecione o turno do funcionário.");
 
         newVendedorEmailLabel.setText("Email");
@@ -511,6 +530,11 @@ public class PainelGerente extends javax.swing.JFrame {
         newVendedorEmail.setToolTipText("Digite o e-mail do funcionário a ser cadatrado.");
 
         newVendedorBtnSave.setText("Salvar");
+        newVendedorBtnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newVendedorBtnSaveActionPerformed(evt);
+            }
+        });
 
         newVendedorLoginLabel.setText("Login");
 
@@ -528,7 +552,7 @@ public class PainelGerente extends javax.swing.JFrame {
         painelAddVendedorLayout.setHorizontalGroup(
             painelAddVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAddVendedorLayout.createSequentialGroup()
-                .addContainerGap(223, Short.MAX_VALUE)
+                .addContainerGap(202, Short.MAX_VALUE)
                 .addGroup(painelAddVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(newVendedorSenhaLabel)
                     .addComponent(newVendedorLoginLabel)
@@ -544,12 +568,12 @@ public class PainelGerente extends javax.swing.JFrame {
                         .addComponent(newVendedorBtnClear))
                     .addComponent(newVendedorLogin)
                     .addComponent(newVendedorSenha))
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addContainerGap(191, Short.MAX_VALUE))
         );
         painelAddVendedorLayout.setVerticalGroup(
             painelAddVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAddVendedorLayout.createSequentialGroup()
-                .addContainerGap(86, Short.MAX_VALUE)
+                .addContainerGap(84, Short.MAX_VALUE)
                 .addComponent(newVendedorCPFLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(newVendedorCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -567,13 +591,13 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addComponent(newVendedorLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(newVendedorSenhaLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(newVendedorSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(painelAddVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newVendedorBtnSave)
                     .addComponent(newVendedorBtnClear))
-                .addContainerGap(88, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         adicionarTabs.addTab("Vendedor", painelAddVendedor);
@@ -602,17 +626,17 @@ public class PainelGerente extends javax.swing.JFrame {
         painelRmvFilmeLayout.setHorizontalGroup(
             painelRmvFilmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelRmvFilmeLayout.createSequentialGroup()
-                .addContainerGap(163, Short.MAX_VALUE)
+                .addContainerGap(143, Short.MAX_VALUE)
                 .addGroup(painelRmvFilmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(rmvFilmeOpt, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rmvFilmeOptLabel)
                     .addComponent(rmvFilmeBtnYes))
-                .addContainerGap(164, Short.MAX_VALUE))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
         painelRmvFilmeLayout.setVerticalGroup(
             painelRmvFilmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelRmvFilmeLayout.createSequentialGroup()
-                .addContainerGap(164, Short.MAX_VALUE)
+                .addContainerGap(165, Short.MAX_VALUE)
                 .addComponent(rmvFilmeOptLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rmvFilmeOpt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -644,7 +668,7 @@ public class PainelGerente extends javax.swing.JFrame {
         painelRmvSalaLayout.setVerticalGroup(
             painelRmvSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelRmvSalaLayout.createSequentialGroup()
-                .addContainerGap(86, Short.MAX_VALUE)
+                .addContainerGap(87, Short.MAX_VALUE)
                 .addComponent(rmvSalaOptLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rmvSalaOpt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -681,7 +705,7 @@ public class PainelGerente extends javax.swing.JFrame {
                         .addComponent(rmvSessaoBtnClear))
                     .addComponent(rmvSessaoOptLabel)
                     .addComponent(rmvSessaoOpt, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(235, Short.MAX_VALUE))
+                .addContainerGap(194, Short.MAX_VALUE))
         );
         painelRmvSessaoLayout.setVerticalGroup(
             painelRmvSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -694,7 +718,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addGroup(painelRmvSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rmvSessaoBtnYes)
                     .addComponent(rmvSessaoBtnClear))
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(244, Short.MAX_VALUE))
         );
 
         removerTabs.addTab("Sessão", painelRmvSessao);
@@ -702,33 +726,78 @@ public class PainelGerente extends javax.swing.JFrame {
         rmvVendedorCPFLabel.setText("CPF:");
 
         rmvVendedorCPF.setToolTipText("Digite o CPF do funcionário a ser removido.");
+        rmvVendedorCPF.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+                rmvVendedorCPFCaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
+        });
+        rmvVendedorCPF.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                rmvVendedorCPFPropertyChange(evt);
+            }
+        });
 
         rmvVendBtnClear.setText("Cancelar");
+
+        rmvVendPrevEmail.setEnabled(false);
+        rmvVendPrevEmail.setFocusable(false);
+
+        rmvVendPrevEmailLabel.setText("Email Vendedor");
+
+        rmvVendPrevLogin.setEnabled(false);
+        rmvVendPrevLogin.setFocusable(false);
+
+        rmvVendPrevLoginLabel.setText("Login Vendedor");
+
+        rmvVendPrevTurnoLabel.setText("Turno Vendedor");
+
+        rmvVendPrevTurno.setEnabled(false);
+        rmvVendPrevTurno.setFocusable(false);
 
         javax.swing.GroupLayout painelRmvVendedorLayout = new javax.swing.GroupLayout(painelRmvVendedor);
         painelRmvVendedor.setLayout(painelRmvVendedorLayout);
         painelRmvVendedorLayout.setHorizontalGroup(
             painelRmvVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelRmvVendedorLayout.createSequentialGroup()
-                .addContainerGap(225, Short.MAX_VALUE)
-                .addGroup(painelRmvVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rmvVendedorCPFLabel)
-                    .addComponent(rmvVendedorCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(209, Short.MAX_VALUE)
+                .addGroup(painelRmvVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(rmvVendPrevTurnoLabel)
+                    .addComponent(rmvVendPrevLoginLabel)
+                    .addComponent(rmvVendPrevEmailLabel)
+                    .addComponent(rmvVendedorCPF)
                     .addGroup(painelRmvVendedorLayout.createSequentialGroup()
                         .addGap(179, 179, 179)
-                        .addComponent(rmvVendBtnClear)))
-                .addContainerGap(225, Short.MAX_VALUE))
+                        .addComponent(rmvVendBtnClear))
+                    .addComponent(rmvVendPrevEmail)
+                    .addComponent(rmvVendedorCPFLabel)
+                    .addComponent(rmvVendPrevLogin)
+                    .addComponent(rmvVendPrevTurno))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
         painelRmvVendedorLayout.setVerticalGroup(
             painelRmvVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelRmvVendedorLayout.createSequentialGroup()
-                .addContainerGap(143, Short.MAX_VALUE)
+                .addGap(77, 77, 77)
                 .addComponent(rmvVendedorCPFLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rmvVendedorCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(44, 44, 44)
+                .addGap(18, 18, 18)
+                .addComponent(rmvVendPrevEmailLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rmvVendPrevEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rmvVendPrevLoginLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rmvVendPrevLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rmvVendPrevTurnoLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(rmvVendPrevTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addComponent(rmvVendBtnClear)
-                .addContainerGap(222, Short.MAX_VALUE))
+                .addContainerGap(136, Short.MAX_VALUE))
         );
 
         removerTabs.addTab("Vendedor", painelRmvVendedor);
@@ -763,9 +832,11 @@ public class PainelGerente extends javax.swing.JFrame {
             .addComponent(tabsGerente)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tituloPainelGerente)
-                    .addComponent(btnLogout))
+                .addComponent(tituloPainelGerente)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogout)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -895,6 +966,7 @@ public class PainelGerente extends javax.swing.JFrame {
         newVendedorEmail.setText("");
         newVendedorLogin.setText("");
         newVendedorSenha.setText("");
+        newVendedorCPF.setText("");
         newVendedorTurno.setSelectedIndex(0);
     }//GEN-LAST:event_newVendedorBtnClearActionPerformed
 
@@ -902,11 +974,84 @@ public class PainelGerente extends javax.swing.JFrame {
         rmvSessaoOpt.setSelectedIndex(0);
     }//GEN-LAST:event_rmvSessaoBtnClearActionPerformed
 
+    private void newVendedorBtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newVendedorBtnSaveActionPerformed
+        if (newVendedorCPF.getText().isEmpty()) {
+            System.out.println("No CPF");
+            newVendedorCPF.requestFocus();
+            Msgs.displayErrorJOP("O CPF informado é inválido (vazio).", this);
+            return;
+        } else if (newVendedorCPF.getText().length() < 11) {
+            System.out.println("Invalid CPF");
+            newVendedorCPF.requestFocus();
+            Msgs.displayErrorJOP("O CPF informado é inválido (menor que 11 caracteres).", this);
+            return;
+        }
+        if (newVendedorEmail.getText().isEmpty()) {
+            System.out.println("No email");
+            newVendedorEmail.requestFocus();
+            Msgs.displayErrorJOP("O email informado é inválido (vazio).", this);
+            return;
+        }
+        if (newVendedorLogin.getText().isEmpty()) {
+            System.out.println("No login");
+            newVendedorLogin.requestFocus();
+            Msgs.displayErrorJOP("O login informado é inválido (vazio)", this);
+            return;
+        }
+        if (Arrays.toString(newVendedorSenha.getPassword()).isEmpty()) {
+            System.out.println("No password");
+            Msgs.displayErrorJOP("A senha informada é inválida (vazia).", this);
+            newVendedorSenha.requestFocus();
+            return;
+        }
+        Vendedor vendedor = new Vendedor(newVendedorLogin.getText(), newVendedorSenha.getPassword(), (String) newVendedorTurno.getSelectedItem(), newVendedorEmail.getText(), newVendedorCPF.getText());
+        System.out.println(newVendedorCPF.getText());
+        System.out.println(newVendedorEmail.getText());
+        System.out.println(newVendedorLogin.getText());
+        System.out.println(newVendedorTurno.getSelectedItem());
+        System.out.println(newVendedorSenha.getPassword());
+        vendedor.sendToDB();
+    }//GEN-LAST:event_newVendedorBtnSaveActionPerformed
+
+    private void rmvVendedorCPFPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_rmvVendedorCPFPropertyChange
+
+    }//GEN-LAST:event_rmvVendedorCPFPropertyChange
+
+    private void rmvVendedorCPFCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_rmvVendedorCPFCaretPositionChanged
+        HashMap<String, Integer> cpfs = new HashMap<>();
+        System.out.println("Ata");
+        if (!listaVendedores.isEmpty()) {
+            for (int i = 0; i < listaVendedores.size(); i++) {
+                cpfs.put(listaVendedores.get(i).getCpf(), i);
+            }
+
+            if (cpfs.containsKey(rmvVendedorCPF.getText())) {
+                rmvVendPrevEmail.setText(listaVendedores.get(cpfs.get(rmvVendedorCPF.getText())).getEmail());
+                rmvVendPrevTurno.setText(listaVendedores.get(cpfs.get(rmvVendedorCPF.getText())).getTurno());
+                rmvVendPrevLogin.setText(listaVendedores.get(cpfs.get(rmvVendedorCPF.getText())).getLogin_pessoa().getUserName());
+            } else {
+                rmvVendPrevEmail.setText("");
+                rmvVendPrevTurno.setText("");
+                rmvVendPrevLogin.setText("");
+            }
+        }
+    }//GEN-LAST:event_rmvVendedorCPFCaretPositionChanged
+
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Create and display the form */
+        listaFilmes = new ArrayList<>();
+        try {
+            listaVendedores = VendedorDAO.getVendedores();
+            //listaFilmes = carregadorDeFilmes();
+        } catch (SQLException ex) {
+            System.out.println("Erro do SQL!");
+            Logger.getLogger(PainelGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        listaVendedores.forEach((listaVendedore) -> {
+            System.out.println(listaVendedore.getLogin_pessoa().getUserName());
+        });
         java.awt.EventQueue.invokeLater(() -> {
             new PainelGerente().setVisible(true);
         });
@@ -991,26 +1136,16 @@ public class PainelGerente extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> rmvSessaoOpt;
     private javax.swing.JLabel rmvSessaoOptLabel;
     private javax.swing.JButton rmvVendBtnClear;
+    private javax.swing.JTextField rmvVendPrevEmail;
+    private javax.swing.JLabel rmvVendPrevEmailLabel;
+    private javax.swing.JTextField rmvVendPrevLogin;
+    private javax.swing.JLabel rmvVendPrevLoginLabel;
+    private javax.swing.JTextField rmvVendPrevTurno;
+    private javax.swing.JLabel rmvVendPrevTurnoLabel;
     private javax.swing.JTextField rmvVendedorCPF;
     private javax.swing.JLabel rmvVendedorCPFLabel;
     private javax.swing.JTabbedPane tabsGerente;
     private javax.swing.JLabel tituloPainelGerente;
     // End of variables declaration//GEN-END:variables
 
-    private JTextField formataTextField(int i) {
-        JFormattedTextField field = null;
-        if (i == 1) {
-            try {
-                MaskFormatter formatter = new MaskFormatter("###.###.###-##");
-                formatter.setValueContainsLiteralCharacters(false);
-                field = new JFormattedTextField(formatter);
-                formatter.install(field);
-            } catch (ParseException ex) {
-            }
-
-        } else {
-
-        }
-        return field;
-    }
 }

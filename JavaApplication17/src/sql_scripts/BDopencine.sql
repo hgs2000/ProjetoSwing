@@ -38,12 +38,14 @@ CREATE TABLE gerente (
     senha_ger VARCHAR(100) NOT NULL
 );
 
-CREATE TABLE funcionario (
-    login_func VARCHAR(100) PRIMARY KEY,
-    senha_func VARCHAR(100) NOT NULL,
-    cpf_func VARCHAR(12) NOT NULL,
-    turno_func ENUM('Matutino''Vespertino''Noturno') NOT NULL,
-    nome_func VARCHAR(100) NOT NULL
+CREATE TABLE vendedor (
+    login_vend VARCHAR(100) PRIMARY KEY,
+    senha_vend VARCHAR(100) NOT NULL,
+    cpf_vend VARCHAR(12) NOT NULL,
+    turno_vend VARCHAR(12) NOT NULL,
+    email_vend VARCHAR(100) NOT NULL
 );
 
-SELECT * from cliente;
+--SELECT * from cliente;
+--SELECT * from vendedor;
+--SELECT * from gerente;
