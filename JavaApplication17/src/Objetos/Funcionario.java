@@ -21,12 +21,8 @@ public class Funcionario {
     public boolean validLogin(String username, char[] password) {
         String senha = "";
         String senhaBD = "";
-        for (int i = 0; i < password.length; i++) {
-            senha = senha + password[i];
-        }
-        for (int i = 0; i < login_pessoa.getPassword().length; i++) {
-            senhaBD = senhaBD + login_pessoa.getPassword()[i];
-        }
+        senha = String.copyValueOf(password);
+        senhaBD = String.copyValueOf(login_pessoa.getPassword());
         return ((login_pessoa.getUserName().equals(username))
                 && (senha.equals(senhaBD)));
     }

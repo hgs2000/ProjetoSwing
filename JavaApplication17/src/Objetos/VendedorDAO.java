@@ -20,7 +20,7 @@ public class VendedorDAO {
 
     public void adicionaCliente() throws SQLException {
         String str;
-        str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=root";
+        str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=alunoifc";
         Connection conn = DriverManager.getConnection(str);
         String sql = "insert into vendedor values (?, ?, ?, ?, ?)";
         PreparedStatement p = conn.prepareStatement(sql);
@@ -46,7 +46,7 @@ public class VendedorDAO {
     public static ArrayList<Vendedor> getVendedores() throws SQLException {
         ArrayList<Vendedor> vendedores = new ArrayList<>();
         String str;
-        str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=root";
+        str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=alunoifc";
         Connection conn = DriverManager.getConnection(str);
         String sql = "select login_vend, senha_vend, cpf_vend, turno_vend, email_vend from vendedor";
         PreparedStatement p = conn.prepareStatement(sql);

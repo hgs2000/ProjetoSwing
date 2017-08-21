@@ -16,7 +16,7 @@ public class GerenteDAO {
     }
 
     public void adicionaGerente() throws SQLException {
-        String str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=root";
+        String str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=alunoifc";
         Connection conn = DriverManager.getConnection(str);
         String sql = "insert into gerente (login_ger, senha_ger, cpf_ger, email_ger) values (?, ?, ?, ?);";
         PreparedStatement p = conn.prepareStatement(sql);
@@ -26,7 +26,7 @@ public class GerenteDAO {
 
     public Gerente getGerente() throws SQLException {
         Gerente ger = null;
-        String str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=root";
+        String str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=alunoifc";
         Connection conn = DriverManager.getConnection(str);
         String sql = "select login_ger, senha_ger from gerente";
         PreparedStatement p = conn.prepareStatement(sql);

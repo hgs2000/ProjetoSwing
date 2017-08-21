@@ -51,7 +51,7 @@ public class ClienteDAO {
         String str;
         //if (!System.getProperty("user.name").equals("dupla")) {
         //System.out.println("Yes");
-        str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=root";
+        str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=alunoifc";
         //} else /*if (System.getProperty("user.name").equals("Sake"))*/ {
         //System.out.println("No");
         //str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=alunoifc";

@@ -129,21 +129,20 @@ public class Login extends javax.swing.JFrame {
 
     private void botaoLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLoginActionPerformed
         if (inputNome.getText().isEmpty()) {
-            inputNome.grabFocus();
+            inputNome.requestFocus();
             return;
         }
-        char[] temp2 = inputSenha.getPassword();
-        if (temp2.length == 0) {
-            inputSenha.grabFocus();
+        char[] passwd = inputSenha.getPassword();
+        if (passwd.length == 0) {
+            inputSenha.requestFocus();
             return;
         }
-        char[] safe = inputSenha.getPassword();
-        if (Login.gerente.validLogin(inputNome.getText(), safe)) {
+        if (Login.gerente.validLogin(inputNome.getText(), passwd)) {
             PainelGerente guiG = new PainelGerente();
             this.dispose();
         } else {
             for (Vendedor vend : BD) {
-                if (vend.validLogin(inputNome.getText(), safe)) {
+                if (vend.validLogin(inputNome.getText(), passwd)) {
                     PainelVendedor guiV = new PainelVendedor();
                     this.dispose();
                 }
@@ -186,23 +185,6 @@ public class Login extends javax.swing.JFrame {
                 System.exit(0);
             }
         }
-
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {

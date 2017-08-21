@@ -727,10 +727,10 @@ public class PainelGerente extends javax.swing.JFrame {
 
         rmvVendedorCPF.setToolTipText("Digite o CPF do funcionário a ser removido.");
         rmvVendedorCPF.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
                 rmvVendedorCPFCaretPositionChanged(evt);
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         rmvVendedorCPF.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -832,11 +832,9 @@ public class PainelGerente extends javax.swing.JFrame {
             .addComponent(tabsGerente)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(tituloPainelGerente)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnLogout)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tituloPainelGerente)
+                    .addComponent(btnLogout))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(

@@ -1,21 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 
 import Objetos.Gerente;
+import java.awt.Toolkit;
 
-/**
- *
- * @author informatica
- */
 public class AddGerente extends javax.swing.JFrame {
 
-    /**
-     * Creates new form AddGerente
-     */
     public AddGerente() {
         initComponents();
     }
@@ -30,38 +19,40 @@ public class AddGerente extends javax.swing.JFrame {
     private void initComponents() {
 
         tituloDentro = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        addGerenteLoginLabel = new javax.swing.JLabel();
         addGerenteLogin = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        btConfAddCliente = new javax.swing.JButton();
-        btCanAddGeren = new javax.swing.JButton();
+        addGerenteSenhaLabel = new javax.swing.JLabel();
+        addGerenteBtnOk = new javax.swing.JButton();
+        addGerenteBtnCanc = new javax.swing.JButton();
         addGerenteSenha = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
+        setResizable(false);
 
         tituloDentro.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         tituloDentro.setText("Cadastro de Gerente");
         tituloDentro.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        jLabel1.setText("Login:");
+        addGerenteLoginLabel.setText("Login:");
 
         addGerenteLogin.setToolTipText("Digite o login do gerente a ser utilizado. Este Login NÃO poderá ser editado.");
 
-        jLabel2.setText("Senha:");
+        addGerenteSenhaLabel.setText("Senha:");
 
-        btConfAddCliente.setText("Confirmar");
-        btConfAddCliente.setToolTipText("");
-        btConfAddCliente.setBorder(null);
-        btConfAddCliente.addActionListener(new java.awt.event.ActionListener() {
+        addGerenteBtnOk.setText("Confirmar");
+        addGerenteBtnOk.setToolTipText("");
+        addGerenteBtnOk.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btConfAddClienteActionPerformed(evt);
+                addGerenteBtnOkActionPerformed(evt);
             }
         });
 
-        btCanAddGeren.setText("Cancelar");
-        btCanAddGeren.addActionListener(new java.awt.event.ActionListener() {
+        addGerenteBtnCanc.setText("Cancelar");
+        addGerenteBtnCanc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btCanAddGerenActionPerformed(evt);
+                addGerenteBtnCancActionPerformed(evt);
             }
         });
 
@@ -69,101 +60,74 @@ public class AddGerente extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addContainerGap(197, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(tituloDentro)
-                        .addGap(0, 248, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(addGerenteLogin, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(addGerenteSenha)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(addGerenteSenha)
-                            .addComponent(addGerenteLogin, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btConfAddCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btCanAddGeren))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
+                        .addComponent(addGerenteSenhaLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(addGerenteLoginLabel)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(addGerenteBtnOk)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(addGerenteBtnCanc)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(tituloDentro)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
+                .addComponent(addGerenteLoginLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addGerenteLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
-                .addComponent(jLabel2)
+                .addComponent(addGerenteSenhaLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addGerenteSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btCanAddGeren, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btConfAddCliente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addGerenteBtnCanc)
+                    .addComponent(addGerenteBtnOk, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
  static boolean canLogin = false;
-    private void btConfAddClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConfAddClienteActionPerformed
-        String senha = "";
-        char[] safe = addGerenteSenha.getPassword();
-        for (int i = 0; i < safe.length; i++) {
-            char carac = safe[i];
-            senha += carac;
-        }
+    private void addGerenteBtnOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGerenteBtnOkActionPerformed
+        String senha = String.copyValueOf(addGerenteSenha.getPassword());
 
-        if ((addGerenteLogin.getText().isEmpty()) || (senha.isEmpty())) {
+        if (addGerenteLogin.getText().isEmpty()) {
             addGerenteLogin.requestFocus();
+        } else if (senha.isEmpty()) {
+
         } else {
-            Login.gerente = new Gerente(addGerenteLogin.getText(), safe);
+            Login.gerente = new Gerente(addGerenteLogin.getText(), senha.toCharArray());
             canLogin = true;
             this.dispose();
         }
 
-    }//GEN-LAST:event_btConfAddClienteActionPerformed
+    }//GEN-LAST:event_addGerenteBtnOkActionPerformed
 
-    private void btCanAddGerenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCanAddGerenActionPerformed
+    private void addGerenteBtnCancActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addGerenteBtnCancActionPerformed
         // TODO add your handling code here:
         System.exit(0);
-    }//GEN-LAST:event_btCanAddGerenActionPerformed
+    }//GEN-LAST:event_addGerenteBtnCancActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddGerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddGerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddGerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddGerente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -175,12 +139,12 @@ public class AddGerente extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addGerenteBtnCanc;
+    private javax.swing.JButton addGerenteBtnOk;
     private javax.swing.JTextField addGerenteLogin;
+    private javax.swing.JLabel addGerenteLoginLabel;
     private javax.swing.JPasswordField addGerenteSenha;
-    private javax.swing.JButton btCanAddGeren;
-    private javax.swing.JButton btConfAddCliente;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel addGerenteSenhaLabel;
     private javax.swing.JLabel tituloDentro;
     // End of variables declaration//GEN-END:variables
 }
