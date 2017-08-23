@@ -6,6 +6,8 @@ import Objetos.Filme;
 import javax.swing.JCheckBox;
 import javax.swing.SpinnerNumberModel;
 import Objetos.JNumberTextField;
+import Objetos.Sala;
+import Objetos.Sessao;
 import Objetos.Vendedor;
 import Objetos.VendedorDAO;
 import Tools.Msgs;
@@ -81,7 +83,6 @@ public class PainelGerente extends javax.swing.JFrame {
         newSalaBtnSave = new javax.swing.JButton();
         newSalaBtnClear = new javax.swing.JButton();
         painelAddSessao = new javax.swing.JPanel();
-        newSessaoPreco = new javax.swing.JTextField();
         newSessaoFilmeLabel = new javax.swing.JLabel();
         newSessaoPrecoLabel = new javax.swing.JLabel();
         newSessaoFilme = new javax.swing.JComboBox<>();
@@ -90,8 +91,10 @@ public class PainelGerente extends javax.swing.JFrame {
         newSessaoSalaLabel = new javax.swing.JLabel();
         newSessaoBtnSave = new javax.swing.JButton();
         newSessaoBtnClear = new javax.swing.JButton();
-        newSessaoTimeHora = new javax.swing.JSpinner(new SpinnerNumberModel(0, -1, 24, 1));
-        newSessaoTimeMin = new javax.swing.JSpinner(new SpinnerNumberModel(0, -1, 60, 1));
+        newSessaoHoras = new JNumberTextField(3);
+        newSessaoMinutos = new JNumberTextField(3);
+        newSessaoTime1 = new javax.swing.JLabel();
+        newSessaoPreco = new JNumberTextField(3);
         painelAddVendedor = new javax.swing.JPanel();
         newVendedorCPFLabel = new javax.swing.JLabel();
         newVendedorCPF = new JNumberTextField(11);
@@ -135,7 +138,6 @@ public class PainelGerente extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
 
         tabsGerente.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         tabsGerente.setToolTipText("Painel utilizado pelo gerente para adicionar um novo filme/sessão/sala/funcionário");
@@ -365,6 +367,11 @@ public class PainelGerente extends javax.swing.JFrame {
         newSalaCod.setToolTipText("Digite o código da nova sala a ser cadastrada.");
 
         newSalaBtnSave.setText("Salvar");
+        newSalaBtnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newSalaBtnSaveActionPerformed(evt);
+            }
+        });
 
         newSalaBtnClear.setText("Limpar Campos");
         newSalaBtnClear.addActionListener(new java.awt.event.ActionListener() {
@@ -413,13 +420,6 @@ public class PainelGerente extends javax.swing.JFrame {
 
         adicionarTabs.addTab("Sala", painelAddSala);
 
-        newSessaoPreco.setToolTipText("Digite o preço unitário da sessão.");
-        newSessaoPreco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newSessaoPrecoActionPerformed(evt);
-            }
-        });
-
         newSessaoFilmeLabel.setText("Filme:");
 
         newSessaoPrecoLabel.setText("Preço:");
@@ -427,14 +427,24 @@ public class PainelGerente extends javax.swing.JFrame {
         newSessaoFilme.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         newSessaoFilme.setToolTipText("Selecione o filme ");
 
-        newSessaoTime.setText("Horário de início:");
+        newSessaoTime.setText("Horário de início(HH:MM):");
 
         newSessaoSala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         newSessaoSala.setToolTipText("Selecione a Sala");
+        newSessaoSala.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newSessaoSalaActionPerformed(evt);
+            }
+        });
 
         newSessaoSalaLabel.setText("Sala:");
 
         newSessaoBtnSave.setText("Salvar");
+        newSessaoBtnSave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newSessaoBtnSaveActionPerformed(evt);
+            }
+        });
 
         newSessaoBtnClear.setText("Limpar Campos");
         newSessaoBtnClear.addActionListener(new java.awt.event.ActionListener() {
@@ -443,15 +453,71 @@ public class PainelGerente extends javax.swing.JFrame {
             }
         });
 
-        newSessaoTimeHora.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                newSessaoTimeHoraStateChanged(evt);
+        newSessaoHoras.setToolTipText("Digite as horas.");
+        newSessaoHoras.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                newSessaoHorasFocusLost(evt);
+            }
+        });
+        newSessaoHoras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newSessaoHorasActionPerformed(evt);
+            }
+        });
+        newSessaoHoras.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                newSessaoHorasPropertyChange(evt);
+            }
+        });
+        newSessaoHoras.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                newSessaoHorasKeyTyped(evt);
             }
         });
 
-        newSessaoTimeMin.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                newSessaoTimeMinStateChanged(evt);
+        newSessaoMinutos.setToolTipText("Digite os minutos.");
+        newSessaoMinutos.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                newSessaoMinutosFocusLost(evt);
+            }
+        });
+        newSessaoMinutos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newSessaoMinutosActionPerformed(evt);
+            }
+        });
+        newSessaoMinutos.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                newSessaoMinutosPropertyChange(evt);
+            }
+        });
+        newSessaoMinutos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                newSessaoMinutosKeyTyped(evt);
+            }
+        });
+
+        newSessaoTime1.setText(":");
+
+        newSessaoPreco.setToolTipText("Digite as horas.");
+        newSessaoPreco.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                newSessaoPrecoFocusLost(evt);
+            }
+        });
+        newSessaoPreco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newSessaoPrecoActionPerformed(evt);
+            }
+        });
+        newSessaoPreco.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                newSessaoPrecoPropertyChange(evt);
+            }
+        });
+        newSessaoPreco.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                newSessaoPrecoKeyTyped(evt);
             }
         });
 
@@ -460,8 +526,16 @@ public class PainelGerente extends javax.swing.JFrame {
         painelAddSessaoLayout.setHorizontalGroup(
             painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAddSessaoLayout.createSequentialGroup()
-                .addContainerGap(175, Short.MAX_VALUE)
+                .addGap(182, 182, 182)
                 .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelAddSessaoLayout.createSequentialGroup()
+                        .addComponent(newSessaoTime)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(newSessaoHoras, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(newSessaoTime1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(newSessaoMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(painelAddSessaoLayout.createSequentialGroup()
                         .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(newSessaoFilmeLabel)
@@ -472,25 +546,19 @@ public class PainelGerente extends javax.swing.JFrame {
                             .addComponent(newSessaoSala, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(painelAddSessaoLayout.createSequentialGroup()
                         .addComponent(newSessaoPrecoLabel)
-                        .addGap(18, 18, 18)
-                        .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelAddSessaoLayout.createSequentialGroup()
                                 .addComponent(newSessaoBtnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(57, 57, 57)
                                 .addComponent(newSessaoBtnClear))
-                            .addComponent(newSessaoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 272, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(painelAddSessaoLayout.createSequentialGroup()
-                        .addComponent(newSessaoTime)
-                        .addGap(18, 18, 18)
-                        .addComponent(newSessaoTimeHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(newSessaoTimeMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(175, Short.MAX_VALUE))
+                            .addComponent(newSessaoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(182, 182, 182))
         );
         painelAddSessaoLayout.setVerticalGroup(
             painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAddSessaoLayout.createSequentialGroup()
-                .addContainerGap(174, Short.MAX_VALUE)
+                .addGap(180, 180, 180)
                 .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newSessaoFilmeLabel)
                     .addComponent(newSessaoFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -501,17 +569,18 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newSessaoTime)
-                    .addComponent(newSessaoTimeHora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newSessaoTimeMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newSessaoHoras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newSessaoMinutos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newSessaoTime1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newSessaoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newSessaoPrecoLabel))
-                .addGap(18, 18, 18)
+                    .addComponent(newSessaoPrecoLabel)
+                    .addComponent(newSessaoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(29, 29, 29)
                 .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(newSessaoBtnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(newSessaoBtnClear))
-                .addContainerGap(130, Short.MAX_VALUE))
+                .addGap(136, 136, 136))
         );
 
         adicionarTabs.addTab("Sessão", painelAddSessao);
@@ -727,10 +796,10 @@ public class PainelGerente extends javax.swing.JFrame {
 
         rmvVendedorCPF.setToolTipText("Digite o CPF do funcionário a ser removido.");
         rmvVendedorCPF.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-            }
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
                 rmvVendedorCPFCaretPositionChanged(evt);
+            }
+            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         rmvVendedorCPF.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
@@ -860,10 +929,6 @@ public class PainelGerente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_newFilmeNomeActionPerformed
 
-    private void newSessaoPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSessaoPrecoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newSessaoPrecoActionPerformed
-
     private void newSalaNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSalaNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_newSalaNomeActionPerformed
@@ -873,10 +938,13 @@ public class PainelGerente extends javax.swing.JFrame {
 
         if (newFilmeNome.getText().isEmpty()) {
             newFilmeNome.requestFocus();
+            Msgs.displayErrorJOP("Erro! O nome do filme não pode ser vazio.", this);
             return;
         }
         if (newFilmeSinopse.getText().isEmpty()) {
             newFilmeSinopse.requestFocus();
+            Msgs.displayErrorJOP("Erro! A sinopse não pode ser vazia.", this);
+            return;
         }
         ArrayList<JCheckBox> boxes = new ArrayList<JCheckBox>() {
             {
@@ -901,33 +969,24 @@ public class PainelGerente extends javax.swing.JFrame {
                 toFilmes.add(boxe);
             }
         }
+        if (toFilmes.isEmpty()) {
+            newFilmeGenAcao.requestFocus();
+            Msgs.displayErrorJOP("Erro! Você deve selecionar ao menos um gênero.", this);
+            return;
+        }
         listaFilmes.add(new Filme(newFilmeNome, newFilmeSinopse, toFilmes, newFilmeAno.getValue()));
+        Filme f = new Filme(newFilmeNome.getText(), newFilmeSinopse.getText(), toFilmes, newFilmeAno.getValue());
+        System.out.println(f.getFilmeNome());
+        System.out.println(f.getFilmeSinopse());
+        System.out.println(f.getFilmeAno());
+        System.out.println(f.getFilmeGeneros());
     }//GEN-LAST:event_newFilmeBtnSaveActionPerformed
 
     private void newFilmeAnoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_newFilmeAnoStateChanged
         newFilmeAnoCurrent.setText("" + newFilmeAno.getValue());
     }//GEN-LAST:event_newFilmeAnoStateChanged
 
-    private void newSessaoTimeMinStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_newSessaoTimeMinStateChanged
-        Integer integ = (Integer) newSessaoTimeMin.getValue();
-        if (integ.equals(-1)) {
-            newSessaoTimeMin.setValue(59);
-        } else if (integ.equals(60)) {
-            newSessaoTimeMin.setValue(0);
-        }
-    }//GEN-LAST:event_newSessaoTimeMinStateChanged
-
-    private void newSessaoTimeHoraStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_newSessaoTimeHoraStateChanged
-        Integer integ = (Integer) newSessaoTimeHora.getValue();
-        if (integ.equals(-1)) {
-            newSessaoTimeHora.setValue(23);
-        } else if (integ.equals(24)) {
-            newSessaoTimeHora.setValue(0);
-        }
-    }//GEN-LAST:event_newSessaoTimeHoraStateChanged
-
     private void newSalaBtnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSalaBtnClearActionPerformed
-        System.out.println("Fon");
         newSalaNome.setText("");
         newSalaCod.setText("");
     }//GEN-LAST:event_newSalaBtnClearActionPerformed
@@ -953,8 +1012,8 @@ public class PainelGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_newFilmeBtnClearActionPerformed
 
     private void newSessaoBtnClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSessaoBtnClearActionPerformed
-        newSessaoTimeHora.setValue(0);
-        newSessaoTimeMin.setValue(0);
+        newSessaoHoras.setText("");
+        newSessaoMinutos.setText("");
         newSessaoFilme.setSelectedIndex(0);
         newSessaoSala.setSelectedIndex(0);
         newSessaoPreco.setText("");
@@ -1035,6 +1094,103 @@ public class PainelGerente extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_rmvVendedorCPFCaretPositionChanged
 
+    private void newSalaBtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSalaBtnSaveActionPerformed
+        if (newSalaCod.getText().isEmpty()) {
+            newSalaCod.requestFocus();
+            Msgs.displayErrorJOP("Erro! Código da sala invgálido.", this);
+            return;
+        }
+        if (newSalaNome.getText().isEmpty()) {
+            newSalaNome.requestFocus();
+            Msgs.displayErrorJOP("Erro! Nome da sala inválido.", this);
+            return;
+        }
+        Sala s = new Sala(newSalaCod.getText(), newSalaNome.getText());
+        System.out.println(s.getCod());
+        System.out.println(s.getNome());
+        s.sendToBD();
+    }//GEN-LAST:event_newSalaBtnSaveActionPerformed
+
+    private void newSessaoHorasFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newSessaoHorasFocusLost
+        System.out.println(/*Integer.parseInt(*/newSessaoHoras.getText()/*)*/);
+        if (newSessaoHoras.getText().isEmpty()) {
+            System.out.println("Idade empty");
+        } else if (Integer.parseInt(newSessaoHoras.getText()) > 150) {
+            newSessaoHoras.setText("150");
+        } else if (Integer.parseInt(newSessaoHoras.getText()) < 18) {
+            newSessaoHoras.setText("18");
+        }
+    }//GEN-LAST:event_newSessaoHorasFocusLost
+
+    private void newSessaoHorasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSessaoHorasActionPerformed
+
+    }//GEN-LAST:event_newSessaoHorasActionPerformed
+
+    private void newSessaoHorasPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_newSessaoHorasPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newSessaoHorasPropertyChange
+
+    private void newSessaoHorasKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newSessaoHorasKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newSessaoHorasKeyTyped
+
+    private void newSessaoMinutosFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newSessaoMinutosFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newSessaoMinutosFocusLost
+
+    private void newSessaoMinutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSessaoMinutosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newSessaoMinutosActionPerformed
+
+    private void newSessaoMinutosPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_newSessaoMinutosPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newSessaoMinutosPropertyChange
+
+    private void newSessaoMinutosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newSessaoMinutosKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newSessaoMinutosKeyTyped
+
+    private void newSessaoSalaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSessaoSalaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newSessaoSalaActionPerformed
+
+    private void newSessaoBtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSessaoBtnSaveActionPerformed
+        if (newSessaoPreco.getText().isEmpty()) {
+            newSessaoPreco.requestFocus();
+            Msgs.displayErrorJOP("Erro! O preço não é válido.", this);
+            return;
+        }
+        if (newSessaoHoras.getText().isEmpty()) {
+            newSessaoHoras.requestFocus();
+            Msgs.displayErrorJOP("Erro! A hora não é válida.", this);
+            return;
+        }
+        if (newSessaoMinutos.getText().isEmpty()) {
+            newSessaoMinutos.requestFocus();
+            Msgs.displayErrorJOP("Erro! Os minutos não são válidos.", this);
+            return;
+        }
+        //Por algum motivo está dando erro.
+        Sessao s = new Sessao(newSessaoPreco.getText(), newSessaoHoras.getText(), newSessaoMinutos.getText());
+        s.sendToBD();
+    }//GEN-LAST:event_newSessaoBtnSaveActionPerformed
+
+    private void newSessaoPrecoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_newSessaoPrecoFocusLost
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newSessaoPrecoFocusLost
+
+    private void newSessaoPrecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSessaoPrecoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newSessaoPrecoActionPerformed
+
+    private void newSessaoPrecoPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_newSessaoPrecoPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newSessaoPrecoPropertyChange
+
+    private void newSessaoPrecoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_newSessaoPrecoKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newSessaoPrecoKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -1095,13 +1251,14 @@ public class PainelGerente extends javax.swing.JFrame {
     private javax.swing.JButton newSessaoBtnSave;
     private javax.swing.JComboBox<String> newSessaoFilme;
     private javax.swing.JLabel newSessaoFilmeLabel;
+    private javax.swing.JTextField newSessaoHoras;
+    private javax.swing.JTextField newSessaoMinutos;
     private javax.swing.JTextField newSessaoPreco;
     private javax.swing.JLabel newSessaoPrecoLabel;
     private javax.swing.JComboBox<String> newSessaoSala;
     private javax.swing.JLabel newSessaoSalaLabel;
     private javax.swing.JLabel newSessaoTime;
-    private javax.swing.JSpinner newSessaoTimeHora;
-    private javax.swing.JSpinner newSessaoTimeMin;
+    private javax.swing.JLabel newSessaoTime1;
     private javax.swing.JButton newVendedorBtnClear;
     private javax.swing.JButton newVendedorBtnSave;
     private javax.swing.JTextField newVendedorCPF;

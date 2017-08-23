@@ -1,5 +1,8 @@
 package Objetos;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.ArrayList;
 import javax.swing.JCheckBox;
 import javax.swing.JTextArea;
@@ -7,6 +10,7 @@ import javax.swing.JTextField;
 
 public class Filme {
 
+    private FilmeDAO dao;
     private JTextField filmeNome;
     private JTextArea filmeSinopse;
     private ArrayList<JCheckBox> filmeGeneros;
@@ -24,16 +28,24 @@ public class Filme {
         return filmeNome;
     }
 
-    public void setFilmeNome(JTextField filmeNome) {
-        this.filmeNome = filmeNome;
+    public void setFilmeNome(JTextField filmeNome) throws Exception {
+         if (!filmeNome.isEmpty()) {
+            this.filmeNome = filmeNome;
+        } else {
+            throw new Exception("nome de filme invalido");
+        }
     }
 
     public JTextArea getFilmeSinopse() {
         return filmeSinopse;
     }
 
-    public void setFilmeSinopse(JTextArea filmeSinopse) {
-        this.filmeSinopse = filmeSinopse;
+    public void setFilmeSinopse(JTextArea filmeSinopse) throws Exception {
+        if (!filmeSinopse.isEmpty()) {
+            this.filmeSinopse = filmeSinopse;
+        } else {
+            throw new Exception("sinopse invalida");
+        }
     }
 
     public ArrayList<JCheckBox> getFilmeGeneros() {
@@ -49,6 +61,15 @@ public class Filme {
         this.filmeSinopse = filmeSinopse;
         this.filmeGeneros = filmeGeneros;
         this.filmeAno = filmeAno;
+    }
+    
+    public void sendToBD(){
+        try{
+            dao.adicionaFilme();
+        } catch (SQLException ex) {
+            Logger.getLogger(Filme.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Erro do SQL");
+        }
     }
 
 }

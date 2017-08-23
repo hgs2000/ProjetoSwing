@@ -17,7 +17,8 @@ CREATE TABLE sala (
 CREATE TABLE sessao (
     id_filme INT NOT NULL,
     cod_sala INT NOT NULL,
-    hora_sessao TIME NOT NULL,
+    hora_sessao INT NOT NULL,
+    minuto_sessao INT NOT NULL,
     preco_sessao DECIMAL(6,2) NOT NULL,
     id_sessao INT PRIMARY KEY AUTO_INCREMENT, 
     FOREIGN KEY(id_filme) REFERENCES filmes(id_filme),

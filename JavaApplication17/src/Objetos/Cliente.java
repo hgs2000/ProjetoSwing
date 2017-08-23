@@ -4,15 +4,10 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author informatica
- */
 public class Cliente {
 
     private ClienteDAO dao;
     private String nome, endereco, CPF, sexo;
-    ;
     private int idade;
 
     public String getCPF() {

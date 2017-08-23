@@ -4,9 +4,6 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="undecorated" type="boolean" value="true"/>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-      <Connection code="Toolkit.getDefaultToolkit().getScreenSize()" type="code"/>
-    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -539,6 +536,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Salvar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newSalaBtnSaveActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="newSalaBtnClear">
                       <Properties>
@@ -563,8 +563,17 @@
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <EmptySpace pref="175" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="newSessaoTime" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="newSessaoHoras" min="-2" pref="26" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="newSessaoTime1" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="newSessaoMinutos" min="-2" pref="26" max="-2" attributes="0"/>
+                                  </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Component id="newSessaoFilmeLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -578,71 +587,57 @@
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="newSessaoPrecoLabel" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
                                               <Component id="newSessaoBtnSave" min="-2" pref="110" max="-2" attributes="0"/>
-                                              <EmptySpace max="32767" attributes="0"/>
+                                              <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
                                               <Component id="newSessaoBtnClear" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="newSessaoPreco" min="-2" pref="272" max="-2" attributes="0"/>
+                                          <Component id="newSessaoPreco" min="-2" pref="278" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Group type="102" attributes="0">
-                                      <Component id="newSessaoTime" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="newSessaoTimeHora" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="newSessaoTimeMin" min="-2" max="-2" attributes="0"/>
-                                  </Group>
                               </Group>
-                              <EmptySpace pref="175" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace pref="174" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="180" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="newSessaoFilmeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="newSessaoFilme" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="newSessaoSalaLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="newSessaoSala" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="newSessaoTime" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="newSessaoTimeHora" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="newSessaoTimeMin" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="newSessaoHoras" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="newSessaoMinutos" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="newSessaoTime1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="newSessaoPreco" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="newSessaoPrecoLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="newSessaoPreco" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="newSessaoBtnSave" max="32767" attributes="0"/>
                                   <Component id="newSessaoBtnClear" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="130" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="136" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JTextField" name="newSessaoPreco">
-                      <Properties>
-                        <Property name="toolTipText" type="java.lang.String" value="Digite o pre&#xe7;o unit&#xe1;rio da sess&#xe3;o."/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newSessaoPrecoActionPerformed"/>
-                      </Events>
-                    </Component>
                     <Component class="javax.swing.JLabel" name="newSessaoFilmeLabel">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Filme:"/>
@@ -671,7 +666,7 @@
                     </Component>
                     <Component class="javax.swing.JLabel" name="newSessaoTime">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Hor&#xe1;rio de in&#xed;cio:"/>
+                        <Property name="text" type="java.lang.String" value="Hor&#xe1;rio de in&#xed;cio(HH:MM):"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JComboBox" name="newSessaoSala">
@@ -686,6 +681,9 @@
                         </Property>
                         <Property name="toolTipText" type="java.lang.String" value="Selecione a Sala"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newSessaoSalaActionPerformed"/>
+                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                       </AuxValues>
@@ -699,6 +697,9 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Salvar"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newSessaoBtnSaveActionPerformed"/>
+                      </Events>
                     </Component>
                     <Component class="javax.swing.JButton" name="newSessaoBtnClear">
                       <Properties>
@@ -708,20 +709,51 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newSessaoBtnClearActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="newSessaoTimeHora">
+                    <Component class="javax.swing.JTextField" name="newSessaoHoras">
+                      <Properties>
+                        <Property name="toolTipText" type="java.lang.String" value="Digite as horas."/>
+                      </Properties>
                       <Events>
-                        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="newSessaoTimeHoraStateChanged"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="newSessaoHorasFocusLost"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newSessaoHorasActionPerformed"/>
+                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="newSessaoHorasPropertyChange"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="newSessaoHorasKeyTyped"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(new SpinnerNumberModel(0, -1, 24, 1))"/>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JNumberTextField(3)"/>
                       </AuxValues>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="newSessaoTimeMin">
+                    <Component class="javax.swing.JTextField" name="newSessaoMinutos">
+                      <Properties>
+                        <Property name="toolTipText" type="java.lang.String" value="Digite os minutos."/>
+                      </Properties>
                       <Events>
-                        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="newSessaoTimeMinStateChanged"/>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="newSessaoMinutosFocusLost"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newSessaoMinutosActionPerformed"/>
+                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="newSessaoMinutosPropertyChange"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="newSessaoMinutosKeyTyped"/>
                       </Events>
                       <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JSpinner(new SpinnerNumberModel(0, -1, 60, 1))"/>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JNumberTextField(3)"/>
+                      </AuxValues>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="newSessaoTime1">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value=":"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="newSessaoPreco">
+                      <Properties>
+                        <Property name="toolTipText" type="java.lang.String" value="Digite as horas."/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="newSessaoPrecoFocusLost"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newSessaoPrecoActionPerformed"/>
+                        <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="newSessaoPrecoPropertyChange"/>
+                        <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="newSessaoPrecoKeyTyped"/>
+                      </Events>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new JNumberTextField(3)"/>
                       </AuxValues>
                     </Component>
                   </SubComponents>
