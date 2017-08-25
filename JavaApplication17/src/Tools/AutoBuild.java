@@ -49,9 +49,18 @@ public class AutoBuild {
 
     public static ArrayList<Cliente> getClientesFromDB() {
         ArrayList<Cliente> clientes = new ArrayList<>();
-        
-        
-        
+
         return null;
+    }
+
+    public static String connectToDB() {
+        if (System.getProperty("os.name").toLowerCase().contains("windows")) {
+            System.out.println("Windows!");
+            return "jdbc:mysql://localhost:3306/Opencine?user=root&password=root";
+        } else {
+            System.out.println("Not Windows!");
+            return "jdbc:mysql://localhost:3306/Opencine?user=root&password=alunoifc";
+        }
+
     }
 }

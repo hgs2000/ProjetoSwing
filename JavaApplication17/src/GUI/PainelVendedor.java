@@ -7,10 +7,9 @@ package GUI;
 
 import Objetos.Cliente;
 import Objetos.JNumberTextField;
+import Objetos.Vendedor;
 import static Tools.AutoBuild.setIntegerComboBox;
-import static Tools.AutoBuild.validaNums;
 import Tools.Msgs;
-import Tools.Validadores;
 import java.awt.Toolkit;
 
 /**
@@ -19,11 +18,20 @@ import java.awt.Toolkit;
  */
 public class PainelVendedor extends javax.swing.JFrame {
 
+    static void start(Vendedor vend) {
+        java.awt.EventQueue.invokeLater(() -> {
+            new PainelVendedor(vend);
+        });
+    }
+
     /**
      * Creates new form NewJFrame
+     *
+     * @param Vendedor
      */
-    public PainelVendedor() {
+    public PainelVendedor(Vendedor vendedor) {
         initComponents();
+        labelEstaLogado.setText("Você está logado como: " + vendedor.getLogin_pessoa().getUserName());
     }
 
     /**
@@ -532,7 +540,7 @@ public class PainelVendedor extends javax.swing.JFrame {
     public static void main(String args[]) {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
-            new PainelVendedor().setVisible(true);
+            new PainelVendedor(new Vendedor("Mada", "Mada Mada".toCharArray())).setVisible(true);
         });
     }
 

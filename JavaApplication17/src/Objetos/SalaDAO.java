@@ -1,5 +1,6 @@
 package Objetos;
 
+import Tools.AutoBuild;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,7 +18,7 @@ public class SalaDAO {
         String str;
         //if (!System.getProperty("user.name").equals("dupla")) {
         //System.out.println("Yes");
-        str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=alunoifc";
+        str = AutoBuild.connectToDB();
         //} else /*if (System.getProperty("user.name").equals("Sake"))*/ {
         //System.out.println("No");
         //str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=alunoifc";

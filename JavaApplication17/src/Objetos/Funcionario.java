@@ -1,6 +1,7 @@
 package Objetos;
 
 import java.net.PasswordAuthentication;
+import java.util.Arrays;
 
 public class Funcionario {
 
@@ -19,12 +20,7 @@ public class Funcionario {
     }
 
     public boolean validLogin(String username, char[] password) {
-        String senha = "";
-        String senhaBD = "";
-        senha = String.copyValueOf(password);
-        senhaBD = String.copyValueOf(login_pessoa.getPassword());
-        return ((login_pessoa.getUserName().equals(username))
-                && (senha.equals(senhaBD)));
+        return (this.login_pessoa.getUserName().equals(username) && Arrays.equals(this.login_pessoa.getPassword(), password));
     }
 
     public void sendToDB() {

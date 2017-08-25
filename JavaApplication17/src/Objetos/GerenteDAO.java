@@ -1,5 +1,6 @@
 package Objetos;
 
+import Tools.AutoBuild;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -26,7 +27,7 @@ public class GerenteDAO {
 
     public Gerente getGerente() throws SQLException {
         Gerente ger = null;
-        String str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=alunoifc";
+        String str = AutoBuild.connectToDB();
         Connection conn = DriverManager.getConnection(str);
         String sql = "select login_ger, senha_ger from gerente";
         PreparedStatement p = conn.prepareStatement(sql);

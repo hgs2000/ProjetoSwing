@@ -1,22 +1,23 @@
 package GUI;
 
-import Objetos.Cliente;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import Objetos.Gerente;
 import Objetos.GerenteDAO;
 import Objetos.Vendedor;
+import static Objetos.VendedorDAO.getVendedores;
 import Tools.Msgs;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Login extends javax.swing.JFrame {
 
-    static ArrayList<Vendedor> BD = new ArrayList<>();
+    static ArrayList<Vendedor> vendedores = new ArrayList<>();
     static Gerente gerente;
-    static ArrayList<Cliente> BD2 = new ArrayList<>();
+    //static ArrayList<Cliente> BD2 = new ArrayList<>();
 
     private static void getGerente() throws SQLException {
         GerenteDAO dao = new GerenteDAO(gerente);
@@ -137,13 +138,20 @@ public class Login extends javax.swing.JFrame {
             inputSenha.requestFocus();
             return;
         }
-        if (Login.gerente.validLogin(inputNome.getText(), passwd)) {
-            PainelGerente guiG = new PainelGerente();
+        if (gerente.validLogin(inputNome.getText(), inputSenha.getPassword())) {
+            System.out.println("Gerente");
+            PainelGerente.start();
             this.dispose();
         } else {
-            for (Vendedor vend : BD) {
-                if (vend.validLogin(inputNome.getText(), passwd)) {
-                    PainelVendedor guiV = new PainelVendedor();
+            System.out.println("Vendedor");
+            try {
+                vendedores = getVendedores();
+            } catch (SQLException ex) {
+                Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            for (Vendedor vend : vendedores) {
+                if (vend.getLogin_pessoa().getUserName().equals(inputNome.getText()) && Arrays.equals(inputSenha.getPassword(), vend.getLogin_pessoa().getPassword())) {
+                    PainelVendedor.start(vend);
                     this.dispose();
                 }
             }

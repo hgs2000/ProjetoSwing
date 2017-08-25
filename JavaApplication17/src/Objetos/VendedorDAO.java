@@ -1,6 +1,6 @@
 package Objetos;
 
-import java.net.PasswordAuthentication;
+import Tools.AutoBuild;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,7 +8,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class VendedorDAO {
 
@@ -46,7 +45,7 @@ public class VendedorDAO {
     public static ArrayList<Vendedor> getVendedores() throws SQLException {
         ArrayList<Vendedor> vendedores = new ArrayList<>();
         String str;
-        str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=alunoifc";
+        str = AutoBuild.connectToDB();
         Connection conn = DriverManager.getConnection(str);
         String sql = "select login_vend, senha_vend, cpf_vend, turno_vend, email_vend from vendedor";
         PreparedStatement p = conn.prepareStatement(sql);
@@ -57,6 +56,9 @@ public class VendedorDAO {
             linha.setEmail(rs.getString("email_vend"));
             linha.setTurno(rs.getString("turno_vend"));
             vendedores.add(linha);
+            System.out.println(linha.getCpf());
+            System.out.println(linha.getEmail());
+            System.out.println(linha.getTurno());
         }
         return vendedores;
     }
