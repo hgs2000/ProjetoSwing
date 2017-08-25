@@ -52,9 +52,9 @@ public class VendedorDAO {
         ResultSet rs = p.executeQuery();
         while (rs.next()) {
             Vendedor linha = new Vendedor(rs.getString(1), rs.getString(2).toCharArray());
-            linha.setCpf(rs.getString("cpf_vend"));
-            linha.setEmail(rs.getString("email_vend"));
-            linha.setTurno(rs.getString("turno_vend"));
+            //linha.setCpf(rs.getString("cpf_vend"));
+            //linha.setEmail(rs.getString("email_vend"));
+            //linha.setTurno(rs.getString("turno_vend"));
             vendedores.add(linha);
             System.out.println(linha.getCpf());
             System.out.println(linha.getEmail());

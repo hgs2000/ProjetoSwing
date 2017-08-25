@@ -50,3 +50,5 @@ CREATE TABLE vendedor (
 --SELECT * from cliente;
 --SELECT * from vendedor;
 --SELECT * from gerente;
+--SELECT * from sala;
+--SELECT * from filmes;
