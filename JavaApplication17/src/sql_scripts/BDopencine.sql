@@ -25,13 +25,13 @@ CREATE TABLE sessao (
     FOREIGN KEY(cod_sala) REFERENCES sala(cod_sala) 
 );
 
+DROP TABLE IF EXISTS cliente;
 CREATE TABLE cliente (
     nome_cliente VARCHAR(50) NOT NULL,
     idade_cliente INT NOT NULL,
     sexo_cliente VARCHAR(10) NOT NULL,
     endereco_cliente VARCHAR(300) NOT NULL,
-    cpf_cliente VARCHAR(11) NOT NULL,
-    id_cliente INT PRIMARY KEY AUTO_INCREMENT
+    cpf_cliente VARCHAR(11) PRIMARY KEY
 );
 
 CREATE TABLE gerente (

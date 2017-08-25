@@ -6,11 +6,16 @@
 package GUI;
 
 import Objetos.Cliente;
+import Objetos.ClienteDAO;
 import Objetos.JNumberTextField;
 import Objetos.Vendedor;
 import static Tools.AutoBuild.setIntegerComboBox;
 import Tools.Msgs;
 import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,20 +23,24 @@ import java.awt.Toolkit;
  */
 public class PainelVendedor extends javax.swing.JFrame {
 
+    private ArrayList<Cliente> clientes = new ArrayList<>();
+
     static void start(Vendedor vend) {
-        java.awt.EventQueue.invokeLater(() -> {
-            new PainelVendedor(vend);
-        });
+        new PainelVendedor(vend);
+
     }
 
     /**
      * Creates new form NewJFrame
      *
-     * @param Vendedor
+     * @param vendedor
      */
     public PainelVendedor(Vendedor vendedor) {
         initComponents();
-        labelEstaLogado.setText("Você está logado como: " + vendedor.getLogin_pessoa().getUserName());
+        this.setVisible(true);
+        this.labelEstaLogado.setText("Você está logado como: " + vendedor.getLogin_pessoa().getUserName());
+        this.clientes = getClientes();
+        carregaClientes();
     }
 
     /**
@@ -227,6 +236,11 @@ public class PainelVendedor extends javax.swing.JFrame {
 
         rmvClienteBtnOK.setText("Confirmar");
         rmvClienteBtnOK.setNextFocusableComponent(rmvClienteBtnClear);
+        rmvClienteBtnOK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rmvClienteBtnOKActionPerformed(evt);
+            }
+        });
 
         rmvClienteBtnClear.setText("Limpar seleção");
         rmvClienteBtnClear.setMaximumSize(new java.awt.Dimension(79, 23));
@@ -468,6 +482,8 @@ public class PainelVendedor extends javax.swing.JFrame {
         System.out.println(cl.getSexo());
         System.out.println(cl.getCPF());
         cl.sendToDB();
+        clientes.add(cl);
+        carregaClientes();
     }//GEN-LAST:event_newClienteBtnOKActionPerformed
 
     private void newClienteSexoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newClienteSexoActionPerformed
@@ -534,6 +550,29 @@ public class PainelVendedor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_vendaBtnOKActionPerformed
 
+    private void rmvClienteBtnOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmvClienteBtnOKActionPerformed
+        for (Cliente cliente : clientes) {
+            if (cliente.getNome().equals((String) rmvClienteOpt.getSelectedItem())) {
+                try {
+                    ClienteDAO.removeCliente(cliente);
+                } catch (SQLException ex) {
+                    Logger.getLogger(PainelVendedor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        rmvClienteOpt.removeItem(rmvClienteOpt.getSelectedIndex());
+    }//GEN-LAST:event_rmvClienteBtnOKActionPerformed
+
+    private void carregaClientes() {
+        rmvClienteOpt.removeAllItems();
+        this.validate();
+        this.repaint();
+
+        for (Cliente cli : clientes) {
+            rmvClienteOpt.addItem(cli.getNome());
+        }
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -578,4 +617,13 @@ public class PainelVendedor extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> vendaSessao;
     private javax.swing.JLabel vendaSessaoLabel;
     // End of variables declaration//GEN-END:variables
+
+    private ArrayList<Cliente> getClientes() {
+        try {
+            return ClienteDAO.getClientes();
+        } catch (SQLException ex) {
+            Logger.getLogger(PainelVendedor.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 }

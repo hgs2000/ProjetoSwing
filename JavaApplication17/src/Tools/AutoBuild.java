@@ -20,32 +20,6 @@ public class AutoBuild {
         return value;
     }
 
-    public static JFormattedTextField validaNums(int subOp) {
-        switch (subOp) {
-            case 1: {
-                MaskFormatter formatoCPF = null;
-                try {
-                    formatoCPF = new MaskFormatter("###.###.###-##");
-                } catch (ParseException ex) {
-                    Logger.getLogger(PainelVendedor.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                JFormattedTextField field = new JFormattedTextField(formatoCPF);
-                return field;
-            }
-            case 2: {
-                MaskFormatter formatoCPF = null;
-                try {
-                    formatoCPF = new MaskFormatter("###");
-                } catch (ParseException ex) {
-                    Logger.getLogger(PainelVendedor.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                JFormattedTextField field = new JFormattedTextField(formatoCPF);
-                return field;
-            }
-            default:
-                return new JFormattedTextField();
-        }
-    }
 
     public static ArrayList<Cliente> getClientesFromDB() {
         ArrayList<Cliente> clientes = new ArrayList<>();

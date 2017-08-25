@@ -24,7 +24,7 @@ public class VendedorDAO {
         String sql = "insert into vendedor values (?, ?, ?, ?, ?)";
         PreparedStatement p = conn.prepareStatement(sql);
         p.setString(1, this.v.getLogin_pessoa().getUserName());
-        p.setString(2, "" + Arrays.toString(this.v.getLogin_pessoa().getPassword()));
+        p.setString(2, "" + String.valueOf(this.v.getLogin_pessoa().getPassword()));
         p.setString(3, this.v.getCpf());
         p.setString(4, this.v.getTurno());
         p.setString(5, this.v.getEmail());
@@ -51,7 +51,7 @@ public class VendedorDAO {
         PreparedStatement p = conn.prepareStatement(sql);
         ResultSet rs = p.executeQuery();
         while (rs.next()) {
-            Vendedor linha = new Vendedor(rs.getString(1), rs.getString(2).toCharArray());
+            Vendedor linha = new Vendedor(rs.getString(1), rs.getString(2).toCharArray(), rs.getString(4), rs.getString(5), rs.getString(3));
             //linha.setCpf(rs.getString("cpf_vend"));
             //linha.setEmail(rs.getString("email_vend"));
             //linha.setTurno(rs.getString("turno_vend"));
@@ -59,6 +59,7 @@ public class VendedorDAO {
             System.out.println(linha.getCpf());
             System.out.println(linha.getEmail());
             System.out.println(linha.getTurno());
+            System.out.println("\n");
         }
         return vendedores;
     }

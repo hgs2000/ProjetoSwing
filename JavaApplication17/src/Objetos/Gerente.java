@@ -5,6 +5,10 @@
  */
 package Objetos;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author informatica
@@ -12,15 +16,19 @@ package Objetos;
 public class Gerente extends Funcionario {
 
     GerenteDAO dao;
-    
+
     public Gerente(String username, char[] password) {
         super(username, password);
         dao = new GerenteDAO(this);
     }
-    
+
     @Override
-    public void sendToDB(){
-        
+    public void sendToDB() {
+        try {
+            dao.adicionaGerente();
+        } catch (SQLException ex) {
+            Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

@@ -17,12 +17,13 @@ public class GerenteDAO {
     }
 
     public void adicionaGerente() throws SQLException {
-        String str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=alunoifc";
+        String str = AutoBuild.connectToDB();
         Connection conn = DriverManager.getConnection(str);
-        String sql = "insert into gerente (login_ger, senha_ger, cpf_ger, email_ger) values (?, ?, ?, ?);";
+        String sql = "insert into gerente (login_ger, senha_ger) values (?, ?);";
         PreparedStatement p = conn.prepareStatement(sql);
         p.setString(1, this.g.getLogin_pessoa().getUserName());
-        p.setString(2, "" + Arrays.toString(this.g.getLogin_pessoa().getPassword()));
+        p.setString(2, "" + String.valueOf(this.g.getLogin_pessoa().getPassword()));
+        p.execute();
     }
 
     public Gerente getGerente() throws SQLException {

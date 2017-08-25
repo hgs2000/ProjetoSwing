@@ -153,6 +153,7 @@ public class Login extends javax.swing.JFrame {
                 if (vend.getLogin_pessoa().getUserName().equals(inputNome.getText()) && Arrays.equals(inputSenha.getPassword(), vend.getLogin_pessoa().getPassword())) {
                     PainelVendedor.start(vend);
                     this.dispose();
+                    break;
                 }
             }
         }

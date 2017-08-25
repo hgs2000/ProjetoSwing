@@ -1,6 +1,7 @@
 package GUI;
 
 import Objetos.Gerente;
+import Tools.Msgs;
 import java.awt.Toolkit;
 
 public class AddGerente extends javax.swing.JFrame {
@@ -108,12 +109,15 @@ public class AddGerente extends javax.swing.JFrame {
         String senha = String.copyValueOf(addGerenteSenha.getPassword());
 
         if (addGerenteLogin.getText().isEmpty()) {
+            Msgs.displayErrorJOP("Erro! O login não pode ser vazio.", this);
             addGerenteLogin.requestFocus();
         } else if (senha.isEmpty()) {
-
+            Msgs.displayErrorJOP("Erro! O login não pode ser vazio.", this);
+            addGerenteSenha.requestFocus();
         } else {
             Login.gerente = new Gerente(addGerenteLogin.getText(), senha.toCharArray());
             canLogin = true;
+            Login.gerente.sendToDB();
             this.dispose();
         }
 

@@ -6,7 +6,6 @@ import java.util.logging.Logger;
 
 public class Cliente {
 
-    private ClienteDAO dao;
     private String nome, endereco, CPF, sexo;
     private int idade;
 
@@ -28,7 +27,6 @@ public class Cliente {
         this.idade = idade;
         this.sexo = sexo;
         this.CPF = cpf;
-        this.dao = new ClienteDAO(this);
     }
 
     public String getNome() {
@@ -77,7 +75,7 @@ public class Cliente {
 
     public void sendToDB() {
         try {
-            dao.adicionaCliente();
+            ClienteDAO.adicionaCliente(this);
         } catch (SQLException ex) {
             Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Erro do SQL!");
