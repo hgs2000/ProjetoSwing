@@ -19,7 +19,7 @@ public class VendedorDAO {
 
     public void adicionaCliente() throws SQLException {
         String str;
-        str = "jdbc:mysql://localhost:3306/Opencine?user=root&password=alunoifc";
+        str = AutoBuild.connectToDB();
         Connection conn = DriverManager.getConnection(str);
         String sql = "insert into vendedor values (?, ?, ?, ?, ?)";
         PreparedStatement p = conn.prepareStatement(sql);

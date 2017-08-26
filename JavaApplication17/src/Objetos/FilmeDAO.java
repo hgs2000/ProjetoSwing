@@ -10,27 +10,21 @@ import java.util.ArrayList;
 
 public class FilmeDAO {
 
-    Filme f;
-
-    public FilmeDAO(Filme film) {
-        this.f = film;
-    }
-
-    public void adicionaFilme() throws SQLException {
+    public static void adicionaFilme(Filme f) throws SQLException {
         String str;
         str = AutoBuild.connectToDB();
         Connection conn = DriverManager.getConnection(str);
         String sql = "insert into filmes (nome_filme, des_filme, gen_filme, ano_filme) values (?, ?, ?, ?);";
         PreparedStatement p = conn.prepareStatement(sql);
-        p.setString(1, this.f.getFilmeNome());
-        p.setString(2, this.f.getFilmeSinopse());
-        p.setString(3, this.f.getFilmeGeneros());
-        p.setInt(4, this.f.getFilmeAno());
+        p.setString(1, f.getFilmeNome());
+        p.setString(2, f.getFilmeSinopse());
+        p.setString(3, f.getFilmeGeneros());
+        p.setInt(4, f.getFilmeAno());
         p.execute();
         System.out.println("Novo Filme adicionado");
     }
 
-    public static ArrayList<Filme> carregaFilme() throws SQLException {
+    public static ArrayList<Filme> getFilmes() throws SQLException {
         ArrayList<Filme> filmes = new ArrayList<>();
         String str = AutoBuild.connectToDB();
         Connection conn = DriverManager.getConnection(str);
@@ -40,10 +34,6 @@ public class FilmeDAO {
         while (rs.next()) {
             Filme linha = new Filme(rs.getString(1), rs.getString(2), rs.getString(3), rs.getInt(4));
             filmes.add(linha);
-            System.out.println(linha.getFilmeNome());
-            System.out.println(linha.getFilmeGeneros());
-            System.out.println(linha.getFilmeSinopse());
-            System.out.println(linha.getFilmeAno());
         }
         return filmes;
     }

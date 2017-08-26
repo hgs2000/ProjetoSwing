@@ -1,11 +1,14 @@
 package GUI;
 
+import Objetos.Extended.ObjectComboModel;
+import Objetos.Extended.FilmeTableModel;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import Objetos.Filme;
 import Objetos.FilmeDAO;
-import Objetos.JNumberTextField;
+import Objetos.Extended.JNumberTextField;
 import Objetos.Sala;
+import Objetos.SalaDAO;
 import Objetos.Sessao;
 import Objetos.Vendedor;
 import Objetos.VendedorDAO;
@@ -15,24 +18,18 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JComboBox;
 
 public class PainelGerente extends javax.swing.JFrame {
 
+    private FilmeTableModel ftm;
     private static ArrayList<Filme> listaFilmes;
     private static ArrayList<Vendedor> listaVendedores;
+    private static ArrayList<Sala> listaSalas;
+    private HashMap<String, Integer> vends;
+    private HashMap<String, Integer> films;
 
     static void start() {
-        listaFilmes = new ArrayList<>();
-        try {
-            listaVendedores = VendedorDAO.getVendedores();
-            //listaFilmes = carregadorDeFilmes();
-        } catch (SQLException ex) {
-            System.out.println("Erro do SQL!");
-            Logger.getLogger(PainelGerente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        listaVendedores.forEach((listaVendedore) -> {
-            System.out.println(listaVendedore.getLogin_pessoa().getUserName());
-        });
         java.awt.EventQueue.invokeLater(() -> {
             new PainelGerente().setVisible(true);
         });
@@ -40,17 +37,18 @@ public class PainelGerente extends javax.swing.JFrame {
 
     public PainelGerente() {
         initComponents();
-        listaFilmes = new ArrayList<>();
         try {
-            listaVendedores = VendedorDAO.getVendedores();
-            //listaFilmes = carregadorDeFilmes();
+            loadDAOs();
+            ftm = new FilmeTableModel();
+            rmvFilmeTable.setModel(ftm);
+            newSessaoFilme.setModel(new ObjectComboModel(listaFilmes.toArray(), "Filme"));
+            newSessaoSala.setModel(new ObjectComboModel(listaSalas.toArray(), "Sala"));
+
         } catch (SQLException ex) {
             System.out.println("Erro do SQL!");
             Logger.getLogger(PainelGerente.class.getName()).log(Level.SEVERE, null, ex);
         }
-        listaVendedores.forEach((listaVendedore) -> {
-            System.out.println(listaVendedore.getLogin_pessoa().getUserName());
-        });
+        //alocaFilmesNaTabela();
     }
 
     /**
@@ -89,9 +87,9 @@ public class PainelGerente extends javax.swing.JFrame {
         painelAddSessao = new javax.swing.JPanel();
         newSessaoFilmeLabel = new javax.swing.JLabel();
         newSessaoPrecoLabel = new javax.swing.JLabel();
-        newSessaoFilme = new javax.swing.JComboBox<>();
+        newSessaoFilme = new JComboBox<Object>();
         newSessaoTime = new javax.swing.JLabel();
-        newSessaoSala = new javax.swing.JComboBox<>();
+        newSessaoSala = new JComboBox<Object>();
         newSessaoSalaLabel = new javax.swing.JLabel();
         newSessaoBtnSave = new javax.swing.JButton();
         newSessaoBtnClear = new javax.swing.JButton();
@@ -117,9 +115,10 @@ public class PainelGerente extends javax.swing.JFrame {
         painelRmvFilme = new javax.swing.JPanel();
         rmvFilmeOptLabel = new javax.swing.JLabel();
         rmvFilmeBtnYes = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        rmvFilmeTableOutside = new javax.swing.JScrollPane();
+        rmvFilmeTable = new javax.swing.JTable();
         painelRmvSala = new javax.swing.JPanel();
-        rmvSalaOpt = new javax.swing.JTextField();
+        rmvSalaOpt = new JNumberTextField();
         rmvSalaOptLabel = new javax.swing.JLabel();
         rmvSalaBtnYes = new javax.swing.JButton();
         painelRmvSessao = new javax.swing.JPanel();
@@ -129,7 +128,7 @@ public class PainelGerente extends javax.swing.JFrame {
         rmvSessaoBtnYes = new javax.swing.JButton();
         painelRmvVendedor = new javax.swing.JPanel();
         rmvVendedorCPFLabel = new javax.swing.JLabel();
-        rmvVendedorCPF = new javax.swing.JTextField();
+        rmvVendedorCPF = new JNumberTextField(11);
         rmvVendBtnClear = new javax.swing.JButton();
         rmvVendPrevEmail = new javax.swing.JTextField();
         rmvVendPrevEmailLabel = new javax.swing.JLabel();
@@ -192,8 +191,6 @@ public class PainelGerente extends javax.swing.JFrame {
                 newFilmeBtnClearActionPerformed(evt);
             }
         });
-
-        newFilmeGeneros.setText("jTextField1");
 
         javax.swing.GroupLayout panelAddFilmeLayout = new javax.swing.GroupLayout(panelAddFilme);
         panelAddFilme.setLayout(panelAddFilmeLayout);
@@ -293,7 +290,7 @@ public class PainelGerente extends javax.swing.JFrame {
         painelAddSalaLayout.setHorizontalGroup(
             painelAddSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAddSalaLayout.createSequentialGroup()
-                .addContainerGap(142, Short.MAX_VALUE)
+                .addContainerGap(153, Short.MAX_VALUE)
                 .addGroup(painelAddSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(newSalaCodLabel)
                     .addComponent(newSalaNomeLabel)
@@ -306,12 +303,12 @@ public class PainelGerente extends javax.swing.JFrame {
                                 .addComponent(newSalaBtnClear))
                             .addComponent(newSalaNome, javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(newSalaCod, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
         painelAddSalaLayout.setVerticalGroup(
             painelAddSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelAddSalaLayout.createSequentialGroup()
-                .addContainerGap(172, Short.MAX_VALUE)
+                .addContainerGap(164, Short.MAX_VALUE)
                 .addComponent(newSalaNomeLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(newSalaNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -323,7 +320,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addGroup(painelAddSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newSalaBtnSave)
                     .addComponent(newSalaBtnClear))
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addContainerGap(159, Short.MAX_VALUE))
         );
 
         adicionarTabs.addTab("Sala", painelAddSala);
@@ -332,12 +329,10 @@ public class PainelGerente extends javax.swing.JFrame {
 
         newSessaoPrecoLabel.setText("Preço:");
 
-        newSessaoFilme.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         newSessaoFilme.setToolTipText("Selecione o filme ");
 
         newSessaoTime.setText("Horário de início(HH:MM):");
 
-        newSessaoSala.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         newSessaoSala.setToolTipText("Selecione a Sala");
         newSessaoSala.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -434,7 +429,7 @@ public class PainelGerente extends javax.swing.JFrame {
         painelAddSessaoLayout.setHorizontalGroup(
             painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAddSessaoLayout.createSequentialGroup()
-                .addGap(182, 182, 182)
+                .addContainerGap(182, Short.MAX_VALUE)
                 .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelAddSessaoLayout.createSequentialGroup()
                         .addComponent(newSessaoTime)
@@ -461,12 +456,12 @@ public class PainelGerente extends javax.swing.JFrame {
                                 .addGap(57, 57, 57)
                                 .addComponent(newSessaoBtnClear))
                             .addComponent(newSessaoPreco, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(182, 182, 182))
+                .addContainerGap(182, Short.MAX_VALUE))
         );
         painelAddSessaoLayout.setVerticalGroup(
             painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAddSessaoLayout.createSequentialGroup()
-                .addGap(180, 180, 180)
+                .addContainerGap(130, Short.MAX_VALUE)
                 .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newSessaoFilmeLabel)
                     .addComponent(newSessaoFilme, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -488,7 +483,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addGroup(painelAddSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(newSessaoBtnSave, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(newSessaoBtnClear))
-                .addGap(136, 136, 136))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
 
         adicionarTabs.addTab("Sessão", painelAddSessao);
@@ -529,7 +524,7 @@ public class PainelGerente extends javax.swing.JFrame {
         painelAddVendedorLayout.setHorizontalGroup(
             painelAddVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAddVendedorLayout.createSequentialGroup()
-                .addContainerGap(202, Short.MAX_VALUE)
+                .addContainerGap(213, Short.MAX_VALUE)
                 .addGroup(painelAddVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(newVendedorSenhaLabel)
                     .addComponent(newVendedorLoginLabel)
@@ -545,12 +540,12 @@ public class PainelGerente extends javax.swing.JFrame {
                         .addComponent(newVendedorBtnClear))
                     .addComponent(newVendedorLogin)
                     .addComponent(newVendedorSenha))
-                .addContainerGap(191, Short.MAX_VALUE))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
         painelAddVendedorLayout.setVerticalGroup(
             painelAddVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelAddVendedorLayout.createSequentialGroup()
-                .addContainerGap(84, Short.MAX_VALUE)
+                .addContainerGap(77, Short.MAX_VALUE)
                 .addComponent(newVendedorCPFLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(newVendedorCPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -574,7 +569,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addGroup(painelAddVendedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(newVendedorBtnSave)
                     .addComponent(newVendedorBtnClear))
-                .addContainerGap(86, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         adicionarTabs.addTab("Vendedor", painelAddVendedor);
@@ -594,26 +589,27 @@ public class PainelGerente extends javax.swing.JFrame {
 
         rmvFilmeOptLabel.setText("Escolha o Filme:");
 
-        rmvFilmeBtnYes.setText("Confirmar");
+        rmvFilmeBtnYes.setText("Remover filme selecionado");
         rmvFilmeBtnYes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rmvFilmeBtnYesActionPerformed(evt);
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(getNomeFilmes()));
+        rmvFilmeTable.setNextFocusableComponent(rmvFilmeBtnYes);
+        rmvFilmeTableOutside.setViewportView(rmvFilmeTable);
 
         javax.swing.GroupLayout painelRmvFilmeLayout = new javax.swing.GroupLayout(painelRmvFilme);
         painelRmvFilme.setLayout(painelRmvFilmeLayout);
         painelRmvFilmeLayout.setHorizontalGroup(
             painelRmvFilmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelRmvFilmeLayout.createSequentialGroup()
-                .addContainerGap(154, Short.MAX_VALUE)
+                .addGap(67, 67, 67)
                 .addGroup(painelRmvFilmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rmvFilmeOptLabel)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(155, Short.MAX_VALUE))
-            .addGroup(painelRmvFilmeLayout.createSequentialGroup()
+                    .addComponent(rmvFilmeTableOutside, javax.swing.GroupLayout.DEFAULT_SIZE, 566, Short.MAX_VALUE)
+                    .addComponent(rmvFilmeOptLabel))
+                .addGap(67, 67, 67))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelRmvFilmeLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(rmvFilmeBtnYes)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -621,13 +617,13 @@ public class PainelGerente extends javax.swing.JFrame {
         painelRmvFilmeLayout.setVerticalGroup(
             painelRmvFilmeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelRmvFilmeLayout.createSequentialGroup()
-                .addContainerGap(174, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
                 .addComponent(rmvFilmeOptLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(rmvFilmeTableOutside, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(rmvFilmeBtnYes)
-                .addContainerGap(231, Short.MAX_VALUE))
+                .addGap(33, 33, 33))
         );
 
         removerTabs.addTab("Filme", painelRmvFilme);
@@ -637,6 +633,11 @@ public class PainelGerente extends javax.swing.JFrame {
         rmvSalaOptLabel.setText("Código da Sala:");
 
         rmvSalaBtnYes.setText("Confirmar");
+        rmvSalaBtnYes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rmvSalaBtnYesActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelRmvSalaLayout = new javax.swing.GroupLayout(painelRmvSala);
         painelRmvSala.setLayout(painelRmvSalaLayout);
@@ -653,13 +654,13 @@ public class PainelGerente extends javax.swing.JFrame {
         painelRmvSalaLayout.setVerticalGroup(
             painelRmvSalaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelRmvSalaLayout.createSequentialGroup()
-                .addContainerGap(96, Short.MAX_VALUE)
+                .addContainerGap(80, Short.MAX_VALUE)
                 .addComponent(rmvSalaOptLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rmvSalaOpt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(rmvSalaBtnYes)
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addContainerGap(301, Short.MAX_VALUE))
         );
 
         removerTabs.addTab("Sala", painelRmvSala);
@@ -682,7 +683,7 @@ public class PainelGerente extends javax.swing.JFrame {
         painelRmvSessaoLayout.setHorizontalGroup(
             painelRmvSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelRmvSessaoLayout.createSequentialGroup()
-                .addGap(223, 223, 223)
+                .addContainerGap(223, Short.MAX_VALUE)
                 .addGroup(painelRmvSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelRmvSessaoLayout.createSequentialGroup()
                         .addComponent(rmvSessaoBtnYes, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -695,7 +696,7 @@ public class PainelGerente extends javax.swing.JFrame {
         painelRmvSessaoLayout.setVerticalGroup(
             painelRmvSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelRmvSessaoLayout.createSequentialGroup()
-                .addGap(144, 144, 144)
+                .addContainerGap(136, Short.MAX_VALUE)
                 .addComponent(rmvSessaoOptLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rmvSessaoOpt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -703,7 +704,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addGroup(painelRmvSessaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rmvSessaoBtnYes)
                     .addComponent(rmvSessaoBtnClear))
-                .addContainerGap(261, Short.MAX_VALUE))
+                .addContainerGap(237, Short.MAX_VALUE))
         );
 
         removerTabs.addTab("Sessão", painelRmvSessao);
@@ -721,6 +722,14 @@ public class PainelGerente extends javax.swing.JFrame {
         rmvVendedorCPF.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
                 rmvVendedorCPFPropertyChange(evt);
+            }
+        });
+        rmvVendedorCPF.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                rmvVendedorCPFKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                rmvVendedorCPFKeyReleased(evt);
             }
         });
 
@@ -782,7 +791,7 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addComponent(rmvVendPrevTurno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(rmvVendBtnClear)
-                .addContainerGap(153, Short.MAX_VALUE))
+                .addContainerGap(125, Short.MAX_VALUE))
         );
 
         removerTabs.addTab("Vendedor", painelRmvVendedor);
@@ -795,7 +804,7 @@ public class PainelGerente extends javax.swing.JFrame {
         );
         gerentePanelRemLayout.setVerticalGroup(
             gerentePanelRemLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(removerTabs, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addComponent(removerTabs, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 497, Short.MAX_VALUE)
         );
 
         tabsGerente.addTab("Remover", gerentePanelRem);
@@ -818,15 +827,15 @@ public class PainelGerente extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tituloPainelGerente)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(83, 83, 83)
-                                .addComponent(btnLogout)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(tabsGerente))
-                .addContainerGap())
+                        .addComponent(tituloPainelGerente)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(tabsGerente)
+                        .addContainerGap())))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnLogout)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -880,6 +889,11 @@ public class PainelGerente extends javax.swing.JFrame {
         System.out.println(f.getFilmeSinopse());
         System.out.println(f.getFilmeAno());
         System.out.println(f.getFilmeGeneros());
+        Msgs.displaySucessJOP("O filme foi registrado com sucesso!", this);
+        newFilmeAno.setValue(2000);
+        newFilmeGeneros.setText("");
+        newFilmeNome.setText("");
+        newFilmeSinopse.setText("");
     }//GEN-LAST:event_newFilmeBtnSaveActionPerformed
 
     private void newFilmeAnoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_newFilmeAnoStateChanged
@@ -955,14 +969,27 @@ public class PainelGerente extends javax.swing.JFrame {
         System.out.println(newVendedorTurno.getSelectedItem());
         System.out.println(newVendedorSenha.getPassword());
         vendedor.sendToDB();
+        loadDAOs();
     }//GEN-LAST:event_newVendedorBtnSaveActionPerformed
 
-    private void rmvVendedorCPFPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_rmvVendedorCPFPropertyChange
+    private void loadDAOs() {
+        try {
+            listaVendedores = VendedorDAO.getVendedores();
+            listaFilmes = FilmeDAO.getFilmes();
+            listaSalas = SalaDAO.getSalas();
 
+        } catch (SQLException ex) {
+            Logger.getLogger(PainelGerente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        loadVendedorHashMap();
+        loadFilmeHashMap();
+    }
+
+    private void rmvVendedorCPFPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_rmvVendedorCPFPropertyChange
     }//GEN-LAST:event_rmvVendedorCPFPropertyChange
 
     private void rmvVendedorCPFCaretPositionChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_rmvVendedorCPFCaretPositionChanged
-        HashMap<String, Integer> cpfs = new HashMap<>();
+        /*HashMap<String, Integer> cpfs = new HashMap<>();
         System.out.println("Ata");
         if (!listaVendedores.isEmpty()) {
             for (int i = 0; i < listaVendedores.size(); i++) {
@@ -978,7 +1005,9 @@ public class PainelGerente extends javax.swing.JFrame {
                 rmvVendPrevTurno.setText("");
                 rmvVendPrevLogin.setText("");
             }
-        }
+        }*/
+
+
     }//GEN-LAST:event_rmvVendedorCPFCaretPositionChanged
 
     private void newSalaBtnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newSalaBtnSaveActionPerformed
@@ -1079,46 +1108,78 @@ public class PainelGerente extends javax.swing.JFrame {
     }//GEN-LAST:event_newSessaoPrecoKeyTyped
 
     private void rmvFilmeBtnYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmvFilmeBtnYesActionPerformed
-        Filme f = new Filme(null, null, null, 0);
-        for (Filme listaFilme : listaFilmes) {
-            if (listaFilme.getFilmeNome().equals(rmvFilmeOptLabel.getText())) {
-                f = listaFilme;
-                break;
-            }
-        }
+        Filme f = ftm.get(rmvFilmeTable.getSelectedRow());
         try {
             FilmeDAO.deletaFilme(f.getFilmeNome(), f.getFilmeAno());
+            ftm.removeRow(rmvFilmeTable.getSelectedRow());
+            Msgs.displaySucessJOP("O filme \"" + f.getFilmeNome() + "\" foi excluído com sucesso!", this);
         } catch (SQLException ex) {
             Logger.getLogger(PainelGerente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_rmvFilmeBtnYesActionPerformed
 
+    private void rmvSalaBtnYesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rmvSalaBtnYesActionPerformed
+        if (!listaSalas.isEmpty()) {
+            for (Sala sala : listaSalas) {
+                if (rmvSalaOpt.getText().equals(sala.getCod())) {
+                    try {
+                        SalaDAO.removeSala(sala);
+                        listaSalas = SalaDAO.getSalas();
+                        break;
+                    } catch (SQLException ex) {
+                        Logger.getLogger(PainelGerente.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        } else {
+            Msgs.displayErrorJOP("Erro! Não há salas registradas.", this);
+        }
+    }//GEN-LAST:event_rmvSalaBtnYesActionPerformed
+
+    private void rmvVendedorCPFKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rmvVendedorCPFKeyPressed
+        if (vends.containsKey(rmvVendedorCPF.getText())) {
+            String cpf = rmvVendedorCPF.getText();
+            rmvVendPrevLogin.setText(listaVendedores.get(vends.get(cpf)).getLogin_pessoa().getUserName());
+            rmvVendPrevEmail.setText(listaVendedores.get(vends.get(cpf)).getEmail());
+            rmvVendPrevTurno.setText(listaVendedores.get(vends.get(cpf)).getTurno());
+        } else {
+            rmvVendPrevLogin.setText("");
+            rmvVendPrevEmail.setText("");
+            rmvVendPrevTurno.setText("");
+        }
+    }//GEN-LAST:event_rmvVendedorCPFKeyPressed
+
+    private void rmvVendedorCPFKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_rmvVendedorCPFKeyReleased
+        rmvVendedorCPFKeyPressed(evt);
+    }//GEN-LAST:event_rmvVendedorCPFKeyReleased
+
+    private void loadVendedorHashMap() {
+        vends = new HashMap<>();
+        int i = 0;
+        for (Vendedor vend : listaVendedores) {
+            vends.put(vend.getCpf(), i);
+            i++;
+        }
+    }
+
+    private void loadFilmeHashMap() {
+        films = new HashMap<>();
+        int i = 0;
+        for (Filme vend : listaFilmes) {
+            vends.put(vend.getFilmeNome() + " -- " + vend.getFilmeAno(), i);
+            i++;
+        }
+    }
+
+//    private JComboBox<> getComboBoxFromClass(Class c) {
+    //  }
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        listaFilmes = new ArrayList<>();
-        try {
-            listaVendedores = VendedorDAO.getVendedores();
-            listaFilmes = FilmeDAO.carregaFilme();
-        } catch (SQLException ex) {
-            System.out.println("Erro do SQL!");
-            Logger.getLogger(PainelGerente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        listaVendedores.forEach((listaVendedore) -> {
-            System.out.println(listaVendedore.getLogin_pessoa().getUserName());
-        });
         java.awt.EventQueue.invokeLater(() -> {
             new PainelGerente().setVisible(true);
         });
-    }
-
-    private String[] getNomeFilmes() {
-        String[] filmes = new String[listaFilmes.size()];
-        for (int i = 0; i < filmes.length; i++) {
-            filmes[i] = listaFilmes.get(i).getFilmeNome();
-        }
-        return filmes;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1126,7 +1187,6 @@ public class PainelGerente extends javax.swing.JFrame {
     private javax.swing.JButton btnLogout;
     private javax.swing.JPanel gerentePanelAdd;
     private javax.swing.JPanel gerentePanelRem;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSlider newFilmeAno;
     private javax.swing.JLabel newFilmeAnoCurrent;
@@ -1148,13 +1208,13 @@ public class PainelGerente extends javax.swing.JFrame {
     private javax.swing.JLabel newSalaNomeLabel;
     private javax.swing.JButton newSessaoBtnClear;
     private javax.swing.JButton newSessaoBtnSave;
-    private javax.swing.JComboBox<String> newSessaoFilme;
+    private javax.swing.JComboBox<Object> newSessaoFilme;
     private javax.swing.JLabel newSessaoFilmeLabel;
     private javax.swing.JTextField newSessaoHoras;
     private javax.swing.JTextField newSessaoMinutos;
     private javax.swing.JTextField newSessaoPreco;
     private javax.swing.JLabel newSessaoPrecoLabel;
-    private javax.swing.JComboBox<String> newSessaoSala;
+    private javax.swing.JComboBox<Object> newSessaoSala;
     private javax.swing.JLabel newSessaoSalaLabel;
     private javax.swing.JLabel newSessaoTime;
     private javax.swing.JLabel newSessaoTime1;
@@ -1181,6 +1241,8 @@ public class PainelGerente extends javax.swing.JFrame {
     private javax.swing.JTabbedPane removerTabs;
     private javax.swing.JButton rmvFilmeBtnYes;
     private javax.swing.JLabel rmvFilmeOptLabel;
+    private javax.swing.JTable rmvFilmeTable;
+    private javax.swing.JScrollPane rmvFilmeTableOutside;
     private javax.swing.JButton rmvSalaBtnYes;
     private javax.swing.JTextField rmvSalaOpt;
     private javax.swing.JLabel rmvSalaOptLabel;

@@ -6,7 +6,6 @@ import java.util.logging.Logger;
 
 public class Sala {
 
-    private SalaDAO dao;
     private String nome, cod;
 
     public String getNome() {
@@ -36,12 +35,11 @@ public class Sala {
     public Sala(String nome, String cod) {
         this.nome = nome;
         this.cod = cod;
-        this.dao = new SalaDAO(this);
     }
 
     public void sendToBD() {
         try {
-            dao.adicionaSala();
+            SalaDAO.adicionaSala(this);
         } catch (SQLException ex) {
             Logger.getLogger(Sala.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Erro do SQL!");

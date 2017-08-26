@@ -1,4 +1,4 @@
-package Objetos;
+package Objetos.Extended;
 
 import javax.swing.*;
 import javax.swing.text.*;

@@ -15,17 +15,14 @@ import java.util.logging.Logger;
  */
 public class Gerente extends Funcionario {
 
-    GerenteDAO dao;
-
     public Gerente(String username, char[] password) {
         super(username, password);
-        dao = new GerenteDAO(this);
     }
 
     @Override
     public void sendToDB() {
         try {
-            dao.adicionaGerente();
+            GerenteDAO.adicionaGerente(this);
         } catch (SQLException ex) {
             Logger.getLogger(Gerente.class.getName()).log(Level.SEVERE, null, ex);
         }

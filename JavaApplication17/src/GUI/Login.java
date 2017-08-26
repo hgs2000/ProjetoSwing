@@ -17,11 +17,9 @@ public class Login extends javax.swing.JFrame {
 
     static ArrayList<Vendedor> vendedores = new ArrayList<>();
     static Gerente gerente;
-    //static ArrayList<Cliente> BD2 = new ArrayList<>();
 
     private static void getGerente() throws SQLException {
-        GerenteDAO dao = new GerenteDAO(gerente);
-        gerente = dao.getGerente();
+        gerente = GerenteDAO.getGerente();
     }
 
     public Login() {

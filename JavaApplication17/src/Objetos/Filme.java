@@ -63,11 +63,11 @@ public class Filme {
 
     public void sendToBD() {
         try {
-            dao.adicionaFilme();
+            FilmeDAO.adicionaFilme(this);
         } catch (SQLException ex) {
             Logger.getLogger(Filme.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Erro do SQL");
         }
     }
-    
+
 }

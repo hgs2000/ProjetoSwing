@@ -6,27 +6,20 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Arrays;
 
 public class GerenteDAO {
 
-    private Gerente g;
-
-    public GerenteDAO(Gerente gerente) {
-        this.g = gerente;
-    }
-
-    public void adicionaGerente() throws SQLException {
+    public static void adicionaGerente(Gerente g) throws SQLException {
         String str = AutoBuild.connectToDB();
         Connection conn = DriverManager.getConnection(str);
         String sql = "insert into gerente (login_ger, senha_ger) values (?, ?);";
         PreparedStatement p = conn.prepareStatement(sql);
-        p.setString(1, this.g.getLogin_pessoa().getUserName());
-        p.setString(2, "" + String.valueOf(this.g.getLogin_pessoa().getPassword()));
+        p.setString(1, g.getLogin_pessoa().getUserName());
+        p.setString(2, "" + String.valueOf(g.getLogin_pessoa().getPassword()));
         p.execute();
     }
 
-    public Gerente getGerente() throws SQLException {
+    public static Gerente getGerente() throws SQLException {
         Gerente ger = null;
         String str = AutoBuild.connectToDB();
         Connection conn = DriverManager.getConnection(str);

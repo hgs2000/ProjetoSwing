@@ -27,6 +27,10 @@ public class Msgs {
         }
     }
 
+    public static void displaySucessJOP(String text, Component cmpnt){
+        JOptionPane.showMessageDialog(cmpnt, text, "Sucesso!", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
     public static void displayErrorJOP(String text, Component cmpnt){
         JOptionPane.showMessageDialog(cmpnt, text, "Erro!" ,JOptionPane.WARNING_MESSAGE);
     }

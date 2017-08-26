@@ -7,7 +7,7 @@ package GUI;
 
 import Objetos.Cliente;
 import Objetos.ClienteDAO;
-import Objetos.JNumberTextField;
+import Objetos.Extended.JNumberTextField;
 import Objetos.Vendedor;
 import static Tools.AutoBuild.setIntegerComboBox;
 import Tools.Msgs;
@@ -26,8 +26,9 @@ public class PainelVendedor extends javax.swing.JFrame {
     private ArrayList<Cliente> clientes = new ArrayList<>();
 
     static void start(Vendedor vend) {
-        new PainelVendedor(vend);
-
+        java.awt.EventQueue.invokeLater(() -> {
+            new PainelVendedor(vend);
+        });
     }
 
     /**
